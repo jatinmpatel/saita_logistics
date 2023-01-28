@@ -45,15 +45,22 @@ Route::group(['prefix' => '', 'middleware' => ['auth']], function(){
     Route::get('print-awb-document', [OtherApiController::class, 'printAWBDocument']);
     Route::get('shipment-movement', [OtherApiController::class, 'shipmentMovement']);
     Route::get('pod-upload', [OtherApiController::class, 'podUpload']);
+
     Route::get('country-master', [OtherApiController::class, 'countryMaster']);
+    Route::post('country-save',[OtherApiController::class,'countrySave'])->name('country.save');
+    Route::get('country-list',[OtherApiController::class,'getCountryList'])->name('country.list');
+    Route::get('country-delete/{id}',[OtherApiController::class,'countryDelete'])->name('country.delete');
+    Route::post('country-update',[OtherApiController::class,'countryUpdate'])->name('country.update');
+    
     Route::get('reason-master', [OtherApiController::class, 'reasonMaster']);
+    Route::post('reason-save', [OtherApiController::class,'reasonSave'])->name('reason.save');
+    Route::get('reason-delete/{id}',[OtherApiController::class,'reasonDelete'])->name('reason.delete');
+    Route::post('reason-update',[OtherApiController::class,'reasonUpdate'])->name('reason.update');
     Route::get('create-invoice', [OtherApiController::class, 'createInvoice']);
     Route::get('invoice', [OtherApiController::class, 'invoice']);
     Route::get('vendor-api-configuration', [OtherApiController::class, 'vendorApiConfiguration']);
 
-    Route::post('country-save',[OtherApiController::class,'countrySave'])->name('country.save');
-    Route::get('country-list',[OtherApiController::class,'getCountryList'])->name('country.list');
-    Route::get('country-delete/{id}',[OtherApiController::class,'countryDelete'])->name('country.delete');
+    
     Route::get('client-master', [ClientMasterController::class, 'clientMaster']);
     
     Route::get('zone-master', [ZoneMasterController::class, 'zoneMaster']);

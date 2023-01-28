@@ -33,11 +33,11 @@
                                </div>
                                 <div class="form-group col-md-6 col-12">
                                    <label>Country Code*</label>
-                                   <input type="text" required class="form-control" name="country_name" id="country_name" placeholder="Enter Country Code">
+                                   <input type="text" required class="form-control" name="country_code" id="country_code" placeholder="Enter Country Code">
                                 </div>
                                 <div class="form-group col-md-6 col-12">
                                    <label>Country Name*</label>
-                                   <input type="text" required class="form-control" name="country_code" id="country_code" placeholder="Enter Country Name">
+                                   <input type="text" required class="form-control" name="country_name" id="country_name" placeholder="Enter Country Name">
                                 </div>
 
                            </div>
@@ -85,11 +85,43 @@
                                              <tbody>
                                              @foreach($country as $row)
                                              <tr>
-                                                <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
+                                                <td><a class="btn btn-primary" data-toggle="modal" data-target="#myModal{{$row->id}}" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
                                                 <td><a class="btn btn-primary" href="{{route('country.delete',$row->id)}}" onclick="return confirm('Are you sure you want to delete this record?')"> <i class="fa fa-trash-alt"></i></a></td>
                                                 <td>{{$row->country_code}}</td>
                                                 <td>{{$row->country_name}}</td>
                                              </tr>
+                                             <!-- Modal -->
+                                                <div id="myModal{{$row->id}}" class="modal fade" role="dialog">
+                                                <div class="modal-dialog">
+                                                   <!-- Modal content-->
+                                                   <div class="modal-content">
+                                                      <div class="modal-header d-inline">
+                                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                      <h4 class="modal-title">Edit Country</h4>
+                                                      </div>
+                                                      <form action="{{route('country.update')}}" name="country_frm_update" method="post">
+                                                         @csrf
+                                                         <div class="modal-body">
+                                                            <div class="row">
+                                                            <div class="form-group col-md-6 col-12">
+                                                               <label>Country Code*</label>
+                                                               <input type="text" value="{{$row->country_code}}" required  name="country_code" id="country_code" class="form-control" placeholder="Enter Country Code">
+                                                               <input type="hidden" required class="form-control" value="{{$row->id}}" name="id" id="id">
+                                                            </div>
+                                                            <div class="form-group col-md-6 col-12">
+                                                               <label>Country Name*</label>
+                                                               <input type="text" value="{{$row->country_name}}" required class="form-control" name="country_name" id="country_name"  placeholder="Enter Country Name">
+                                                            </div>
+                                                            </div>      
+                                                         </div>
+                                                         <div class="modal-footer">
+                                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                         <button class="btn btn-primary mr-2" type="submit"><i class="fa fa-paper-plane"></i> Submit</button>
+                                                         </div>
+                                                      </form>
+                                                   </div>
+                                                </div>
+                                                </div>
                                              @endforeach
                                        </tbody>
                                        </table>

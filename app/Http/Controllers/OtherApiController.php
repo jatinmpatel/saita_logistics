@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Country;
+use App\Models\Reason;
+use Auth;
 class OtherApiController extends Controller
 {
     public function printAWBDocument(Request $request){
@@ -41,7 +43,18 @@ class OtherApiController extends Controller
             return redirect()->back()->with('error','Something went wrong please try again!');
         }
     }
-    
+    public function countryUpdate(Request $request){
+        $updateData = [
+            'country_name'=>isset($request->country_name) ? $request->country_name : NULL, 
+            'country_code'=>isset($request->country_code) ? $request->country_code : NULL,
+        ];
+        $result = Country::where('id',$request->id)->update($updateData);
+        if($result){
+            return redirect()->back()->with('success','Record updated successfully!');
+        }else{
+            return redirect()->back()->with('error','Something went wrong please try again!');
+        }  
+    }
     public function getCountryList(Type $var = null)
     {
         if ($request->ajax()) {
@@ -78,9 +91,49 @@ class OtherApiController extends Controller
         }
     }
     public function reasonMaster(Request $request){
-        return view('other.reason_master');
+        $reason = Reason::join('users','users.id','=','reason.created_by')
+        ->select('reason.*','users.name')->get();
+        $total = $reason->count();
+        $data = ['reason'=>$reason,'total'=>$total];
+        return view('other.reason_master',$data);
     }
-
+    public function reasonSave(Request $request){
+        $user = Auth::user();
+        $insData=[
+            'reason_code'=>isset($request->reason_code) ? $request->reason_code : NULL,
+            'reason_text'=>isset($request->reason_text) ? $request->reason_text : NULL,
+            'isActive'=>isset($request->isActive) ? $request->isActive : 0,
+            'created_by'=>$user->id,
+        ];
+        $result = Reason::create($insData);
+        if($result){
+            return redirect()->back()->with('success','Record added successfully!');
+        }else{
+            return redirect()->back()->with('error','Something went wrong please try again!');
+        }
+    }
+    public function reasonUpdate(Request $request){
+        $id = $request->id;
+        $updateData=[
+            'reason_code'=>isset($request->reason_code) ? $request->reason_code : NULL,
+            'reason_text'=>isset($request->reason_text) ? $request->reason_text : NULL,
+            'isActive'=>isset($request->isActive) ? $request->isActive : 0,
+        ];
+        $result = Reason::where('id',$id)->update($updateData);
+        if($result){
+            return redirect()->back()->with('success','Record updated successfully!');
+        }else{
+            return redirect()->back()->with('error','Something went wrong please try again!');
+        }
+    }
+    public function reasonDelete($id){
+        $result = Reason::where('id',$id)->delete();
+        if($result){
+            return redirect()->back()->with('success','Record deleted successfully!');
+        }else{
+           return redirect()->back()->with('error','Something went wrong please try again!');
+        }
+    }
     public function createInvoice(Request $request){
         return view('other.create_invoice');
     }
