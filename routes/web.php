@@ -51,6 +51,8 @@ Route::group(['prefix' => '', 'middleware' => ['auth']], function(){
     Route::get('invoice', [OtherApiController::class, 'invoice']);
     Route::get('vendor-api-configuration', [OtherApiController::class, 'vendorApiConfiguration']);
 
+    Route::post('country-save',[OtherApiController::class,'countrySave'])->name('country.save');
+    Route::get('country-list',[OtherApiController::class,'getCountryList'])->name('country.list');
     Route::get('client-master', [ClientMasterController::class, 'clientMaster']);
     
     Route::get('zone-master', [ZoneMasterController::class, 'zoneMaster']);

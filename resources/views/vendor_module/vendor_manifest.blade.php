@@ -51,32 +51,32 @@
                                   </div>
                                 <div class="form-group col-md-6 col-12">
                                      <label>Forwarder*</label>
-                                     <select class="form-control select select2-hidden-accessible" data-select2-id="select2-data-1-7fpm" tabindex="-1" aria-hidden="true">
-                                        <option data-select2-id="select2-data-3-2ke3">--Select Forwarder--</option>
-                                        <option value="ARAMEX">ARAMEX</option>
-                                        <option value="BLUEDART">BLUEDART</option>
-                                        <option value="CRITICAL LOG">CRITICAL LOG</option>
-                                        <option value="DELHIVERY">DELHIVERY</option>
-                                        <option value="DELHIVERYB2B">DELHIVERYB2B</option>
-                                        <option value="DHL">DHL</option>
-                                        <option value="DPD">DPD</option>
-                                        <option value="DTDC">DTDC</option>
-                                        <option value="ECSSPL">ECSSPL</option>
-                                        <option value="EKART">EKART</option>
-                                        <option value="FEDEX">FEDEX</option>
-                                        <option value="LINEX">LINEX</option>
-                                        <option value="NIMBUSPOST">NIMBUSPOST</option>
-                                        <option value="PROFESSIONAL">PROFESSIONAL</option>
-                                        <option value="SELF">SELF</option>
-                                        <option value="SKYNET">SKYNET</option>
-                                        <option value="SPOTON">SPOTON</option>
-                                        <option value="TNT">TNT</option>
-                                        <option value="TRACKON">TRACKON</option>
-                                        <option value="UPS">UPS</option>
-                                        <option value="USPS">USPS</option>
-                                        <option value="XPRESSBEES">XPRESSBEES</option>
-                                        <option value="YODEL">YODEL</option>
-                                     </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-2-jzc5" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-jwok-container" aria-controls="select2-jwok-container"><span class="select2-selection__rendered" id="select2-jwok-container" role="textbox" aria-readonly="true" title="--Select Forwarder--">--Select Forwarder--</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                     <select class="form-control select">
+                                       <option>--Select Forwarder--</option>
+                                       <option value="ARAMEX">ARAMEX</option>
+                                       <option value="BLUEDART">BLUEDART</option>
+                                       <option value="CRITICAL LOG">CRITICAL LOG</option>
+                                       <option value="DELHIVERY">DELHIVERY</option>
+                                       <option value="DELHIVERYB2B">DELHIVERYB2B</option>
+                                       <option value="DHL">DHL</option>
+                                       <option value="DPD">DPD</option>
+                                       <option value="DTDC">DTDC</option>
+                                       <option value="ECSSPL">ECSSPL</option>
+                                       <option value="EKART">EKART</option>
+                                       <option value="FEDEX">FEDEX</option>
+                                       <option value="LINEX">LINEX</option>
+                                       <option value="NIMBUSPOST">NIMBUSPOST</option>
+                                       <option value="PROFESSIONAL">PROFESSIONAL</option>
+                                       <option value="SELF">SELF</option>
+                                       <option value="SKYNET">SKYNET</option>
+                                       <option value="SPOTON">SPOTON</option>
+                                       <option value="TNT">TNT</option>
+                                       <option value="TRACKON">TRACKON</option>
+                                       <option value="UPS">UPS</option>
+                                       <option value="USPS">USPS</option>
+                                       <option value="XPRESSBEES">XPRESSBEES</option>
+                                       <option value="YODEL">YODEL</option>
+                                    </select>
                                 </div>
                                 <div class="form-group col-md-6 col-12">
                                      <label>Manifest Date*</label>

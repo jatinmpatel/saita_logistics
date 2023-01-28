@@ -20,10 +20,11 @@
        <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-12">
              <div class="card">
-               <form>
+               
                    <div class="card-body">
-                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-
+                     <form action="{{ route('country.save')}}" method="post" name="country_frm" id="country_frm">
+                        @csrf
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                            <div class="row">
                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                  <div class="frm-heading">
@@ -32,83 +33,97 @@
                                </div>
                                 <div class="form-group col-md-6 col-12">
                                    <label>Country Code*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Country Code">
+                                   <input type="text" required class="form-control" name="country_name" id="country_name" placeholder="Enter Country Code">
                                 </div>
                                 <div class="form-group col-md-6 col-12">
                                    <label>Country Name*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Country Name">
+                                   <input type="text" required class="form-control" name="country_code" id="country_code" placeholder="Enter Country Name">
                                 </div>
 
                            </div>
-
                          </div>
                          <hr>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                            <div class="page-btns">
                               <div class="form-group text-center custom-mt-form-group">
-                                 <button class="btn btn-primary mr-2" type="submit"><i class="fa fa-search"></i> Search</button>
+                                 <button class="btn btn-primary mr-2" type="submit"><i class="fa fa-paper-plane"></i> Submit</button>
+                                 <button class="btn btn-primary mr-2" type="button"><i class="fa fa-search"></i> Search</button>
                                  <button class="btn btn-primary mr-2" type="button"><i class="fa fa-expand"></i> Export</button>
                                  <button class="btn btn-secondary orng-btn" type="reset"><i class="fa fa-dot-circle"></i> Reset</button>
                               </div>
                             </div>
                         </div>
-
+                     </form>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                             <div class="bg-clr">
-                                 <div class="row">
-                                     <div class="col-md-10">
-                                     </div>
-                                     <div class="col-md-2">
-                                         <div class="searching-fld">
-                                           <select class="form-control select select2-hidden-accessible" data-select2-id="select2-data-1-l27h" tabindex="-1" aria-hidden="true">
-                                              <option value="20" data-select2-id="select2-data-3-od85">20</option>
-                                              <option value="50">50</option>
-                                              <option value="100">100</option>
-                                           </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-2-tqt3" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-dd1y-container" aria-controls="select2-dd1y-container"><span class="select2-selection__rendered" id="select2-dd1y-container" role="textbox" aria-readonly="true" title="20">20</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                                         </div>
-                                     </div>
-
-                                     
-
+                           <div class="bg-clr">
+                              <div class="row">
+                                 <div class="col-md-10">
                                  </div>
-                             </div>
+                                 <div class="col-md-2">
+                                       <div class="searching-fld">
+                                       <select class="form-control select">
+                                          <option value="20">20</option>
+                                          <option value="50">50</option>
+                                          <option value="100">100</option>
+                                       </select>
+                                       </div>
+                                 </div>
+                              </div>
+                           </div>
                              <div class="col-md-12">    
-                                         <div class="x_content">
-                                             <div class="table-responsive">
-                                                 <table>
-                                                     <thead>
-                                                         <tr>
-                                                             <th>Edit</th>
-                                                             <th>Delete</th>
-                                                             <th>Country Code</th>
-                                                             <th>Country Name</th>
-                                                         </tr>
-                                                     </thead>
-                                                     <tbody>
-                                                     <tr>
-                                                         <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
-                                                         <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
-                                                         <td>33</td>
-                                                         <td>France</td>
-                                                     </tr>
-                                                     <tr>
-                                                         <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
-                                                         <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
-                                                         <td>44</td>
-                                                         <td>United Kingdom</td>
-                                                     </tr>
-                                                 </tbody>
-                                                 </table>
-                                             </div>
-                                         </div>
-                                     </div>
+                                 <div class="x_content">
+                                    <div class="table-responsive">
+                                       <table id="t1">
+                                             <thead>
+                                                <tr>
+                                                   <th>Edit</th>
+                                                   <th>Delete</th>
+                                                   <th>Country Code</th>
+                                                   <th>Country Name</th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                             <tr>
+                                                <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
+                                                <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
+                                                <td>33</td>
+                                                <td>France</td>
+                                             </tr>
+                                             <tr>
+                                                <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
+                                                <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
+                                                <td>44</td>
+                                                <td>United Kingdom</td>
+                                             </tr>
+                                       </tbody>
+                                       </table>
+                                    </div>
+                                 </div>
+                           </div>
                         </div>
-
                      </div>
-                   </form></div>
-               
+                  </div>
              </div>
           </div>
        </div>
     </div>
+    <script>
+$(function () {
+    var table = $('#t1').DataTable({
+        processing: true,
+        serverSide: true,
+        searching: false,
+        ajax: "{{ route('country.list') }}",
+        "order": [[5, "desc" ]],
+        columns: [
+            {data: 'name', name: 'name'},
+            {data: 'email', name: 'email'},
+            
+            {data: 'custom_date', name: 'custom_date'},
+            {data: 'action', name: 'action',orderable: false,searchable: false},
+            // /orderable: false, searchable: false
+        ]
+    });
+  });
+</script>
 @endsection

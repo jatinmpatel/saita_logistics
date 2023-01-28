@@ -186,20 +186,20 @@
                                </div>
                                 <div class="form-group col-md-3 col-12">
                                  <label>Packet Type*</label>
-                                   <select class="form-control select select2-hidden-accessible" data-select2-id="select2-data-1-bhvt" tabindex="-1" aria-hidden="true">
-                                      <option data-select2-id="select2-data-3-o2s1">--Select Packet Type--</option>
-                                      <option>DOX</option>
-                                      <option>SPX</option>
-                                   </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-2-vhcb" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-rj9g-container" aria-controls="select2-rj9g-container"><span class="select2-selection__rendered" id="select2-rj9g-container" role="textbox" aria-readonly="true" title="--Select Packet Type--">--Select Packet Type--</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                 <select class="form-control select">
+                                    <option>--Select Packet Type--</option>
+                                    <option>DOX</option>
+                                    <option>SPX</option>
+                                 </select>
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                  <label>Payment Type*</label>
-                                   <select class="form-control select select2-hidden-accessible" data-select2-id="select2-data-4-9uyk" tabindex="-1" aria-hidden="true">
-                                      <option data-select2-id="select2-data-6-ari3">--Select Payment Type--</option>
-                                      <option value="CASH">CASH</option>
-                                      <option value="COD">COD</option>
-                                      <option value="CREDIT">CREDIT</option>
-                                   </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-5-2mhf" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-l0y8-container" aria-controls="select2-l0y8-container"><span class="select2-selection__rendered" id="select2-l0y8-container" role="textbox" aria-readonly="true" title="--Select Payment Type--">--Select Payment Type--</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                 <select class="form-control select">
+                                    <option>--Select Payment Type--</option>
+                                    <option value="CASH">CASH</option>
+                                    <option value="COD">COD</option>
+                                    <option value="CREDIT">CREDIT</option>
+                                 </select>
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Invoice No*</label>
@@ -229,11 +229,11 @@
                                    <div class="smalling-wdh">
                                      <label>Vendor Weight*</label>
                                      <input type="text" class="form-control" placeholder="Enter Vendor Weight">
-                                     <select class="form-control select select2-hidden-accessible" data-select2-id="select2-data-7-y3j0" tabindex="-1" aria-hidden="true">
-                                        <option data-select2-id="select2-data-9-eitp">--Select Packet Type--</option>
-                                        <option>DOX</option>
-                                        <option>SPX</option>
-                                     </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-8-cazz" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-hyin-container" aria-controls="select2-hyin-container"><span class="select2-selection__rendered" id="select2-hyin-container" role="textbox" aria-readonly="true" title="--Select Packet Type--">--Select Packet Type--</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                    <select class="form-control select">
+                                       <option>--Select Packet Type--</option>
+                                       <option>DOX</option>
+                                       <option>SPX</option>
+                                    </select>
                                    </div>
                                 </div>
                                 <div class="form-group col-md-3 col-12">
@@ -244,12 +244,12 @@
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Divisor*</label>
-                                     <select class="form-control select select2-hidden-accessible" data-select2-id="select2-data-10-0x9x" tabindex="-1" aria-hidden="true">
-                                        <option data-select2-id="select2-data-12-xjqu">Select</option>
-                                        <option value="5000">5000</option>
-                                        <option value="6000">6000</option>
-                                        <option value="4500">4500</option>
-                                     </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-11-qj1l" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-9sz2-container" aria-controls="select2-9sz2-container"><span class="select2-selection__rendered" id="select2-9sz2-container" role="textbox" aria-readonly="true" title="Select">Select</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                   <select class="form-control select">
+                                       <option>Select</option>
+                                       <option value="5000">5000</option>
+                                       <option value="6000">6000</option>
+                                       <option value="4500">4500</option>
+                                    </select>
                                 </div>
                            </div>
 
