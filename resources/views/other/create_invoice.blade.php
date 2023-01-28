@@ -26,11 +26,11 @@
                          <div class="col-sm-6 col-md-4">
                             <div class="form-group">
                                <label>Role <span class="text-danger">*</span></label>
-                               <select class="form-control select select2-hidden-accessible" data-select2-id="select2-data-1-ghwc" tabindex="-1" aria-hidden="true">
-                                  <option>Select</option>
-                                  <option selected="" data-select2-id="select2-data-3-fucs">Management</option>
-                                  <option>staff</option>
-                               </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-2-w0z8" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-d27j-container" aria-controls="select2-d27j-container"><span class="select2-selection__rendered" id="select2-d27j-container" role="textbox" aria-readonly="true" title="Management">Management</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                               <select class="form-control select">
+                                    <option>Select</option>
+                                    <option selected>Management</option>
+                                    <option>staff</option>
+                                 </select>
                             </div>
                          </div>
                          <div class="col-sm-6 col-md-4">
@@ -42,12 +42,12 @@
                          <div class="col-sm-6 col-md-4">
                             <div class="form-group">
                                <label>Tax</label>
-                               <select class="form-control select select2-hidden-accessible" data-select2-id="select2-data-4-fx6k" tabindex="-1" aria-hidden="true">
-                                  <option data-select2-id="select2-data-6-wy6r">Select Tax</option>
-                                  <option>VAT</option>
-                                  <option>Gst</option>
-                                  <option>No Tax</option>
-                               </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-5-fx8n" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-jy6y-container" aria-controls="select2-jy6y-container"><span class="select2-selection__rendered" id="select2-jy6y-container" role="textbox" aria-readonly="true" title="Select Tax">Select Tax</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                               <select class="form-control select">
+                                    <option>Select Tax</option>
+                                    <option>VAT</option>
+                                    <option>Gst</option>
+                                    <option>No Tax</option>
+                                 </select>
                             </div>
                          </div>
                          <div class="col-sm-6 col-md-6">

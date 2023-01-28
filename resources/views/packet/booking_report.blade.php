@@ -50,14 +50,14 @@
                                 </div>
                                 <div class="form-group col-md-6 col-12">
                                      <label>Status*</label>
-                                     <select class="form-control select select2-hidden-accessible" data-select2-id="select2-data-1-b3mf" tabindex="-1" aria-hidden="true">
-                                        <option data-select2-id="select2-data-3-f008">--Select Status--</option>
+                                     <select class="form-control select">
+                                        <option>--Select Status--</option>
                                         <option value="INTRANSIT">INTRANSIT</option>
                                         <option value="DELIVERED">DELIVERED</option>
                                         <option value="UN-DELIVERED">UN-DELIVERED</option>
                                         <option value="RTO">RTO</option>
                                         <option value="PICKED UP">PICKED UP</option>
-                                     </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-2-l66z" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-d979-container" aria-controls="select2-d979-container"><span class="select2-selection__rendered" id="select2-d979-container" role="textbox" aria-readonly="true" title="--Select Status--">--Select Status--</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                    </select>
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                      <label>Vendor*</label>
@@ -103,25 +103,22 @@
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                              <div class="bg-clr">
-                                 <div class="row">
-                                     <div class="col-md-10">
-                                         <div class="frm-heading">
-                                             <h3>Total Record(s) Found: 39</h3>
-                                         </div>
-                                     </div>
-                                     <div class="col-md-2">
-                                         <div class="searching-fld">
-                                           <select class="form-control select select2-hidden-accessible" data-select2-id="select2-data-4-91z5" tabindex="-1" aria-hidden="true">
-                                              <option value="20" data-select2-id="select2-data-6-58jz">20</option>
-                                              <option value="50">50</option>
-                                              <option value="100">100</option>
-                                           </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-5-kfjo" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-fty8-container" aria-controls="select2-fty8-container"><span class="select2-selection__rendered" id="select2-fty8-container" role="textbox" aria-readonly="true" title="20">20</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                                         </div>
-                                     </div>
-
-                                     
-
-                                 </div>
+                             <div class="row">
+                                <div class="col-md-10">
+                                    <div class="frm-heading">
+                                        <h3>Total Record(s) Found: 39</h3>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="searching-fld">
+                                        <select class="form-control select">
+                                            <option value="20">20</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                              </div>
 
                              <div class="col-md-12">    

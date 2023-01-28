@@ -42,32 +42,32 @@
                                 </div>
                                 <div class="form-group col-md-6 col-12">
                                      <label>Forwarder*</label>
-                                     <select class="form-control select select2-hidden-accessible" data-select2-id="select2-data-1-lbrc" tabindex="-1" aria-hidden="true">
-                                         <option data-select2-id="select2-data-3-o5tf">--Select Forwarder--</option>
-                                         <option value="ARAMEX">ARAMEX</option>
-                                         <option value="BLUEDART">BLUEDART</option>
-                                         <option value="CRTCL">CRITICAL LOG</option>
-                                         <option value="DELHIVERY">DELHIVERY</option>
-                                         <option value="DELIVRYB2B">DELHIVERYB2B</option>
-                                         <option value="DHL">DHL</option>
-                                         <option value="DPD">DPD</option>
-                                         <option value="DTDC">DTDC</option>
-                                         <option value="ECSSPL">ECSSPL</option>
-                                         <option value="EKART">EKART</option>
-                                         <option value="FEDEX">FEDEX</option>
-                                         <option value="LINEX">LINEX</option>
-                                         <option value="NIMBUSPOST">NIMBUSPOST</option>
-                                         <option value="PROF">PROFESSIONAL</option>
-                                         <option value="SELF">SELF</option>
-                                         <option value="SKYNET">SKYNET</option>
-                                         <option value="SPOTON">SPOTON</option>
-                                         <option value="TNT">TNT</option>
-                                         <option value="TRACKON">TRACKON</option>
-                                         <option value="UPS">UPS</option>
-                                         <option value="USPS">USPS</option>
-                                         <option value="XPRESSBEES">XPRESSBEES</option>
-                                         <option value="YODEL">YODEL</option>
-                                     </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-2-s30f" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-60x6-container" aria-controls="select2-60x6-container"><span class="select2-selection__rendered" id="select2-60x6-container" role="textbox" aria-readonly="true" title="--Select Forwarder--">--Select Forwarder--</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                     <select class="form-control select">
+                                        <option>--Select Forwarder--</option>
+                                        <option value="ARAMEX">ARAMEX</option>
+                                        <option value="BLUEDART">BLUEDART</option>
+                                        <option value="CRTCL">CRITICAL LOG</option>
+                                        <option value="DELHIVERY">DELHIVERY</option>
+                                        <option value="DELIVRYB2B">DELHIVERYB2B</option>
+                                        <option value="DHL">DHL</option>
+                                        <option value="DPD">DPD</option>
+                                        <option value="DTDC">DTDC</option>
+                                        <option value="ECSSPL">ECSSPL</option>
+                                        <option value="EKART">EKART</option>
+                                        <option value="FEDEX">FEDEX</option>
+                                        <option value="LINEX">LINEX</option>
+                                        <option value="NIMBUSPOST">NIMBUSPOST</option>
+                                        <option value="PROF">PROFESSIONAL</option>
+                                        <option value="SELF">SELF</option>
+                                        <option value="SKYNET">SKYNET</option>
+                                        <option value="SPOTON">SPOTON</option>
+                                        <option value="TNT">TNT</option>
+                                        <option value="TRACKON">TRACKON</option>
+                                        <option value="UPS">UPS</option>
+                                        <option value="USPS">USPS</option>
+                                        <option value="XPRESSBEES">XPRESSBEES</option>
+                                        <option value="YODEL">YODEL</option>
+                                    </select>
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                      <div class="all-chk">
@@ -93,21 +93,19 @@
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                              <div class="bg-clr">
-                                 <div class="row">
-                                     <div class="col-md-10">
-                                     </div>
-                                     <div class="col-md-2">
-                                         <div class="searching-fld">
-                                           <select class="form-control select select2-hidden-accessible" data-select2-id="select2-data-4-1r4p" tabindex="-1" aria-hidden="true">
-                                              <option value="20" data-select2-id="select2-data-6-i1o5">20</option>
-                                              <option value="50">50</option>
-                                              <option value="100">100</option>
-                                           </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-5-vpkl" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-6s9x-container" aria-controls="select2-6s9x-container"><span class="select2-selection__rendered" id="select2-6s9x-container" role="textbox" aria-readonly="true" title="20">20</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                                         </div>
-                                     </div>
-
-                                    
-                                 </div>
+                             <div class="row">
+                                <div class="col-md-10">
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="searching-fld">
+                                        <select class="form-control select">
+                                            <option value="20">20</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                              </div>
 
                               <div class="col-md-12">    

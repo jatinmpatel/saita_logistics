@@ -111,12 +111,12 @@
                                </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Payment Type*</label>
-                                   <select class="form-control select select2-hidden-accessible" data-select2-id="select2-data-1-cxdj" tabindex="-1" aria-hidden="true">
-                                      <option data-select2-id="select2-data-3-5z1b">--Select Payment Type--</option>
-                                      <option value="CASH">CASH</option>
-                                      <option value="COD">COD</option>
-                                      <option value="CREDIT">CREDIT</option>
-                                   </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-2-7tct" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-my7v-container" aria-controls="select2-my7v-container"><span class="select2-selection__rendered" id="select2-my7v-container" role="textbox" aria-readonly="true" title="--Select Payment Type--">--Select Payment Type--</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                   <select class="form-control select">
+                                       <option>--Select Payment Type--</option>
+                                       <option value="CASH">CASH</option>
+                                       <option value="COD">COD</option>
+                                       <option value="CREDIT">CREDIT</option>
+                                    </select>
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Credit Amount*</label>
@@ -135,30 +135,30 @@
                                 <div class="form-group col-md-4 col-12">
                                    <div class="smalling-wdh" id="client-selectign">
                                      <label>Vol. Div.*</label>
-                                     <select class="form-control select select2-hidden-accessible" data-select2-id="select2-data-4-0kjr" tabindex="-1" aria-hidden="true">
-                                        <option data-select2-id="select2-data-6-0f51">--Select Divisor--</option>
-                                        <option value="5000">5000</option>
-                                        <option value="6000">6000</option>
-                                        <option value="4500">4500</option>
-                                     </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-5-zrea" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-1y4x-container" aria-controls="select2-1y4x-container"><span class="select2-selection__rendered" id="select2-1y4x-container" role="textbox" aria-readonly="true" title="--Select Divisor--">--Select Divisor--</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                     <select class="form-control select">
+                                       <option>--Select Divisor--</option>
+                                       <option value="5000">5000</option>
+                                       <option value="6000">6000</option>
+                                       <option value="4500">4500</option>
+                                    </select>
                                      <b style="margin: 0 4px;">Currency</b>
-                                     <select class="form-control select select2-hidden-accessible" data-select2-id="select2-data-7-yx0y" tabindex="-1" aria-hidden="true">
-                                        <option data-select2-id="select2-data-9-65mj">INR</option>
-                                        <option value="AED">AED</option>
-                                        <option value="AUD">AUD</option>
-                                        <option value="CAD">CAD</option>
-                                        <option value="CHF">CHF</option>
-                                        <option value="CNY">CNY</option>
-                                        <option value="EUR">EUR</option>
-                                        <option value="GBP">GBP</option>
-                                        <option value="HKD">HKD</option>
-                                        <option value="INR">INR</option>
-                                        <option value="JPY">JPY</option>
-                                        <option value="RUB">RUB</option>
-                                        <option value="SAR">SAR</option>
-                                        <option value="SGD">SGD</option>
-                                        <option value="USD">USD</option>
-                                     </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-8-2g7u" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-3hci-container" aria-controls="select2-3hci-container"><span class="select2-selection__rendered" id="select2-3hci-container" role="textbox" aria-readonly="true" title="INR">INR</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                     <select class="form-control select">
+                                       <option>INR</option>
+                                       <option value="AED">AED</option>
+                                       <option value="AUD">AUD</option>
+                                       <option value="CAD">CAD</option>
+                                       <option value="CHF">CHF</option>
+                                       <option value="CNY">CNY</option>
+                                       <option value="EUR">EUR</option>
+                                       <option value="GBP">GBP</option>
+                                       <option value="HKD">HKD</option>
+                                       <option value="INR">INR</option>
+                                       <option value="JPY">JPY</option>
+                                       <option value="RUB">RUB</option>
+                                       <option value="SAR">SAR</option>
+                                       <option value="SGD">SGD</option>
+                                       <option value="USD">USD</option>
+                                    </select>
                                    </div>
                                 </div>
                                 <div class="form-group col-md-2 col-12">
@@ -201,33 +201,33 @@
                                </div>
                                 <div class="form-group col-md-3 col-12">
                                  <label>Charge Type*</label>
-                                   <select class="form-control select select2-hidden-accessible" data-select2-id="select2-data-10-pqnz" tabindex="-1" aria-hidden="true">
-                                      <option data-select2-id="select2-data-12-xsm6">--Select Charge Type--</option>
-                                      <option value="Loading Charge">Loading Charge</option>
-                                   </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-11-xmsb" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-98gs-container" aria-controls="select2-98gs-container"><span class="select2-selection__rendered" id="select2-98gs-container" role="textbox" aria-readonly="true" title="--Select Charge Type--">--Select Charge Type--</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                    <select class="form-control select">
+                                       <option>--Select Charge Type--</option>
+                                       <option value="Loading Charge">Loading Charge</option>
+                                    </select>
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                  <label>Type*</label>
-                                   <select class="form-control select select2-hidden-accessible" data-select2-id="select2-data-13-7bs6" tabindex="-1" aria-hidden="true">
-                                      <option data-select2-id="select2-data-15-zj3d">--Select Calculation Type--</option>
-                                      <option value="% OF FREIGHT AMOUNT">% OF FREIGHT AMOUNT</option>
-                                      <option value="% OF INVOICE AMOUNT">% OF INVOICE AMOUNT</option>
-                                      <option value="PER INVOICE">PER INVOICE</option>
-                                      <option value="PER KG">PER KG</option>
-                                      <option value="PER SHIPMENT">PER SHIPMENT</option>
-                                   </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-14-kyct" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-wc0m-container" aria-controls="select2-wc0m-container"><span class="select2-selection__rendered" id="select2-wc0m-container" role="textbox" aria-readonly="true" title="--Select Calculation Type--">--Select Calculation Type--</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                 <select class="form-control select">
+                                    <option>--Select Calculation Type--</option>
+                                    <option value="% OF FREIGHT AMOUNT">% OF FREIGHT AMOUNT</option>
+                                    <option value="% OF INVOICE AMOUNT">% OF INVOICE AMOUNT</option>
+                                    <option value="PER INVOICE">PER INVOICE</option>
+                                    <option value="PER KG">PER KG</option>
+                                    <option value="PER SHIPMENT">PER SHIPMENT</option>
+                                 </select>
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Amount/Per*</label>
                                    <input type="text" class="form-control" placeholder="Enter Amount/Per">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
-                                     <div class="plusing-btn">
-                                         <button class="btn btn-primary  btn-xs" tabindex="1" id="btnAddClientChargesDetails" type="button" title="Add Head">Add <i class="fa fa-plus-circle"></i>
-                                         </button>
-                                         <button class="btn btn-default btn-xs" tabindex="1" id="btnResetClientChargesDetails" type="button" title="Reset Head">Reset <i class="fa fa-spinner"></i>
-                                         </button>
-                                     </div>
+                                    <div class="plusing-btn">
+                                       <button class="btn btn-primary  btn-xs" tabindex="1" id="btnAddClientChargesDetails" type="button" title="Add Head">Add <i class="fa fa-plus-circle"></i>
+                                       </button>
+                                       <button class="btn btn-default btn-xs" tabindex="1" id="btnResetClientChargesDetails" type="button" title="Reset Head">Reset <i class="fa fa-spinner"></i>
+                                       </button>
+                                    </div>
                                 </div>
                            </div>
 
@@ -266,10 +266,10 @@
                                  </div>
                                </div>
                                 <div class="form-group col-md-3 col-12">
-                                     <div class="plusing-btn">
-                                         <button class="btn btn-primary  btn-xs" tabindex="1" id="btnAddClientChargesDetails" type="button" title="Add Head"><i class="fa fa-retweet"></i> Generate Booking API Token 
-                                         </button>
-                                     </div>
+                                    <div class="plusing-btn">
+                                       <button class="btn btn-primary  btn-xs" tabindex="1" id="btnAddClientChargesDetails" type="button" title="Add Head"><i class="fa fa-retweet"></i> Generate Booking API Token 
+                                       </button>
+                                    </div>
                                 </div>
                                 <div class="form-group col-md-9 col-12">
                                      <label>Booking API Token*</label>
@@ -300,34 +300,34 @@
                                      </div>
                                      <div class="col-md-2">
                                          <div class="searching-fld">
-                                           <select class="form-control select select2-hidden-accessible" data-select2-id="select2-data-16-89ea" tabindex="-1" aria-hidden="true">
-                                              <option value="20" data-select2-id="select2-data-18-bx4j">20</option>
-                                              <option value="50">50</option>
-                                              <option value="100">100</option>
-                                           </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-17-ecjz" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-p73p-container" aria-controls="select2-p73p-container"><span class="select2-selection__rendered" id="select2-p73p-container" role="textbox" aria-readonly="true" title="20">20</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                         <select class="form-control select">
+                                             <option value="20">20</option>
+                                             <option value="50">50</option>
+                                             <option value="100">100</option>
+                                          </select>
                                          </div>
                                      </div>
                                      <div class="col-md-2">
                                          <div class="searching-fld">
-                                           <select class="form-control select select2-hidden-accessible" data-select2-id="select2-data-19-fcjv" tabindex="-1" aria-hidden="true">
-                                              <option value="CM.CCode" data-select2-id="select2-data-21-g29x">Client Code</option>
-                                              <option value="CM.CName">Client Name</option>
-                                              <option value="CM.SalesPerson">Sales Person</option>
-                                              <option value="CM.Address1">Address</option>
-                                              <option value="CM.CityName">City Name</option>
-                                              <option value="CM.ZipCode">Pin Code</option>
-                                              <option value="CM.MobileNo">Mobile No</option>
-                                              <option value="CM.GSTIN">GSTIN</option>
-                                           </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-20-icyy" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-n7kn-container" aria-controls="select2-n7kn-container"><span class="select2-selection__rendered" id="select2-n7kn-container" role="textbox" aria-readonly="true" title="Client Code">Client Code</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                         <select class="form-control select">
+                                             <option value="CM.CCode">Client Code</option>
+                                             <option value="CM.CName">Client Name</option>
+                                             <option value="CM.SalesPerson">Sales Person</option>
+                                             <option value="CM.Address1">Address</option>
+                                             <option value="CM.CityName">City Name</option>
+                                             <option value="CM.ZipCode">Pin Code</option>
+                                             <option value="CM.MobileNo">Mobile No</option>
+                                             <option value="CM.GSTIN">GSTIN</option>
+                                          </select>
                                          </div>
                                      </div>
                                      <div class="col-md-2">
                                          <div class="searching-fld">
-                                           <select class="form-control select select2-hidden-accessible" data-select2-id="select2-data-22-9r7v" tabindex="-1" aria-hidden="true">
-                                              <option value="1" data-select2-id="select2-data-24-mj8i">Exactly</option>
-                                              <option value="2">Contains</option>
-                                              <option value="3">Start with</option>
-                                           </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-23-dxpr" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-n7if-container" aria-controls="select2-n7if-container"><span class="select2-selection__rendered" id="select2-n7if-container" role="textbox" aria-readonly="true" title="Exactly">Exactly</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                             <select class="form-control select">
+                                                <option value="1">Exactly</option>
+                                                <option value="2">Contains</option>
+                                                <option value="3">Start with</option>
+                                             </select>
                                          </div>
                                      </div>
                                      <div class="col-md-3">                

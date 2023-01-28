@@ -55,55 +55,51 @@
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                              <div class="bg-clr">
-                                 <div class="row">
-                                     <div class="col-md-10">
-                                         <div class="frm-heading">
-                                             <h3>Total Record(s) Found: 39</h3>
-                                         </div>
-                                     </div>
-                                     <div class="col-md-2">
-                                         <div class="searching-fld">
-                                           <select class="form-control select select2-hidden-accessible" data-select2-id="select2-data-1-brnr" tabindex="-1" aria-hidden="true">
-                                              <option value="20" data-select2-id="select2-data-3-ffu4">20</option>
-                                              <option value="50">50</option>
-                                              <option value="100">100</option>
-                                           </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-2-gpqu" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-1qv1-container" aria-controls="select2-1qv1-container"><span class="select2-selection__rendered" id="select2-1qv1-container" role="textbox" aria-readonly="true" title="20">20</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                                         </div>
-                                     </div>
-
-                                     
-
-                                 </div>
+                             <div class="row">
+                                <div class="col-md-10">
+                                    <div class="frm-heading">
+                                        <h3>Total Record(s) Found: 39</h3>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="searching-fld">
+                                        <select class="form-control select">
+                                            <option value="20">20</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                              </div>
 
                              <div class="col-md-12">    
-                                         <div class="x_content">
-                                             <div class="table-responsive">
-                                                 <table>
-                                                     <thead>
-                                                         <tr>
-                                                             <th>Edit</th>
-                                                             <th>Delete</th>
-                                                             <th>Booking Date</th>
-                                                             <th>Status</th>
-                                                             <th>AWB No.</th>
-                                                         </tr>
-                                                     </thead>
+                                <div class="x_content">
+                                    <div class="table-responsive">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Edit</th>
+                                                    <th>Delete</th>
+                                                    <th>Booking Date</th>
+                                                    <th>Status</th>
+                                                    <th>AWB No.</th>
+                                                </tr>
+                                            </thead>
 
-                                                     <tbody>
-                                                         <tr>
-                                                             <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
-                                                             <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
-                                                             <td>12-1-2023 10:20 PM</td>
-                                                             <td>Done</td>
-                                                             <td>ABCD123</td>
-                                                         </tr>
-                                                     </tbody>
-                                                 </table>
-                                             </div>
-                                         </div>
-                                     </div>
-
+                                            <tbody>
+                                                <tr>
+                                                    <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
+                                                    <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
+                                                    <td>12-1-2023 10:20 PM</td>
+                                                    <td>Done</td>
+                                                    <td>ABCD123</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                      </div>
                    </form></div>

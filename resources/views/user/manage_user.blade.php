@@ -104,51 +104,51 @@
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                              <div class="bg-clr">
-                                 <div class="row">
-                                     <div class="col-md-3">
-                                         <div class="frm-heading">
-                                           <h3>Total Record(s) Found: 1</h3>
-                                         </div>
-                                     </div>
-                                     <div class="col-md-2">
-                                         <div class="searching-fld">
-                                           <select class="form-control select select2-hidden-accessible" data-select2-id="select2-data-1-oklc" tabindex="-1" aria-hidden="true">
-                                              <option value="20" data-select2-id="select2-data-3-dy62">20</option>
-                                              <option value="50">50</option>
-                                              <option value="100">100</option>
-                                           </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-2-lyz3" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-9mjd-container" aria-controls="select2-9mjd-container"><span class="select2-selection__rendered" id="select2-9mjd-container" role="textbox" aria-readonly="true" title="20">20</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                                         </div>
-                                     </div>
-                                     <div class="col-md-2">
-                                         <div class="searching-fld">
-                                           <select class="form-control select select2-hidden-accessible" data-select2-id="select2-data-4-eqdg" tabindex="-1" aria-hidden="true">
-                                              <option value="User Code" data-select2-id="select2-data-6-vp38">User Code</option>
-                                              <option value="User Name">User Name</option>
-                                              <option value="Mobile Number">Mobile Number</option>
-                                              <option value="Email ID">Email ID</option>
-                                              <option value="User Group Name">User Group Name</option>
-                                           </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-5-p1dc" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-em9r-container" aria-controls="select2-em9r-container"><span class="select2-selection__rendered" id="select2-em9r-container" role="textbox" aria-readonly="true" title="User Code">User Code</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                                         </div>
-                                     </div>
-                                     <div class="col-md-2">
-                                         <div class="searching-fld">
-                                           <select class="form-control select select2-hidden-accessible" data-select2-id="select2-data-7-x5cz" tabindex="-1" aria-hidden="true">
-                                              <option value="1" data-select2-id="select2-data-9-296t">Exactly</option>
-                                              <option value="2">Contains</option>
-                                              <option value="3">Start with</option>
-                                           </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-8-pqgt" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-jf4t-container" aria-controls="select2-jf4t-container"><span class="select2-selection__rendered" id="select2-jf4t-container" role="textbox" aria-readonly="true" title="Exactly">Exactly</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                                         </div>
-                                     </div>
-                                     <div class="col-md-3">                
-                                         <div class="search-container">
-                                               <input type="text" placeholder="Search Here.." name="search">
-                                               <button type="submit"><i class="fa fa-search"></i></button>
-                                         </div>
-                                     </div>
+                             <div class="row">
+                                <div class="col-md-3">
+                                    <div class="frm-heading">
+                                        <h3>Total Record(s) Found: 1</h3>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="searching-fld">
+                                        <select class="form-control select">
+                                            <option value="20">20</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="searching-fld">
+                                        <select class="form-control select">
+                                            <option value="User Code">User Code</option>
+                                            <option value="User Name">User Name</option>
+                                            <option value="Mobile Number">Mobile Number</option>
+                                            <option value="Email ID">Email ID</option>
+                                            <option value="User Group Name">User Group Name</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="searching-fld">
+                                        <select class="form-control select">
+                                            <option value="1">Exactly</option>
+                                            <option value="2">Contains</option>
+                                            <option value="3">Start with</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">                
+                                    <div class="search-container">
+                                            <input type="text" placeholder="Search Here.." name="search">
+                                            <button type="submit"><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
 
-                                     
+                                
 
-                                 </div>
+                            </div>
                              </div>
                              <div class="col-md-12">    
                                          <div class="x_content">
