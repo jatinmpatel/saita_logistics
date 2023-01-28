@@ -53,6 +53,7 @@ Route::group(['prefix' => '', 'middleware' => ['auth']], function(){
 
     Route::post('country-save',[OtherApiController::class,'countrySave'])->name('country.save');
     Route::get('country-list',[OtherApiController::class,'getCountryList'])->name('country.list');
+    Route::get('country-delete/{id}',[OtherApiController::class,'countryDelete'])->name('country.delete');
     Route::get('client-master', [ClientMasterController::class, 'clientMaster']);
     
     Route::get('zone-master', [ZoneMasterController::class, 'zoneMaster']);

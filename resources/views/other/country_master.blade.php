@@ -83,18 +83,14 @@
                                                 </tr>
                                              </thead>
                                              <tbody>
+                                             @foreach($country as $row)
                                              <tr>
                                                 <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
-                                                <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
-                                                <td>33</td>
-                                                <td>France</td>
+                                                <td><a class="btn btn-primary" href="{{route('country.delete',$row->id)}}" onclick="return confirm('Are you sure you want to delete this record?')"> <i class="fa fa-trash-alt"></i></a></td>
+                                                <td>{{$row->country_code}}</td>
+                                                <td>{{$row->country_name}}</td>
                                              </tr>
-                                             <tr>
-                                                <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
-                                                <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
-                                                <td>44</td>
-                                                <td>United Kingdom</td>
-                                             </tr>
+                                             @endforeach
                                        </tbody>
                                        </table>
                                     </div>

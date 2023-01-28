@@ -19,7 +19,9 @@ class OtherApiController extends Controller
     }
 
     public function countryMaster(Request $request){
-        return view('other.country_master');
+        $country = Country::select('*')->get();
+        $data = ['country'=>$country];
+        return view('other.country_master',$data);
     }
     public function countrySave(Request $request){
         $checkCountry = Country::where('country_name',$request->country_name)
@@ -39,6 +41,7 @@ class OtherApiController extends Controller
             return redirect()->back()->with('error','Something went wrong please try again!');
         }
     }
+    
     public function getCountryList(Type $var = null)
     {
         if ($request->ajax()) {
@@ -65,6 +68,14 @@ class OtherApiController extends Controller
                ->rawColumns(['name','action'])
                ->make(true);
        }
+    }
+    public function countryDelete($id){
+        $result = Country::where('id',$id)->delete();
+        if($result){
+            return redirect()->back()->with('success','Record deleted successfully!');
+        }else{
+            return redirect()->back()->with('error','Something went wrong please try again!');
+        }
     }
     public function reasonMaster(Request $request){
         return view('other.reason_master');
