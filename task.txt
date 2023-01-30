@@ -39,3 +39,10 @@ Delete Reasons
 ---Design issue fixed
 ===Vendor API Configuration
 ---Design issue fixed
+
+=================================================================
+30-Jan-23
+-->Create vendor master migration
+-->Save Vendor master 
+-->Validation
+-->Vendor Data show in list view

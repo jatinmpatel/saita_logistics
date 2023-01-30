@@ -20,10 +20,11 @@
        <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-12">
              <div class="card">
-               <form>
+               @include('message.error_validation')
+               <form action="{{route('vendor.master.save')}}" method="post" name="vendor_frm" id="vendor_frm">
                    <div class="card-body">
+                     @csrf
                          <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-
                            <div class="row">
                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                  <div class="frm-heading">
@@ -32,61 +33,66 @@
                                </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Vendor Code*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Vendor Code">
+                                   <input type="text" name="vendor_code" id="vendor_code" required class="form-control" placeholder="Enter Vendor Code">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Pin Code*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Pin Code">
+                                   <input type="text" name="pincode" id="pincode" required class="form-control" placeholder="Enter Pin Code">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Email ID*</label>
-                                   <input type="email" class="form-control" placeholder="Enter Email ID">
+                                   <input type="email" name="email" id="email" required class="form-control" placeholder="Enter Email ID">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Vendor Name*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Vendor Name">
+                                   <input type="text" name="name" id="name" required class="form-control" placeholder="Enter Vendor Name">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>City*</label>
-                                   <input type="text" class="form-control" placeholder="Enter City Name">
+                                   <input type="text" name="city_id" id="city_id" required class="form-control" placeholder="Enter City Name">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Mobile No*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Mobile No">
+                                   <input type="text" name="mobile_no" id="mobile_no" required class="form-control" placeholder="Enter Mobile No">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Address1*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Address1">
+                                   <input type="text" name="address1" id="address1" required class="form-control" placeholder="Enter Address1">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>State*</label>
-                                   <input type="text" class="form-control" placeholder="Enter State">
+                                   <input type="text" name="state_id" id="state_id" required class="form-control" placeholder="Enter State">
                                 </div>
                                 <div class="form-group col-md-2 col-12">
                                    <label>GSTIN*</label>
-                                   <input type="text" class="form-control" placeholder="Enter GSTIN">
+                                   <input type="text" name="gstin" id="gstin" required class="form-control" placeholder="Enter GSTIN">
                                 </div>
                                 <div class="form-group col-md-2 col-12">
                                    <label>Address2*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Address2">
+                                   <input type="text" name="address2" id="address2" required  class="form-control" placeholder="Enter Address2">
                                 </div>
                                 <div class="form-group col-md-2 col-12">
                                    <label>Country*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Country">
+                                    <select class="form-control select" name="country_id" id="country_id" required >
+                                       <option value="" readonly disable selected>--Select--</option>
+                                       @foreach($country as $row)
+                                          <option value="{{$row->id}}">{{$row->country_name}} - {{$row->country_code}}</option>
+                                       @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group col-md-1 col-12 pr-0">
                                      <div class="all-chk">
-                                         <label><input type="checkbox" checked=""> Active</label>
+                                         <label><input type="checkbox" name="isActive" id="isActive" value="1" checked=""> Active</label>
                                      </div>
                                 </div>
                                 <div class="form-group col-md-2 col-12 pr-0">
                                      <div class="all-chk">
-                                         <label><input type="checkbox"> Self Vendor</label>
+                                         <label><input type="checkbox" name="selfVendor" id="selfVendor" value="1"> Self Vendor</label>
                                      </div>
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                      <div class="all-chk">
-                                         <label><input type="checkbox"> Third Party Tracking</label>
+                                         <label><input type="checkbox" name="third_party_tracking" id="third_party_tracking" value="1"> Third Party Tracking</label>
                                      </div>
                                 </div>
 
@@ -175,7 +181,7 @@
                              <div class="row">
                                  <div class="col-md-3">
                                        <div class="frm-heading">
-                                       <h3>Total Record(s) Found: 9</h3>
+                                       <h3>Total Record(s) Found: {{$vendor->Count()}}</h3>
                                        </div>
                                  </div>
                                  <div class="col-md-2">
@@ -223,112 +229,57 @@
                              </div>
 
                               <div class="col-md-12">    
-                                         <div class="x_content">
-                                             <div class="table-responsive">
-                                                 <table>
-                                                     <thead>
-                                                         <tr>
-                                                             <th>Edit</th>
-                                                             <th>Del</th>
-                                                             <th>Vendor Code</th>
-                                                             <th>Vendor Name</th>
-                                                             <th>Address1</th>
-                                                             <th>Address2</th>
-                                                             <th>Pin Code</th>
-                                                             <th>City</th>
-                                                             <th>State</th>
-                                                             <th>Country</th>
-                                                             <th>Email ID</th>
-                                                             <th>Mobile No</th>
-                                                             <th>GSTIN</th>
-                                                             <th>SelfVendor</th>
-                                                             <th>Active</th>
-                                                             <th>ThirdPartyTracking</th>
-                                                             <th>ThirdPartyVendor</th>
-                                                         </tr>
-                                                     </thead>
-                                                     <tbody>
-                                                     <tr>
-                                                         <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
-                                                         <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
-                                                         <td>FEDEX</td>
-                                                         <td>FEDEX</td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td>NO</td>
-                                                         <td>YES</td>
-                                                         <td>NO</td>
-                                                         <td></td>
-                                                     </tr>
-                                                     <tr>
-                                                         <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
-                                                         <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
-                                                         <td>FEDEX</td>
-                                                         <td>FEDEX</td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td>NO</td>
-                                                         <td>YES</td>
-                                                         <td>NO</td>
-                                                         <td></td>
-                                                     </tr>
-                                                     <tr>
-                                                         <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
-                                                         <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
-                                                         <td>FEDEX</td>
-                                                         <td>FEDEX</td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td>NO</td>
-                                                         <td>YES</td>
-                                                         <td>NO</td>
-                                                         <td></td>
-                                                     </tr>
-                                                     <tr>
-                                                         <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
-                                                         <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
-                                                         <td>FEDEX</td>
-                                                         <td>FEDEX</td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td>NO</td>
-                                                         <td>YES</td>
-                                                         <td>NO</td>
-                                                         <td></td>
-                                                     </tr>
-                                                 </tbody>
-                                                 </table>
-                                             </div>
-                                         </div>
-                                     </div>
+                              <div class="x_content">
+                                 <div class="table-responsive">
+                                       <table>
+                                          <thead>
+                                             <tr>
+                                                <th>Edit</th>
+                                                <th>Del</th>
+                                                <th>Vendor Code</th>
+                                                <th>Vendor Name</th>
+                                                <th>Address1</th>
+                                                <th>Address2</th>
+                                                <th>Pin Code</th>
+                                                <th>City</th>
+                                                <th>State</th>
+                                                <th>Country</th>
+                                                <th>Email ID</th>
+                                                <th>Mobile No</th>
+                                                <th>GSTIN</th>
+                                                <th>SelfVendor</th>
+                                                <th>Active</th>
+                                                <th>ThirdPartyTracking</th>
+                                                <th>ThirdPartyVendor</th>
+                                             </tr>
+                                          </thead>
+                                          <tbody>
+                                          @foreach($vendor as $row)
+                                          <tr>
+                                             <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
+                                             <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
+                                             <td>{{$row->vendor_code}}</td>
+                                             <td>{{$row->name}}</td>
+                                             <td>{{$row->address1}}</td>
+                                             <td>{{$row->address2}}</td>
+                                             <td>{{$row->pincode}}</td>
+                                             <td>{{$row->city_id}}</td>
+                                             <td>{{$row->state_id}}</td>
+                                             <td>{{$row->country_name}}</td>
+                                             <td>{{$row->email}}</td>
+                                             <td>{{$row->mobile_no}}</td>
+                                             <td>{{$row->gstin}}</td>
+                                             <td>{{ ($row->selfVendor==1?'YES':'NO')}}</td>
+                                             <td>{{ ($row->isActive==1?'YES':'NO')}}</td>
+                                             <td>{{ ($row->third_party_tracking==1?'YES':'NO')}}</td>
+                                             <td></td>
+                                          </tr>
+                                          @endforeach
+                                       </tbody>
+                                    </table>
+                                 </div>
+                              </div>
+                           </div>
 
                         </div>
 
