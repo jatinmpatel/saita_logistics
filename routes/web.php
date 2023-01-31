@@ -76,5 +76,6 @@ Route::group(['prefix' => '', 'middleware' => ['auth']], function(){
     Route::get('vendor-master', [VendorMasterController::class, 'vendorMaster']);
     Route::post('vendor-master-save', [VendorMasterController::class, 'vendorMasterSave'])->name('vendor.master.save');
     Route::get('vendor-account-detail', [VendorMasterController::class, 'vendorAccountDetail']);
+    Route::post('vendor-acccount-save',[VendorMasterController::class,'vendorAcccountSave'])->name('vendor.acccount.save');
 
 });

@@ -1,6 +1,15 @@
 @extends('layouts.admin')
 
 @section('content')
+<div id='TextBoxesGroup'>
+	<div id="TextBoxDiv1">
+		<label>Textbox #1 : </label><input type='textbox' id='textbox1' >
+	</div>
+</div>
+<input type='button' value='Add Button' id='addButton'>
+<input type='button' value='Remove Button' id='removeButton'>
+<input type='button' value='Get TextBox Value' id='getButtonValue'>
+
 <div class="content container-fluid">
     <div class="page-header">
        <div class="row">
@@ -21,6 +30,9 @@
           <div class="col-lg-12 col-md-12 col-sm-12 col-12">
              <div class="card">
                @include('message.error_validation')
+
+               <!--  -->
+               <!--  -->
                <form action="{{route('vendor.master.save')}}" method="post" name="vendor_frm" id="vendor_frm">
                    <div class="card-body">
                      @csrf

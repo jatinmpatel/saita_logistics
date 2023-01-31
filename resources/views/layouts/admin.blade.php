@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/datetimepicker/css/tempusdominus-bootstrap-4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
   </head>
   
   <body>
@@ -408,7 +410,8 @@
       <script src="{{ asset('js/apexcharts.js') }}"></script>
       <script src="{{ asset('js/chart-data.js') }}"></script>
       <script src="{{ asset('plugins/datetimepicker/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-      <script src="{{ asset('js/app.js') }}"></script>
+      <!-- <script src="{{ asset('js/app.js') }}"></script> -->
+      
 
       <script>
 

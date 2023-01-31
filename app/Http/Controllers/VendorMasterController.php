@@ -63,4 +63,30 @@ class VendorMasterController extends Controller
     {
         return view('vendor_module.vendor_account_detail');
     }
+    public function vendorAcccountSave(Request $request){
+        $insData= [
+            'vendor_id'=>isset($request->vendor_id) ? $request->vendor_id : 0,
+            'token'=>isset($request->vendor_id) ? $request->vendor_id : 0,
+            'meter_no'=>isset($request->meter_no) ? $request->meter_no : NULL,
+            'account_no'=>isset($request->vendor_id) ? $request->vendor_id : 0,
+            'password'=>isset($request->vendor_id) ? $request->vendor_id : 0,
+            'account_no1'=>isset($request->vendor_id) ? $request->vendor_id : 0,
+            'environment'=>isset($request->vendor_id) ? $request->vendor_id : 0,
+            'isActive'=>isset($request->vendor_id) ? $request->vendor_id : 0,
+            'company_name'=>isset($request->vendor_id) ? $request->vendor_id : 0,
+            'gst_no'=>isset($request->vendor_id) ? $request->vendor_id : 0,
+            'pincode'=>isset($request->vendor_id) ? $request->vendor_id : 0,
+            'contact_person'=>isset($request->vendor_id) ? $request->vendor_id : 0,
+            'address_1'=>isset($request->vendor_id) ? $request->vendor_id : 0,
+            'city_id'=>isset($request->vendor_id) ? $request->vendor_id : 0,
+            'email_id'=>isset($request->vendor_id) ? $request->vendor_id : 0,
+             'address_2'=>isset($request->vendor_id) ? $request->vendor_id : 0,
+            'state_id'=>isset($request->vendor_id) ? $request->vendor_id : 0,
+            'phone'=>isset($request->vendor_id) ? $request->vendor_id : 0,
+            'address_3'=>isset($request->vendor_id) ? $request->vendor_id : 0,
+            'country_id'=>isset($request->vendor_id) ? $request->vendor_id : 0,
+            'pickup_address'=>isset($request->vendor_id) ? $request->vendor_id : 0,
+        ];
+
+    }
 }

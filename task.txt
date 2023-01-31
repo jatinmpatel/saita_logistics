@@ -46,3 +46,9 @@ Delete Reasons
 -->Save Vendor master 
 -->Validation
 -->Vendor Data show in list view
+==============================
+31-jan-2023
+-->Try to create addon using jquery
+-->Create vendor_service_types migration table
+-->Create "vendor_account_details" migration table
+-->

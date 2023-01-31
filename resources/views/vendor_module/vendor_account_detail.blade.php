@@ -20,7 +20,7 @@
        <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-12">
              <div class="card">
-               <form>
+               <form action="{{route('vendor.acccount.save')}}" name="vendor_account_frm" id="vendor_account_frm">
                    <div class="card-body">
                          <div class="col-lg-12 col-md-12 col-sm-12 col-12">
 
@@ -36,27 +36,27 @@
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Token*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Token">
+                                   <input name="token" id="token" required type="text" class="form-control" placeholder="Enter Token">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Meter No*</label>
-                                   <input type="email" class="form-control" placeholder="Enter Meter No">
+                                   <input name="meter_no" id="meter_no" required type="email" class="form-control" placeholder="Enter Meter No">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Account No*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Account No">
+                                   <input name="account_no" id="account_no" required type="text" class="form-control" placeholder="Enter Account No">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Password*</label>
-                                   <input type="password" class="form-control" placeholder="Enter Password">
+                                   <input name="password" id="password" required type="password" class="form-control" placeholder="Enter Password">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Account No 1*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Account No 1">
+                                   <input name="account_no1" id="account_no1" required type="text" class="form-control" placeholder="Enter Account No 1">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Environment*</label>
-                                   <select class="form-control select">
+                                   <select name="environment" id="environment" required class="form-control select">
                                        <option>--Select--</option>
                                        <option value="TEST">TEST</option>
                                        <option value="LIVE">LIVE</option>
@@ -64,13 +64,13 @@
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                      <div class="all-chk">
-                                         <label><input type="checkbox" checked=""> Active</label>
+                                         <label><input name="isActive" id="isActive" type="checkbox" checked=""> Active</label>
                                      </div>
                                 </div>
 
                                 <div class="form-group col-md-6 col-12">
                                      <div class="question">
-                                        <label><input class="coupon_question" type="checkbox" name="coupon_question" value="1" onchange="valueChanged()"> Pickup Address is not Consignor Address</label>
+                                        <label><input class="coupon_question" type="checkbox" name="pickup_address" id="pickup_address" required value="1" onchange="valueChanged()"> Pickup Address is not Consignor Address</label>
                                      </div>
                                 </div>
 
@@ -94,51 +94,51 @@
                                    </div>
                                     <div class="form-group col-md-3 col-12">
                                      <label>Company Name*</label>
-                                       <input type="text" class="form-control" placeholder="Enter Company Name">
+                                       <input name="company_name" id="company_name" required type="text" class="form-control" placeholder="Enter Company Name">
                                     </div>
                                     <div class="form-group col-md-3 col-12">
                                      <label>GST No*</label>
-                                       <input type="text" class="form-control" placeholder="Enter GST No">
+                                       <input name="gst_no" id="gst_no" required type="text" class="form-control" placeholder="Enter GST No">
                                     </div>
                                     <div class="form-group col-md-3 col-12">
                                      <label>Pin Code*</label>
-                                       <input type="text" class="form-control" placeholder="Enter Pin Code">
+                                       <input name="pincode" id="pincode" required type="text" class="form-control" placeholder="Enter Pin Code">
                                     </div>
                                     <div class="form-group col-md-3 col-12">
                                      <label>Contact Person*</label>
-                                       <input type="text" class="form-control" placeholder="Enter Contact Person">
+                                       <input name="contact_person" id="contact_person" required type="text" class="form-control" placeholder="Enter Contact Person">
                                     </div>
                                     <div class="form-group col-md-3 col-12">
                                      <label>Address 1*</label>
-                                       <input type="text" class="form-control" placeholder="Enter Address 1">
+                                       <input name="address_1" id="address_1" required type="text" class="form-control" placeholder="Enter Address 1">
                                     </div>
                                     <div class="form-group col-md-3 col-12">
                                      <label>City*</label>
-                                       <input type="text" class="form-control" placeholder="Enter City">
+                                       <input name="city_id" id="city_id" required type="text" class="form-control" placeholder="Enter City">
                                     </div>
                                     <div class="form-group col-md-3 col-12">
                                      <label>Email ID*</label>
-                                       <input type="text" class="form-control" placeholder="Enter Email ID">
+                                       <input name="email_id" id="email_id" required type="text" class="form-control" placeholder="Enter Email ID">
                                     </div>
                                     <div class="form-group col-md-3 col-12">
                                      <label>Address 2*</label>
-                                       <input type="text" class="form-control" placeholder="Enter Address 2">
+                                       <input name="address_2" id="address_2" required type="text" class="form-control" placeholder="Enter Address 2">
                                     </div>
                                     <div class="form-group col-md-3 col-12">
                                      <label>State*</label>
-                                       <input type="text" class="form-control" placeholder="Enter State">
+                                       <input name="state_id" id="state_id" required type="text" class="form-control" placeholder="Enter State">
                                     </div>
                                     <div class="form-group col-md-3 col-12">
                                      <label>Phone*</label>
-                                       <input type="text" class="form-control" placeholder="Enter Phone">
+                                       <input name="phone" id="phone" required type="text" class="form-control" placeholder="Enter Phone">
                                     </div>
                                     <div class="form-group col-md-3 col-12">
                                      <label>Address 3*</label>
-                                       <input type="text" class="form-control" placeholder="Enter Address 3">
+                                       <input name="address_3" id="address_3" required type="text" class="form-control" placeholder="Enter Address 3">
                                     </div>
                                     <div class="form-group col-md-3 col-12">
                                      <label>Country*</label>
-                                       <input type="text" class="form-control" placeholder="Enter Country">
+                                       <input name="country_id" id="country_id" required type="text" class="form-control" placeholder="Enter Country">
                                     </div>
                                </div>
                            </div>
