@@ -20,10 +20,10 @@
        <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-12">
              <div class="card">
-               <form action="{{route('vendor.acccount.save')}}" name="vendor_account_frm" id="vendor_account_frm">
+               <form action="{{route('vendor.acccount.save')}}" method="post" name="vendor_account_frm" id="vendor_account_frm">
+                  @csrf
                    <div class="card-body">
                          <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-
                            <div class="row">
                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                  <div class="frm-heading">
@@ -32,7 +32,12 @@
                                </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Vendor*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Vendor">
+                                   <select name="vendor_id" id="vendor_id" required class="form-control select">
+                                       <option value=""  disabled selected>Select</option>
+                                       @foreach($vendorMaster as $row)
+                                          <option value="{{$row->id}}">{{$row->name}}</option>
+                                       @endforeach
+                                   </select>
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Token*</label>
@@ -40,7 +45,7 @@
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Meter No*</label>
-                                   <input name="meter_no" id="meter_no" required type="email" class="form-control" placeholder="Enter Meter No">
+                                   <input name="meter_no" id="meter_no" required type="text" class="form-control" placeholder="Enter Meter No">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Account No*</label>
@@ -138,7 +143,12 @@
                                     </div>
                                     <div class="form-group col-md-3 col-12">
                                      <label>Country*</label>
-                                       <input name="country_id" id="country_id" required type="text" class="form-control" placeholder="Enter Country">
+                                     <select name="country_id" id="country_id" required class="form-control select">
+                                       <option value=""  disabled selected>Select</option>
+                                       @foreach($country as $row)
+                                          <option value="{{$row->id}}">{{$row->country_name}}</option>
+                                       @endforeach
+                                   </select>  
                                     </div>
                                </div>
                            </div>
@@ -203,53 +213,43 @@
                              </div>
 
                              <div class="col-md-12">    
-                                         <div class="x_content">
-                                             <div class="table-responsive">
-                                                 <table>
-                                                     <thead>
-                                                         <tr>
-                                                             <th>Edit</th>
-                                                             <th>Delete</th>
-                                                             <th>Vendor</th>
-                                                             <th>Token</th>
-                                                             <th>Meter No</th>
-                                                             <th>Account No</th>
-                                                             <th>Password</th>
-                                                             <th>Account No 1</th>
-                                                             <th>Environment</th>
-                                                             <th>Status</th>
-                                                         </tr>
-                                                     </thead>
-                                                     <tbody>
-                                                     <tr>
-                                                         <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
-                                                         <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
-                                                         <td>Sunil</td>
-                                                         <td>123ECFD</td>
-                                                         <td>234DS</td>
-                                                         <td>2233454567</td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td>Done</td>
-                                                     </tr>
-                                                     <tr>
-                                                         <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
-                                                         <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
-                                                         <td>Sunil</td>
-                                                         <td>123ECFD</td>
-                                                         <td>234DS</td>
-                                                         <td>2233454567</td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td></td>
-                                                         <td>Done</td>
-                                                     </tr>
-                                                 </tbody>
-                                                 </table>
-                                             </div>
-                                         </div>
-                                     </div>
+                              <div class="x_content">
+                                 <div class="table-responsive">
+                                       <table>
+                                          <thead>
+                                             <tr>
+                                                   <th>Edit</th>
+                                                   <th>Delete</th>
+                                                   <th>Vendor</th>
+                                                   <th>Token</th>
+                                                   <th>Meter No</th>
+                                                   <th>Account No</th>
+                                                   <th>Password</th>
+                                                   <th>Account No 1</th>
+                                                   <th>Environment</th>
+                                                   <th>Status</th>
+                                             </tr>
+                                          </thead>
+                                          <tbody>
+                                          @foreach($vendorAccount as $rowv)
+                                          <tr>
+                                             <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
+                                             <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
+                                             <td>{{$rowv->vendor_name}}</td>
+                                             <td>{{$rowv->token}}</td>
+                                             <td>{{$rowv->meter_no}}</td>
+                                             <td>{{$rowv->account_no}}</td>
+                                             <td>{{$rowv->password}}</td>
+                                             <td>{{$rowv->account_no1}}</td>
+                                             <td>{{$rowv->environment}}</td>
+                                             <td>Done</td>
+                                          </tr>
+                                          @endforeach
+                                       </tbody>
+                                       </table>
+                                 </div>
+                              </div>
+                           </div>
 
                         </div>
 

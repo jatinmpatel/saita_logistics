@@ -410,7 +410,7 @@
       <script src="{{ asset('js/apexcharts.js') }}"></script>
       <script src="{{ asset('js/chart-data.js') }}"></script>
       <script src="{{ asset('plugins/datetimepicker/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-      <!-- <script src="{{ asset('js/app.js') }}"></script> -->
+      <script src="{{ asset('js/app.js') }}"></script>
       
 
       <script>

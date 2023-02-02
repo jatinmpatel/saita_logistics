@@ -51,4 +51,8 @@ Delete Reasons
 -->Try to create addon using jquery
 -->Create vendor_service_types migration table
 -->Create "vendor_account_details" migration table
--->
+-->02-fab-23
+--->vendor acccount details
+---->Model in property set
+--->Add new vendor account details
+--->Show list of vedor account Details
