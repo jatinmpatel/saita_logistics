@@ -64,6 +64,7 @@ Route::group(['prefix' => '', 'middleware' => ['auth']], function(){
     Route::get('client-master', [ClientMasterController::class, 'clientMaster']);
     
     Route::get('zone-master', [ZoneMasterController::class, 'zoneMaster']);
+    Route::post('zone-master-save', [ZoneMasterController::class, 'zoneMasterSave'])->name('zone.master.save');
     
     Route::get('manage-users', [UserController::class, 'manageUser']);
     Route::get('change-password', [UserController::class, 'changePassword']);
@@ -77,5 +78,6 @@ Route::group(['prefix' => '', 'middleware' => ['auth']], function(){
     Route::post('vendor-master-save', [VendorMasterController::class, 'vendorMasterSave'])->name('vendor.master.save');
     Route::get('vendor-account-detail', [VendorMasterController::class, 'vendorAccountDetail'])->name('vendor.account.detail');
     Route::post('vendor-acccount-save',[VendorMasterController::class,'vendorAcccountSave'])->name('vendor.acccount.save');
+    Route::get('vendor-account-detail-delete/{id}',[VendorMasterController::class,'vendorAcccountDetailDelete'])->name('vendor.account.detail.delete');
 
 });

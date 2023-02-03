@@ -20,39 +20,51 @@
        <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-12">
              <div class="card">
-               <form>
+               <form action="{{route('zone.master.save')}}" method="post" name="zone_frm" id="zone_frm">
+                @csrf
                    <div class="card-body">
                          <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-
                            <div class="row">
                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                  <div class="frm-heading">
                                    <h3>Zone Master</h3>
                                  </div>
                                </div>
+                               <?php
+                               $vendor_id =    isset($editZone->vendor_id) ? $editZone->vendor_id : 0;
+                               $service_name = isset($editZone->service_name) ? $editZone->service_name : NULL;
+                               $zone_name =    isset($editZone->zone_name) ? $editZone->zone_name : NULL;
+                               $zone_type =    isset($editZone->zone_type) ? $editZone->zone_type : NULL;
+                               $effctv_from =    isset($editZone->effctv_from) ? $editZone->effctv_from : NULL;
+                               ?>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Vendor*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Vendor">
+                                   <select name="vendor_id" id="vendor_id" required class="form-control select">
+                                       <option value=""  disabled selected>Select</option>
+                                       @foreach($vendorMaster as $row)
+                                          <option value="{{$row->id}}" <?php echo ($vendor_id==$row->id?'selected':'')?>>{{$row->name}}</option>
+                                       @endforeach
+                                   </select>
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Service*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Service">
+                                   <input type="text" value="{{$service_name}}" name="service_name" id="service_name" class="form-control" placeholder="Enter Service">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Zone Name*</label>
-                                   <input type="email" class="form-control" placeholder="Enter Zone Name">
+                                   <input type="text" name="zone_name" value="{{$zone_name}}" id="zone_name" class="form-control" placeholder="Enter Zone Name">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Zone Type*</label>
-                                   <select class="form-control select">
+                                   <select class="form-control select" name="zone_type" id="zone_type">
                                         <option>--Select--</option>
-                                        <option value="International">International</option>
-                                        <option value="Domestic">Domestic</option>
+                                        <option value="International" <?php echo ($zone_type=='International'?'selected' :'')?>>International</option>
+                                        <option value="Domestic" <?php echo ($zone_type=='Domestic'?'selected' :'')?>>Domestic</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Effect From*</label>
-                                     <input class="form-control datetimepicker-input datetimepicker" type="text" data-toggle="datetimepicker">
+                                     <input  name="effctv_from" id="effctv_from" value="{{$effctv_from}}" class="form-control datetimepicker-input datetimepicker" type="text" data-toggle="datetimepicker">
                                 </div>
 
                            </div>
@@ -120,50 +132,42 @@
                             </div>
                              </div>
 
-                                     <div class="col-md-12">    
-                                         <div class="x_content">
-                                             <div class="table-responsive">
-                                                 <table>
-                                                     <thead>
-                                                         <tr>
-                                                             <th>Edit</th>
-                                                             <th>Delete</th>
-                                                             <th>Vendor</th>
-                                                             <th>Service</th>
-                                                             <th>Zone Name</th>
-                                                             <th>Zone Type</th>
-                                                             <th>Effect From</th>
-                                                         </tr>
-                                                     </thead>
-                                                     <tbody>
-                                                         <tr>
-                                                             <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
-                                                             <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
-                                                             <td>Rohit</td>
-                                                             <td>XYZ</td>
-                                                             <td>Lorem Ipsum</td>
-                                                             <td></td>
-                                                             <td></td>
-                                                         </tr>
-                                                         <tr>
-                                                             <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
-                                                             <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
-                                                             <td>Rohit</td>
-                                                             <td>XYZ</td>
-                                                             <td>Lorem Ipsum</td>
-                                                             <td></td>
-                                                             <td></td>
-                                                         </tr>
-                                                     </tbody>
-                                                 </table>
-                                             </div>
-                                         </div>
-                                     </div>
+                            <div class="col-md-12">    
+                                <div class="x_content">
+                                    <div class="table-responsive">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Edit</th>
+                                                    <th>Delete</th>
+                                                    <th>Vendor</th>
+                                                    <th>Service</th>
+                                                    <th>Zone Name</th>
+                                                    <th>Zone Type</th>
+                                                    <th>Effect From</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($zoneMaster as $rowz)
+                                                <tr>
+                                                    <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
+                                                    <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
+                                                    <td>{{$rowz->name}}</td>
+                                                    <td>{{$rowz->service_name}}</td>
+                                                    <td>{{$rowz->zone_name}}</td>
+                                                    <td><?php echo ($rowz->zone_type=='Domestic' ?'Domestic' :'International' );?></td>
+                                                    <td>{{$rowz->effctv_from}}</td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
                      </div>
-                   </form></div>
-               
+                   </form>
+                </div>
              </div>
           </div>
        </div>

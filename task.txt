@@ -56,3 +56,10 @@ Delete Reasons
 ---->Model in property set
 --->Add new vendor account details
 --->Show list of vedor account Details
+
+
+==>03-fab-=23
+--->Vendor Account details Edit
+--->Vendor Account details delete
+--->Create Migration for Zone Master
+

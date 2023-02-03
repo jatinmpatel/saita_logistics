@@ -32,39 +32,48 @@
                                </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Vendor*</label>
+                                   <?php
+                                          $v_detail_id = isset($editDetails->id) ? $editDetails->id : 0;
+                                          $vendor_id = isset($editDetails->vendor_id) ? $editDetails->vendor_id : 0;
+                                          $country_id = isset($editDetails->country_id) ? $editDetails->country_id : 0;
+                                          $environment = isset($editDetails->environment) ? $editDetails->environment : NULL;
+                                          $pickup_address = isset($editDetails->pickup_address) ? $editDetails->pickup_address : 0;
+                                       ?>
                                    <select name="vendor_id" id="vendor_id" required class="form-control select">
                                        <option value=""  disabled selected>Select</option>
+                                       
                                        @foreach($vendorMaster as $row)
-                                          <option value="{{$row->id}}">{{$row->name}}</option>
+                                          <option value="{{$row->id}}" <?php echo ($row->id==$vendor_id? "selected" : "") ?>>{{$row->name}}</option>
                                        @endforeach
                                    </select>
+                                   <input type="hidden" value="{{$v_detail_id}}" name="id" id="id">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Token*</label>
-                                   <input name="token" id="token" required type="text" class="form-control" placeholder="Enter Token">
+                                   <input name="token" id="token" value="<?php echo isset($editDetails->token) ? $editDetails->token : null?>" required type="text" class="form-control" placeholder="Enter Token">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Meter No*</label>
-                                   <input name="meter_no" id="meter_no" required type="text" class="form-control" placeholder="Enter Meter No">
+                                   <input name="meter_no" id="meter_no" value="<?php echo isset($editDetails->meter_no) ? $editDetails->meter_no : null?>" required type="text" class="form-control" placeholder="Enter Meter No">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Account No*</label>
-                                   <input name="account_no" id="account_no" required type="text" class="form-control" placeholder="Enter Account No">
+                                   <input name="account_no" id="account_no" value="<?php echo isset($editDetails->account_no) ? $editDetails->account_no : null?>" required type="text" class="form-control" placeholder="Enter Account No">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Password*</label>
-                                   <input name="password" id="password" required type="password" class="form-control" placeholder="Enter Password">
+                                   <input name="password" id="password" value="<?php echo isset($editDetails->password) ? $editDetails->password : null?>" required type="text" class="form-control" placeholder="Enter Password">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Account No 1*</label>
-                                   <input name="account_no1" id="account_no1" required type="text" class="form-control" placeholder="Enter Account No 1">
+                                   <input name="account_no1" id="account_no1" value="<?php echo isset($editDetails->account_no1) ? $editDetails->account_no1 : null?>" required type="text" class="form-control" placeholder="Enter Account No 1">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Environment*</label>
                                    <select name="environment" id="environment" required class="form-control select">
                                        <option>--Select--</option>
-                                       <option value="TEST">TEST</option>
-                                       <option value="LIVE">LIVE</option>
+                                       <option value="TEST" <?php echo ($environment=='TEST' ? 'selected': '')?>>TEST</option>
+                                       <option value="LIVE" <?php echo ($environment=='LIVE' ? 'selected': '')?>>LIVE</option>
                                  </select>
                                 </div>
                                 <div class="form-group col-md-3 col-12">
@@ -75,7 +84,7 @@
 
                                 <div class="form-group col-md-6 col-12">
                                      <div class="question">
-                                        <label><input class="coupon_question" type="checkbox" name="pickup_address" id="pickup_address" required value="1" onchange="valueChanged()"> Pickup Address is not Consignor Address</label>
+                                        <label><input class="coupon_question" type="checkbox" <?php echo ($pickup_address==1?'checked':'')?> name="pickup_address" id="pickup_address" required value="1" onchange="valueChanged()"> Pickup Address is not Consignor Address</label>
                                      </div>
                                 </div>
 
@@ -90,7 +99,7 @@
                              };
                            </script>
 
-                           <div class="answer">
+                           <div class="answer" <?php echo ($pickup_address==1?'style="display:block"':'')?>>
                                <div class="row">
                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                      <div class="frm-heading">
@@ -99,54 +108,54 @@
                                    </div>
                                     <div class="form-group col-md-3 col-12">
                                      <label>Company Name*</label>
-                                       <input name="company_name" id="company_name" required type="text" class="form-control" placeholder="Enter Company Name">
+                                       <input name="company_name" id="company_name" value="<?php echo isset($editDetails->company_name) ? $editDetails->company_name : null?>" required type="text" class="form-control" placeholder="Enter Company Name">
                                     </div>
                                     <div class="form-group col-md-3 col-12">
                                      <label>GST No*</label>
-                                       <input name="gst_no" id="gst_no" required type="text" class="form-control" placeholder="Enter GST No">
+                                       <input name="gst_no" id="gst_no" value="<?php echo isset($editDetails->gst_no) ? $editDetails->gst_no : null?>" required type="text" class="form-control" placeholder="Enter GST No">
                                     </div>
                                     <div class="form-group col-md-3 col-12">
                                      <label>Pin Code*</label>
-                                       <input name="pincode" id="pincode" required type="text" class="form-control" placeholder="Enter Pin Code">
+                                       <input name="pincode" id="pincode" value="<?php echo isset($editDetails->pincode) ? $editDetails->pincode : null?>" required type="text" class="form-control" placeholder="Enter Pin Code">
                                     </div>
                                     <div class="form-group col-md-3 col-12">
                                      <label>Contact Person*</label>
-                                       <input name="contact_person" id="contact_person" required type="text" class="form-control" placeholder="Enter Contact Person">
+                                       <input name="contact_person" id="contact_person" value="<?php echo isset($editDetails->contact_person) ? $editDetails->contact_person : null?>" required type="text" class="form-control" placeholder="Enter Contact Person">
                                     </div>
                                     <div class="form-group col-md-3 col-12">
                                      <label>Address 1*</label>
-                                       <input name="address_1" id="address_1" required type="text" class="form-control" placeholder="Enter Address 1">
+                                       <input name="address_1" id="address_1" value="<?php echo isset($editDetails->address_1) ? $editDetails->address_1 : null?>" required type="text" class="form-control" placeholder="Enter Address 1">
                                     </div>
                                     <div class="form-group col-md-3 col-12">
                                      <label>City*</label>
-                                       <input name="city_id" id="city_id" required type="text" class="form-control" placeholder="Enter City">
+                                       <input name="city_id" id="city_id" value="<?php echo isset($editDetails->city_id) ? $editDetails->city_id : null?>" required type="text" class="form-control" placeholder="Enter City">
                                     </div>
                                     <div class="form-group col-md-3 col-12">
                                      <label>Email ID*</label>
-                                       <input name="email_id" id="email_id" required type="text" class="form-control" placeholder="Enter Email ID">
+                                       <input name="email_id" id="email_id" value="<?php echo isset($editDetails->email_id) ? $editDetails->email_id : null?>" required type="text" class="form-control" placeholder="Enter Email ID">
                                     </div>
                                     <div class="form-group col-md-3 col-12">
                                      <label>Address 2*</label>
-                                       <input name="address_2" id="address_2" required type="text" class="form-control" placeholder="Enter Address 2">
+                                       <input name="address_2" id="address_2" value="<?php echo isset($editDetails->address_2) ? $editDetails->address_2 : null?>" required type="text" class="form-control" placeholder="Enter Address 2">
                                     </div>
                                     <div class="form-group col-md-3 col-12">
                                      <label>State*</label>
-                                       <input name="state_id" id="state_id" required type="text" class="form-control" placeholder="Enter State">
+                                       <input name="state_id" id="state_id" value="<?php echo isset($editDetails->state_id) ? $editDetails->state_id : null?>" required type="text" class="form-control" placeholder="Enter State">
                                     </div>
                                     <div class="form-group col-md-3 col-12">
                                      <label>Phone*</label>
-                                       <input name="phone" id="phone" required type="text" class="form-control" placeholder="Enter Phone">
+                                       <input name="phone" id="phone" value="<?php echo isset($editDetails->phone) ? $editDetails->phone : null?>" required type="text" class="form-control" placeholder="Enter Phone">
                                     </div>
                                     <div class="form-group col-md-3 col-12">
                                      <label>Address 3*</label>
-                                       <input name="address_3" id="address_3" required type="text" class="form-control" placeholder="Enter Address 3">
+                                       <input name="address_3" id="address_3" value="<?php echo isset($editDetails->address_3) ? $editDetails->address_3 : null?>" required type="text" class="form-control" placeholder="Enter Address 3">
                                     </div>
                                     <div class="form-group col-md-3 col-12">
                                      <label>Country*</label>
                                      <select name="country_id" id="country_id" required class="form-control select">
                                        <option value=""  disabled selected>Select</option>
                                        @foreach($country as $row)
-                                          <option value="{{$row->id}}">{{$row->country_name}}</option>
+                                          <option value="{{$row->id}}"  <?php echo ($country_id==$row->id?"selected" : '')?>>{{$row->country_name}}</option>
                                        @endforeach
                                    </select>  
                                     </div>
@@ -169,7 +178,7 @@
                              <div class="row">
                                  <div class="col-md-3">
                                        <div class="frm-heading">
-                                       <h3>Total Record(s) Found: 9</h3>
+                                       <h3>Total Record(s) Found: {{$vendorAccount->count()}}</h3>
                                        </div>
                                  </div>
                                  <div class="col-md-2">
@@ -218,23 +227,23 @@
                                        <table>
                                           <thead>
                                              <tr>
-                                                   <th>Edit</th>
-                                                   <th>Delete</th>
-                                                   <th>Vendor</th>
-                                                   <th>Token</th>
-                                                   <th>Meter No</th>
-                                                   <th>Account No</th>
-                                                   <th>Password</th>
-                                                   <th>Account No 1</th>
-                                                   <th>Environment</th>
-                                                   <th>Status</th>
+                                                <th>Edit</th>
+                                                <th>Delete</th>
+                                                <th>Vendor</th>
+                                                <th>Token</th>
+                                                <th>Meter No</th>
+                                                <th>Account No</th>
+                                                <th>Password</th>
+                                                <th>Account No 1</th>
+                                                <th>Environment</th>
+                                                <th>Status</th>
                                              </tr>
                                           </thead>
                                           <tbody>
                                           @foreach($vendorAccount as $rowv)
                                           <tr>
-                                             <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
-                                             <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
+                                             <td><a class="btn btn-primary" href="<?php echo route('vendor.account.detail').'?id='.$rowv->id.''?>"> <i class="fa fa-pencil-alt"></i></a></td>
+                                             <td><a class="btn btn-primary" href="{{route('vendor.account.detail.delete',$rowv->id)}}" onclick="return confirm('Are you sure you want to delete this record')"> <i class="fa fa-trash-alt"></i></a></td>
                                              <td>{{$rowv->vendor_name}}</td>
                                              <td>{{$rowv->token}}</td>
                                              <td>{{$rowv->meter_no}}</td>
