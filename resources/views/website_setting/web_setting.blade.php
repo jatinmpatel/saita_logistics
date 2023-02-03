@@ -9,8 +9,8 @@
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6 col-12">
              <ul class="breadcrumb float-right p-0 mb-0">
-                <li class="breadcrumb-item"><a href="index.html"><i class="fas fa-home"></i> Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="index.html">Website Setting</a></li>
+                <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="#">Website Setting</a></li>
                 <li class="breadcrumb-item"><span>Website Setting</span></li>
              </ul>
           </div>
@@ -20,7 +20,8 @@
        <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-12">
              <div class="card">
-               <form>
+               <form action="{{route('website.setting.save')}}" method="post" name="frm_website" id="frm_website">
+                  @csrf
                    <div class="card-body">
                          <div class="col-lg-12 col-md-12 col-sm-12 col-12">
 
@@ -32,23 +33,23 @@
                                </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Company Code*</label>
-                                   <input type="text" class="form-control" value="CM1739" disabled="" placeholder="CM1739">
+                                   <input type="text" class="form-control" name="data[company_code]" value="CM1739" disabled="" placeholder="CM1739">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Mobile No*</label>
-                                   <input type="text" class="form-control" value="9868404418" disabled="" placeholder="9868404418">
+                                   <input type="text" class="form-control" name="data[mobile_no]" value="9868404418" disabled="" placeholder="9868404418">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Company Name*</label>
-                                   <input type="text" class="form-control" value="sattvic">
+                                   <input type="text" name="data[company_name]" class="form-control" value="sattvic">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Email ID*</label>
-                                   <input type="text" class="form-control" value="sunildrishti@gmail.com" disabled="" placeholder="sunildrishti@gmail.com">
+                                   <input type="text" class="form-control" name="data[email_id]" value="sunildrishti@gmail.com" disabled="" placeholder="sunildrishti@gmail.com">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Contact Person*</label>
-                                   <input type="text" class="form-control" value="Sunil">
+                                   <input type="text" class="form-control" name="data[contact_person]" value="Sunil">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>GSTIN*</label>

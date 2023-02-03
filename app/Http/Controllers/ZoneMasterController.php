@@ -39,8 +39,16 @@ class ZoneMasterController extends Controller
         if($result){
             return redirect()->back()->with('success',$msg);
         }else{
-            return redirect()->route()->with('error','Something went wrong please try again!');
+            return redirect()->back()->with('error','Something went wrong please try again!');
         }
     }
-    
+    public function zoneMasterDelete($id){
+        // dd($id);
+        $result = ZoneMaster::where('id',$id)->update(['deleted_at'=>NOW()]);
+        if($result){
+            return redirect()->back()->with('success','Record deleted successfully!');
+        }else{
+            return redirect()->back()->with('error','Something went wrong please try again!');
+        }
+    }
 }

@@ -63,15 +63,16 @@ Route::group(['prefix' => '', 'middleware' => ['auth']], function(){
     
     Route::get('client-master', [ClientMasterController::class, 'clientMaster']);
     
-    Route::get('zone-master', [ZoneMasterController::class, 'zoneMaster']);
+    Route::get('zone-master', [ZoneMasterController::class, 'zoneMaster'])->name('zone.master');
     Route::post('zone-master-save', [ZoneMasterController::class, 'zoneMasterSave'])->name('zone.master.save');
-    
+    Route::get('zone-master-delete/{id}', [ZoneMasterController::class, 'zoneMasterDelete'])->name('zone.master.delete');
     Route::get('manage-users', [UserController::class, 'manageUser']);
     Route::get('change-password', [UserController::class, 'changePassword']);
     Route::get('payment-history', [UserController::class, 'paymentHistory']);
     Route::get('user-profile', [UserController::class, 'userProfile']);
     
     Route::get('website-setting', [WebsiteSettingController::class, 'websiteSetting']);
+    Route::post('website-setting-save', [WebsiteSettingController::class, 'websiteSettingSave'])->name('website.setting.save');
     
     Route::get('vendor-manifest', [VendorMasterController::class, 'vendorManifest']);
     Route::get('vendor-master', [VendorMasterController::class, 'vendorMaster']);

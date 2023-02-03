@@ -62,4 +62,8 @@ Delete Reasons
 --->Vendor Account details Edit
 --->Vendor Account details delete
 --->Create Migration for Zone Master
+--->Add new zone master
+--->Edit Zone master
+--->Delete zone master
+--->Create migration for Website Settings and set data in model
 

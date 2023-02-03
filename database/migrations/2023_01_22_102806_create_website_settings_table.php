@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('website_settings', function (Blueprint $table) {
             $table->id();
+            $table->string('data_key')->nullable();
+            $table->string('data_value')->nullable();
+            $table->string('data_extra1')->nullable();
+            $table->string('data_extra2')->nullable();
             $table->timestamps();
         });
     }

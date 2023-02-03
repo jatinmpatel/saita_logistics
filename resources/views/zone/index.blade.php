@@ -31,6 +31,7 @@
                                  </div>
                                </div>
                                <?php
+                               $id =    isset($editZone->id) ? $editZone->id : 0;
                                $vendor_id =    isset($editZone->vendor_id) ? $editZone->vendor_id : 0;
                                $service_name = isset($editZone->service_name) ? $editZone->service_name : NULL;
                                $zone_name =    isset($editZone->zone_name) ? $editZone->zone_name : NULL;
@@ -38,6 +39,7 @@
                                $effctv_from =    isset($editZone->effctv_from) ? $editZone->effctv_from : NULL;
                                ?>
                                 <div class="form-group col-md-4 col-12">
+                                   <input type="hidden" value="{{$id}}" name="id" id="id" class="form-control">
                                    <label>Vendor*</label>
                                    <select name="vendor_id" id="vendor_id" required class="form-control select">
                                        <option value=""  disabled selected>Select</option>
@@ -150,8 +152,8 @@
                                             <tbody>
                                                 @foreach($zoneMaster as $rowz)
                                                 <tr>
-                                                    <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
-                                                    <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
+                                                    <td><a class="btn btn-primary" href="{{route('zone.master')}}?id={{$rowz->id}}"> <i class="fa fa-pencil-alt"></i></a></td>
+                                                    <td><a class="btn btn-primary" href="{{route('zone.master.delete',$rowz->id)}}" onclick="return confirm('Are you sure you want to delete this record?')"> <i class="fa fa-trash-alt"></i></a></td>
                                                     <td>{{$rowz->name}}</td>
                                                     <td>{{$rowz->service_name}}</td>
                                                     <td>{{$rowz->zone_name}}</td>
