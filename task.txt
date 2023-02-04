@@ -69,4 +69,10 @@ Delete Reasons
 
 04-fab-23
 --->Website Settting module, delete image from the server
---->Your Profile
+--->Your Profile update
+-->User Master
+--->User migration fiedls add
+--->Add new User Master
+--->Edit user Master
+--->Delete user Master
+

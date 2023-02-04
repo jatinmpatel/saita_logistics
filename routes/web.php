@@ -62,11 +62,17 @@ Route::group(['prefix' => '', 'middleware' => ['auth']], function(){
 
     
     Route::get('client-master', [ClientMasterController::class, 'clientMaster']);
+    Route::post('client-master-save',[ClientMasterController::class, 'clientMasterSave'])->name('client.master.save');
+    Route::get('client-master-delete/{id}',[ClientMasterController::class, 'clientMasterDelete'])->name('client.master.delete');
     
     Route::get('zone-master', [ZoneMasterController::class, 'zoneMaster'])->name('zone.master');
     Route::post('zone-master-save', [ZoneMasterController::class, 'zoneMasterSave'])->name('zone.master.save');
     Route::get('zone-master-delete/{id}', [ZoneMasterController::class, 'zoneMasterDelete'])->name('zone.master.delete');
-    Route::get('manage-users', [UserController::class, 'manageUser']);
+    Route::get('manage-users', [UserController::class, 'manageUser'])->name('manage.user');
+    Route::post('user-master-save',[UserController::class, 'userMasterSave'])->name('user.master.save');
+    Route::post('user-master-update',[UserController::class, 'userMasterUpdate'])->name('user.master.update');
+    Route::get('user-delete/{id}',[UserController::class, 'userMasterDelete'])->name('user.delete');
+
     Route::get('change-password', [UserController::class, 'changePassword']);
     Route::get('payment-history', [UserController::class, 'paymentHistory']);
     Route::get('user-profile', [UserController::class, 'userProfile']);

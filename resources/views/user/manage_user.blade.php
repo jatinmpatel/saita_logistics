@@ -20,7 +20,20 @@
        <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-12">
              <div class="card">
-               <form>
+             @include('message.error_validation')
+                <?php 
+                $user_id = isset($user->id) ? $user->id : 0;
+                $status = isset($user->status) ? $user->status : 0;
+                if($user_id!=0){
+                    $req = '';
+                    $url = route('user.master.update');
+                }else{
+                    $req = 'required';
+                    $url = route('user.master.save');
+                }
+                ?>
+               <form action="{{$url}}" method="post" name="user_frm" id="user_frm">
+                @csrf
                    <div class="card-body">
                          <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                            <div class="row">
@@ -58,13 +71,15 @@
                                          </div>
                                      </div>
                                 </div>-->
+                                
                                 <div class="form-group col-md-3 col-12">
+                                   <input type="hidden" value="{{$user_id}}" name="id" id="id">
                                      <label>User Name*</label>
-                                     <input class="form-control" type="text" placeholder="Enter User Name">
+                                     <input class="form-control" value="{{(isset($user->name) ? $user->name : null)}}" type="text" name="name" id="name" required placeholder="Enter User Name">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                      <label>Mobile No*</label>
-                                     <input class="form-control" type="text" placeholder="Enter Mobile No">
+                                     <input class="form-control" value="{{(isset($user->mobile_no) ? $user->mobile_no : null)}}" type="text" name="mobile_no" id="mobile_no" placeholder="Enter Mobile No">
                                 </div>
                                 <!-- <div class="form-group col-md-3 col-12">
                                      <label>User Group*</label>
@@ -77,17 +92,25 @@
                                         <option value="PICKED UP">PICKED UP</option>
                                      </select>
                                 </div> -->
+                               
                                 <div class="form-group col-md-3 col-12">
                                      <label>Password*</label>
-                                     <input class="form-control" type="text" placeholder="Enter Password">
+                                     <input class="form-control" type="text" {{$req}} name="password" id="password" placeholder="Enter Password">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                      <label>DOJ*</label>
-                                     <input class="form-control datetimepicker-input datetimepicker" type="text" data-toggle="datetimepicker">
+                                     <input class="form-control datetimepicker-input datetimepicker" value="{{(isset($user->doj) ? $user->doj : null)}}" name="doj" id="doj" type="text" data-toggle="datetimepicker">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                      <label>Email ID*</label>
-                                     <input class="form-control" type="text" placeholder="Enter Email ID">
+                                     <input class="form-control" value="{{(isset($user->email) ? $user->email : null)}}" type="text" name="email" id="email" placeholder="Enter Email ID">
+                                </div>
+                                <div class="form-group col-md-3 col-12">
+                                     <label>Status*</label>
+                                     <select class="form-control select" name="status" id="status">
+                                        <option value="1" <?php echo ($status==1 ? 'selected' : '')?>>Active</option>
+                                        <option value="0" <?php echo ($status== 0 ? 'selected' : '')?>>InActive</option>
+                                    </select>
                                 </div>
                            </div>
                          </div>
@@ -95,9 +118,9 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                            <div class="page-btns">
                               <div class="form-group text-center custom-mt-form-group">
-                                 <button class="btn btn-primary mr-2" type="button"><i class="fa fa-check"></i> Save</button>
+                                 <button class="btn btn-primary mr-2" type="submit"><i class="fa fa-check"></i> Save</button>
                                  <button class="btn btn-primary mr-2" type="submit"><i class="fa fa-expand"></i> Export</button>
-                                 <button class="btn btn-secondary orng-btn" type="reset"><i class="fa fa-dot-circle"></i> Reset</button>
+                                 <a class="btn btn-secondary orng-btn" style="font-size:inherit;" href="{{route('manage.user')}}"><i class="fa fa-dot-circle"></i> Reset</a>
                               </div>
                             </div>
                         </div>
@@ -146,45 +169,44 @@
                                     </div>
                                 </div>
 
-                                
-
                             </div>
                              </div>
                              <div class="col-md-12">    
-                                         <div class="x_content">
-                                             <div class="table-responsive">
-                                                 <table>
-                                                     <thead>
-                                                         <tr>
-                                                             <th>Edit</th>
-                                                             <th>Delete</th>
-                                                             <th>User Name</th>
-                                                             <th>DOJ</th>
-                                                             <th>Mobile No</th>
-                                                             <th>Email ID</th>
-                                                             <th>Status</th>
-                                                         </tr>
-                                                     </thead>
-                                                     <tbody>
-                                                     <tr>
-                                                         <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
-                                                         <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
-                                                         <td>Sunil</td>
-                                                         <td>NO</td>
-                                                         <td>9868404417</td>
-                                                         <td>sunilgupta4417@gmail.com</td>
-                                                         <td>YES</td>
-                                                     </tr>
-                                                 </tbody>
-                                                 </table>
-                                             </div>
-                                         </div>
-                                     </div>
+                                <div class="x_content">
+                                    <div class="table-responsive">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Edit</th>
+                                                    <th>Delete</th>
+                                                    <th>User Name</th>
+                                                    <th>DOJ</th>
+                                                    <th>Mobile No</th>
+                                                    <th>Email ID</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($users as $rowu)
+                                            <tr>
+                                                <td><a class="btn btn-primary" href="{{route('manage.user')}}?id={{$rowu->id}}"> <i class="fa fa-pencil-alt"></i></a></td>
+                                                <td><a class="btn btn-primary" href="{{route('user.delete',$rowu->id)}}" onclick="return confirm('Are you sure you want to delete this record?')"> <i class="fa fa-trash-alt"></i></a></td>
+                                                <td>{{$rowu->name}}</td>
+                                                <td>{{$rowu->doj}}</td>
+                                                <td>{{$rowu->mobile_no}}</td>
+                                                <td>{{$rowu->email}}</td>
+                                                <td>{{($rowu->status==1?'Yes':'No')}}</td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
                      </div>
-                   </form></div>
-               
+                   </form>
+                </div>
              </div>
           </div>
        </div>

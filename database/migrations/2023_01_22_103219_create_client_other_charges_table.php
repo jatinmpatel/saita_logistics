@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('client_other_charges', function (Blueprint $table) {
             $table->id();
+            $table->integer('client_id')->default(0);
+            $table->string('charge_type')->nullable();
+            $table->string('type')->nullable();
+            $table->float('amount_per')->nullable();
             $table->timestamps();
         });
     }

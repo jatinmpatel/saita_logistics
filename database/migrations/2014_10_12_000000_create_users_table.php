@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('profile_pic')->nullable();
             $table->string('doj')->nullable();
+            $table->tinyInteger('status')->default(0)->comment('1=active, 0=inactive');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

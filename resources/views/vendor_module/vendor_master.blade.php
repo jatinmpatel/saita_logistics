@@ -239,62 +239,62 @@
                               <div class="col-md-12">    
                               <div class="x_content">
                                  <div class="table-responsive">
-                                       <table>
-                                          <thead>
-                                             <tr>
-                                                <th>Edit</th>
-                                                <th>Del</th>
-                                                <th>View Service Type</th>
-                                                <th>Vendor Code</th>
-                                                <th>Vendor Name</th>
-                                                <th>Address1</th>
-                                                <th>Address2</th>
-                                                <th>Pin Code</th>
-                                                <th>City</th>
-                                                <th>State</th>
-                                                <th>Country</th>
-                                                <th>Email ID</th>
-                                                <th>Mobile No</th>
-                                                <th>GSTIN</th>
-                                                <th>SelfVendor</th>
-                                                <th>Active</th>
-                                                <th>ThirdPartyTracking</th>
-                                                <th>ThirdPartyVendor</th>
-                                             </tr>
-                                          </thead>
-                                          <tbody>
-                                          @foreach($vendor as $row)
+                                    <table>
+                                       <thead>
                                           <tr>
-                                             <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
-                                             <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
-                                             <td><a class="btn btn-primary" href="#"> <i class="fa fa-eye"></i></a></td>
-                                             <td>{{$row->vendor_code}}</td>
-                                             <td>{{$row->name}}</td>
-                                             <td>{{$row->address1}}</td>
-                                             <td>{{$row->address2}}</td>
-                                             <td>{{$row->pincode}}</td>
-                                             <td>{{$row->city_id}}</td>
-                                             <td>{{$row->state_id}}</td>
-                                             <td>{{$row->country_name}}</td>
-                                             <td>{{$row->email}}</td>
-                                             <td>{{$row->mobile_no}}</td>
-                                             <td>{{$row->gstin}}</td>
-                                             <td>{{ ($row->selfVendor==1?'YES':'NO')}}</td>
-                                             <td>{{ ($row->isActive==1?'YES':'NO')}}</td>
-                                             <td>{{ ($row->third_party_tracking==1?'YES':'NO')}}</td>
-                                             <td></td>
+                                             <th>Edit</th>
+                                             <th>Del</th>
+                                             <th>View Service Type</th>
+                                             <th>Vendor Code</th>
+                                             <th>Vendor Name</th>
+                                             <th>Address1</th>
+                                             <th>Address2</th>
+                                             <th>Pin Code</th>
+                                             <th>City</th>
+                                             <th>State</th>
+                                             <th>Country</th>
+                                             <th>Email ID</th>
+                                             <th>Mobile No</th>
+                                             <th>GSTIN</th>
+                                             <th>SelfVendor</th>
+                                             <th>Active</th>
+                                             <th>ThirdPartyTracking</th>
+                                             <th>ThirdPartyVendor</th>
                                           </tr>
-                                          @endforeach
-                                       </tbody>
-                                    </table>
-                                 </div>
+                                       </thead>
+                                       <tbody>
+                                       @foreach($vendor as $row)
+                                       <tr>
+                                          <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
+                                          <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
+                                          <td><a class="btn btn-primary" href="#"> <i class="fa fa-eye"></i></a></td>
+                                          <td>{{$row->vendor_code}}</td>
+                                          <td>{{$row->name}}</td>
+                                          <td>{{$row->address1}}</td>
+                                          <td>{{$row->address2}}</td>
+                                          <td>{{$row->pincode}}</td>
+                                          <td>{{$row->city_id}}</td>
+                                          <td>{{$row->state_id}}</td>
+                                          <td>{{$row->country_name}}</td>
+                                          <td>{{$row->email}}</td>
+                                          <td>{{$row->mobile_no}}</td>
+                                          <td>{{$row->gstin}}</td>
+                                          <td>{{ ($row->selfVendor==1?'YES':'NO')}}</td>
+                                          <td>{{ ($row->isActive==1?'YES':'NO')}}</td>
+                                          <td>{{ ($row->third_party_tracking==1?'YES':'NO')}}</td>
+                                          <td></td>
+                                       </tr>
+                                       @endforeach
+                                    </tbody>
+                                 </table>
                               </div>
                            </div>
-
                         </div>
 
                      </div>
-                   </form></div>
+
+                  </div>
+                  </form></div>
                
              </div>
           </div>
