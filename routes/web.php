@@ -70,7 +70,7 @@ Route::group(['prefix' => '', 'middleware' => ['auth']], function(){
     Route::get('change-password', [UserController::class, 'changePassword']);
     Route::get('payment-history', [UserController::class, 'paymentHistory']);
     Route::get('user-profile', [UserController::class, 'userProfile']);
-    
+    Route::post('user-profile-update',[UserController::class, 'userProfileUpdate'])->name('user.profile.update');
     Route::get('website-setting', [WebsiteSettingController::class, 'websiteSetting']);
     Route::post('website-setting-save', [WebsiteSettingController::class, 'websiteSettingSave'])->name('website.setting.save');
     
