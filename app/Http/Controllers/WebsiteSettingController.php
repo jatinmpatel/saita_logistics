@@ -10,10 +10,8 @@ class WebsiteSettingController extends Controller
     
     public function websiteSetting()
     {
-        $website = WebsiteSetting::select('*')->get()->pluck(['data_value','data_key'])->toArray();
-        // dd($website);
-        $data = ['website'=>$website];
-        return view('website_setting.web_setting',$data);
+        $website = WebsiteSetting::select('*')->get()->pluck('data_value','data_key')->toArray();
+        return view('website_setting.web_setting',compact('website'));
     }
     public function websiteSettingSave(Request $request){
        

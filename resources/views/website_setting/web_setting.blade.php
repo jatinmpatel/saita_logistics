@@ -33,11 +33,11 @@
                                </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Company Code*</label>
-                                   <input type="text" class="form-control" name="data[company_code]" value="CM1739" readonly placeholder="CM1739">
+                                   <input type="text" class="form-control" name="data[company_code]" value="{{ $website['company_code'] }}" placeholder="CM1739">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Mobile No*</label>
-                                   <input type="text" class="form-control" name="data[company_mobile_no]" value="9868404418" readonly placeholder="9868404418">
+                                   <input type="text" class="form-control" name="data[company_mobile_no]" value="9868404418" placeholder="9868404418">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Company Name*</label>
@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Email ID*</label>
-                                   <input type="text" class="form-control" name="data[company_email_id]" value="sunildrishti@gmail.com" readonly placeholder="sunildrishti@gmail.com">
+                                   <input type="text" class="form-control" name="data[company_email_id]" value="sunildrishti@gmail.com" placeholder="sunildrishti@gmail.com">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Contact Person*</label>
