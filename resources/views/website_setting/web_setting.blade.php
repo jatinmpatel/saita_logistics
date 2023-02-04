@@ -33,47 +33,47 @@
                                </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Company Code*</label>
-                                   <input type="text" class="form-control" name="data[company_code]" value="CM1739" disabled="" placeholder="CM1739">
+                                   <input type="text" class="form-control" name="data[company_code]" value="CM1739" readonly placeholder="CM1739">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Mobile No*</label>
-                                   <input type="text" class="form-control" name="data[mobile_no]" value="9868404418" disabled="" placeholder="9868404418">
+                                   <input type="text" class="form-control" name="data[company_mobile_no]" value="9868404418" readonly placeholder="9868404418">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Company Name*</label>
-                                   <input type="text" name="data[company_name]" class="form-control" value="sattvic">
+                                   <input type="text" name="data[company_name]" class="form-control"  required value="sattvic">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Email ID*</label>
-                                   <input type="text" class="form-control" name="data[email_id]" value="sunildrishti@gmail.com" disabled="" placeholder="sunildrishti@gmail.com">
+                                   <input type="text" class="form-control" name="data[company_email_id]" value="sunildrishti@gmail.com" readonly placeholder="sunildrishti@gmail.com">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Contact Person*</label>
-                                   <input type="text" class="form-control" name="data[contact_person]" value="Sunil">
+                                   <input type="text" class="form-control" name="data[company_contact_person]" required value="Sunil">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>GSTIN*</label>
-                                   <input type="text" class="form-control" placeholder="GSTIN">
+                                   <input type="text" class="form-control" value="{{(isset($website['company_gstin']) ? $website['company_gstin']:'')}}" name="data[company_gstin]" required placeholder="GSTIN">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>PAN*</label>
-                                   <input type="text" class="form-control" placeholder="PAN">
+                                   <input type="text" class="form-control" name="data[company_pan]"  required placeholder="PAN">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Address 1*</label>
-                                   <input type="text" class="form-control" placeholder="Address 1">
+                                   <input type="text" class="form-control" name="data[company_address1]" required placeholder="Address 1">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Website*</label>
-                                   <input type="text" class="form-control" placeholder="Website">
+                                   <input type="text" class="form-control" name="data[company_website]" required placeholder="Website">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Address 2*</label>
-                                   <input type="text" class="form-control" placeholder="Address 2">
+                                   <input type="text" class="form-control" name="data[company_address2]" required placeholder="Address 2">
                                 </div>
                                 <div class="form-group col-md-5 col-12">
                                    <label>Company Logo*</label>
-                                   <input type="file" class="form-control">
+                                   <input type="file" class="form-control" required name="data[company_logo]">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                      <div class="upload-logo">
@@ -82,35 +82,35 @@
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Pin Code*</label>
-                                   <input type="text" class="form-control" placeholder="Pin Code">
+                                   <input type="text" required class="form-control" name="data[company_pincode]" required placeholder="Pin Code">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Country*</label>
-                                   <input type="text" class="form-control" value="IN : INDIA">
+                                   <input type="text" required class="form-control" name="data[company_country_id]" value="IN : INDIA">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>State*</label>
-                                   <input type="text" class="form-control" value="DL : DELHI">
+                                   <input type="text" required class="form-control" name="data[company_state_id]" value="DL : DELHI">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>City*</label>
-                                   <input type="text" class="form-control" value="DELHI">
+                                   <input type="text" required class="form-control" name="data[company_city_id]" value="DELHI">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>AWB Start From*</label>
-                                   <input type="text" class="form-control" placeholder="AWB Start From">
+                                   <input type="text" required class="form-control" name="data[company_awb_start_from]" placeholder="AWB Start From">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Weight Unit*</label>
-                                       <select class="form-control select">
-                                          <option>--Select Weight Unit--</option>
+                                       <select class="form-control select required" name="data[company_weight_unit]">
+                                          <option value="">--Select Weight Unit--</option>
                                           <option value="KGS">KGS</option>
                                           <option value="LBS">LBS</option>
                                        </select>
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Dashboard Image*</label>
-                                   <input type="file" class="form-control">
+                                   <input type="file" required class="form-control" name="data[company_dashboard_img]">
                                 </div>
                                 <div class="form-group col-md-2 col-12">
                                      <div class="dashboard-logo">
@@ -119,8 +119,8 @@
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Billing Currency*</label>
-                                       <select class="form-control select">
-                                          <option>--Select Currency--</option>
+                                       <select class="form-control select" required name="data[company_bill_currency]">
+                                          <option value="">--Select Currency--</option>
                                           <option value="AED">AED</option>
                                           <option value="AUD">AUD</option>
                                           <option value="CAD">CAD</option>
