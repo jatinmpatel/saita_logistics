@@ -1,14 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-<div id='TextBoxesGroup'>
-	<div id="TextBoxDiv1">
-		<label>Textbox #1 : </label><input type='textbox' id='textbox1' >
-	</div>
-</div>
-<input type='button' value='Add Button' id='addButton'>
-<input type='button' value='Remove Button' id='removeButton'>
-<input type='button' value='Get TextBox Value' id='getButtonValue'>
 
 <div class="content container-fluid">
     <div class="page-header">
@@ -116,9 +108,10 @@
                                    <h3>Vendor Service Type</h3>
                                  </div>
                                </div>
+
                                 <div class="form-group col-md-2 col-12">
                                  <label>Forwarder*</label>
-                                 <select class="form-control select">
+                                 <select class="form-control select" name="vendor[0][forwarder]">
                                     <option>--Select--</option>
                                     <option value="ARAMEX">ARAMEX</option>
                                     <option value="BLUEDART">BLUEDART</option>
@@ -146,11 +139,11 @@
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                  <label>Service Name*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Service Name">
+                                   <input type="text" class="form-control" name="vendor[0][service]" placeholder="Enter Service Name">
                                 </div>
                                 <div class="form-group col-md-2 col-12">
                                     <label>Packaging Group*</label>
-                                    <select class="form-control select">
+                                    <select class="form-control select" name="vendor[0][packaging]">
                                           <option>--Select--</option>
                                           <option value="FEDEX">FEDEX</option>
                                           <option value="UPS">UPS</option>
@@ -158,7 +151,7 @@
                                  </div>
                                  <div class="form-group col-md-2 col-12">
                                     <label>Mode*</label>
-                                    <select class="form-control select">
+                                    <select class="form-control select" name="vendor[0][mode]">
                                           <option>--Select--</option>
                                           <option value="FEDEX">FEDEX</option>
                                           <option value="UPS">UPS</option>
@@ -166,7 +159,7 @@
                                  </div>
                                 <div class="form-group col-md-3 col-12 pl-0">
                                      <div class="all-chk" style="display:inline-block; margin-right: 10px;">
-                                         <label><input type="checkbox" checked=""> Active</label>
+                                         <label><input type="checkbox" checked="" value="0" name="vendor[0][status]"> Active</label>
                                      </div>
                                      <div class="plusing-btn" style="display:inline-block;">
                                          <button class="btn btn-primary  btn-xs" tabindex="1" id="btnAddClientChargesDetails" type="button" title="Add Head">Add <i class="fa fa-plus-circle"></i>
@@ -176,6 +169,9 @@
                                      </div>
                                 </div>
                            </div>
+                         </div>
+                         <div id="dynamicAddFiled"> 
+
                          </div>
                          <hr>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
@@ -248,6 +244,7 @@
                                              <tr>
                                                 <th>Edit</th>
                                                 <th>Del</th>
+                                                <th>View Service Type</th>
                                                 <th>Vendor Code</th>
                                                 <th>Vendor Name</th>
                                                 <th>Address1</th>
@@ -270,6 +267,7 @@
                                           <tr>
                                              <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
                                              <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
+                                             <td><a class="btn btn-primary" href="#"> <i class="fa fa-eye"></i></a></td>
                                              <td>{{$row->vendor_code}}</td>
                                              <td>{{$row->name}}</td>
                                              <td>{{$row->address1}}</td>
@@ -302,4 +300,87 @@
           </div>
        </div>
     </div>
+@endsection
+
+@section('script')
+<script>
+   $( document ).ready(function() {
+    var i = 1;
+    $("#btnAddClientChargesDetails").on("click",function(){
+      var addHml = GenrateHtml(i);
+      $("#dynamicAddFiled").append(addHml);
+      i++;
+   });
+
+   $("body").on("click",".deleteAdd",function(){
+      var id = $(this).data('id');
+      $("#dynamic_"+id).remove();
+   });
+});
+
+
+function GenrateHtml(addval) { 
+   return '<div class="row col-md-12" id="dynamic_'+addval+'">'+
+      '<div class="form-group col-md-2 col-12">'+
+      '<label>Forwarder*</label>'+
+      '<select class="form-control select" name="vendor['+addval+'][forwarder]">'+
+         '<option>--Select--</option>'+
+         '<option value="ARAMEX">ARAMEX</option>'+
+         '<option value="BLUEDART">BLUEDART</option>'+
+         '<option value="CRITICAL LOG">CRITICAL LOG</option>'+
+         '<option value="DELHIVERY">DELHIVERY</option>'+
+         '<option value="DELHIVERYB2B">DELHIVERYB2B</option>'+
+         '<option value="DHL">DHL</option>'+
+         '<option value="DPD">DPD</option>'+
+         '<option value="DTDC">DTDC</option>'+
+         '<option value="EKART">EKART</option>'+
+         '<option value="FEDEX">FEDEX</option>'+
+         '<option value="LINEX">LINEX</option>'+
+         '<option value="NIMBUSPOST">NIMBUSPOST</option>'+
+         '<option value="PROFESSIONAL">PROFESSIONAL</option>'+
+         '<option value="SELF">SELF</option>'+
+         '<option value="SKYNET">SKYNET</option>'+
+         '<option value="SPOTON">SPOTON</option>'+
+         '<option value="TNT">TNT</option>'+
+         '<option value="TRACKON">TRACKON</option>'+
+         '<option value="UPS">UPS</option>'+
+         '<option value="USPS">USPS</option>'+
+         '<option value="XPRESSBEES">XPRESSBEES</option>'+
+         '<option value="YODEL">YODEL</option>'+
+         '</select>'+
+         '</div>'+
+         '<div class="form-group col-md-3 col-12">'+
+            '<label>Service Name*</label>'+
+            '<input type="text" class="form-control"  name="vendor['+addval+'][service]" placeholder="Enter Service Name">'+
+            '</div>'+
+            '<div class="form-group col-md-2 col-12">'+
+               '<label>Packaging Group*</label>'+
+               '<select class="form-control select"  name="vendor['+addval+'][packaging]">'+
+                  '<option>--Select--</option>'+
+                  '<option value="FEDEX">FEDEX</option>'+
+                  '<option value="UPS">UPS</option>'+
+                  '</select>'+
+                  '</div>'+
+                  '<div class="form-group col-md-2 col-12">'+
+                     '<label>Mode*</label>'+
+                     '<select class="form-control select" name="vendor['+addval+'][mode]">'+
+                        '<option>--Select--</option>'+
+                        '<option value="FEDEX">FEDEX</option>'+
+                        '<option value="UPS">UPS</option>'+
+                     '</select>'+
+                  '</div>'+
+                  '<div class="form-group col-md-3 col-12 pl-0">'+
+                     '<div class="all-chk" style="display:inline-block; margin-right: 10px;">'+
+                        '<label><input type="checkbox" checked="" value="0" name="vendor['+addval+'][active]"> Active</label>'+
+                     '</div>'+
+                     '<div class="plusing-btn" style="display:inline-block;">'+
+                        '<button class="btn btn-danger deleteAdd btn-xs" tabindex="1" data-id="'+addval+'" type="button" title="Delete Head">Delete <i class="fa fa-trash"></i>'+
+                        '</button>'+
+                     '</div>'+
+                  '</div>';
+               '</div>';
+            '</div>';
+         '</div>';
+}
+</script>
 @endsection

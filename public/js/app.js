@@ -32,9 +32,4 @@ if($('#timer-outputpattern').length>0){$('#timer-outputpattern').countdown({outp
 var chatAppTarget=$('.chat-window');(function(){if($(window).width()>991)
 chatAppTarget.removeClass('chat-slide');$(document).on("click",".chat-window .chat-users-list a.media",function(){if($(window).width()<=991){chatAppTarget.addClass('chat-slide');}
 return false;});$(document).on("click","#back_user_list",function(){if($(window).width()<=991){chatAppTarget.removeClass('chat-slide');}
-return false;});})();$(window).on("load",function(){document.onkeydown=function(e){if(e.keyCode==123){return false;}
-if(e.ctrlKey&&e.shiftKey&&e.keyCode=='I'.charCodeAt(0)){return false;}
-if(e.ctrlKey&&e.shiftKey&&e.keyCode=='J'.charCodeAt(0)){return false;}
-if(e.ctrlKey&&e.keyCode=='U'.charCodeAt(0)){return false;}
-if(e.ctrlKey&&e.shiftKey&&e.keyCode=='C'.charCodeAt(0)){return false;}};});document.oncontextmenu=function(){return false;};$(document).mousedown(function(e){if(e.button==2){return false;}
-return true;});})(jQuery);
+return false;});})();})(jQuery);

@@ -430,6 +430,6 @@
                 $(".answer").hide();
             };
         </script>
-
+        @yield('script')
   </body>
 </html>

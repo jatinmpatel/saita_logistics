@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class VendorServiceType extends Model
 {
     use HasFactory;
+    protected $timeStamp = true;
+    protected $guarded = [];
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\VendorMaster;
 use App\Models\VendorAccountDetail; 
+use App\Models\VendorServiceType;
 use App\Models\Country;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -53,6 +54,23 @@ class VendorMasterController extends Controller
             'third_party_tracking'=>isset($request->third_party_tracking) ? $request->third_party_tracking : 0, 
         ];
         $result= vendorMaster::create($insData);
+
+        if(isset($request->vendor) && count($request->vendor) > 0){
+            foreach($request->vendor as $vendorItem){
+                $saveVendor[] = [
+                    'vendor_id' => $result->id,
+                    'forwarder' => isset($vendorItem['forwarder']) ? $vendorItem['forwarder']: NULL,
+                    'service_name' => isset($vendorItem['service']) ? $vendorItem['service']: NULL,
+                    'packagin_group' => isset($vendorItem['packaging']) ? $vendorItem['packaging']: NULL,
+                    'mode' => isset($vendorItem['mode']) ? $vendorItem['mode']: NULL,
+                    'isActive' => isset($vendorItem['status']) ? $vendorItem['status']: 1,
+                    'created_at' => date('Y-m-d h:s:i'),
+                    'updated_at' => date('Y-m-d h:s:i'),
+                ];   
+            }
+            VendorServiceType::insert($saveVendor);
+        }
+        
         if($result){
             return redirect()->back()->with('success','Vendor created successfully!');
         }else{
