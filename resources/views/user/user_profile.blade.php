@@ -20,8 +20,9 @@
        <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-12">
              <div class="card">
-               <form>
+               <form action="{{route('user.profile.update')}}" method="post" name="user_profile" id="user_profile" enctype="multipart/form-data" >
                    <div class="card-body">
+                    @csrf
                          <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                            <div class="row">
                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
@@ -40,7 +41,7 @@
                                 </div>
                                 <div class="form-group col-md-7 col-8">
                                      <div class="user-detail">
-                                         <p>1964</p>
+                                         <p>{{$user->user_code}}</p>
                                      </div>
                                 </div>
                              </div>
@@ -54,7 +55,7 @@
                                 </div>
                                 <div class="form-group col-md-7 col-8">
                                      <div class="user-detail">
-                                         <p>Sunil</p>
+                                         <p>{{$user->name}}</p>
                                      </div>
                                 </div>
                              </div>
@@ -68,7 +69,7 @@
                                 </div>
                                 <div class="form-group col-md-7 col-8">
                                      <div class="user-detail">
-                                         <p>9868404417</p>
+                                         <p>{{$user->mobile_no}}</p>
                                      </div>
                                 </div>
                              </div>
@@ -82,7 +83,7 @@
                                 </div>
                                 <div class="form-group col-md-7 col-8">
                                      <div class="user-detail">
-                                         <p>sunilgupta4417@gmail.com</p>
+                                         <p>{{$user->email}}</p>
                                      </div>
                                 </div>
                              </div>
@@ -96,7 +97,7 @@
                                 </div>
                                 <div class="form-group col-md-7 col-8">
                                      <div class="user-detail">
-                                         <textarea type="text" class="form-control" placeholder="Address"></textarea>
+                                         <textarea type="text" name="address" class="form-control" placeholder="Address">{{$user->address}}</textarea>
                                      </div>
                                 </div>
                              </div>
@@ -108,14 +109,20 @@
                                          <p>Profile Pic.:</p>
                                      </div>
                                 </div>
+                                <?php
+                                if($user->profile_pic!=''){
+                                    $profile_pic = asset('logistics/user/'.$user->profile_pic);
+                                }else{
+                                    $profile_pic = asset('img/user-06.jpg');
+                                }?> 
                                 <div class="form-group col-md-5 col-5">
                                      <div class="user-detail">
-                                         <input type="file" class="form-control">
+                                         <input type="file" class="form-control" name="profile_pic">
                                      </div>
                                 </div>
                                 <div class="form-group col-md-2 col-3">
                                      <div class="user-image">
-                                         <img src="assets/img/user-06.jpg" alt="" class="img-responsive">
+                                         <img src="{{$profile_pic}}" alt="" class="img-responsive">
                                      </div>  
                                 </div>
                              </div>

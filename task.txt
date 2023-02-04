@@ -67,3 +67,6 @@ Delete Reasons
 --->Delete zone master
 --->Create migration for Website Settings and set data in model
 
+04-fab-23
+--->Website Settting module, delete image from the server
+--->Your Profile
