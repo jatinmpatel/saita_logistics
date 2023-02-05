@@ -38,6 +38,7 @@
                                 <div class="form-group col-md-3 col-12">
                                    <label>Vendor Code*</label>
                                    <input type="text" name="vendor_code" id="vendor_code" required class="form-control" placeholder="Enter Vendor Code">
+                                   <input type="hidden" name="vendor_id" id="vendor_id" value="0">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Pin Code*</label>
@@ -159,7 +160,7 @@
                                  </div>
                                 <div class="form-group col-md-3 col-12 pl-0">
                                      <div class="all-chk" style="display:inline-block; margin-right: 10px;">
-                                         <label><input type="checkbox" checked="" value="0" name="vendor[0][status]"> Active</label>
+                                         <label><input type="checkbox" checked="" value="1" name="vendor[0][status]"> Active</label>
                                      </div>
                                      <div class="plusing-btn" style="display:inline-block;">
                                          <button class="btn btn-primary  btn-xs" tabindex="1" id="btnAddClientChargesDetails" type="button" title="Add Head">Add <i class="fa fa-plus-circle"></i>
@@ -244,7 +245,6 @@
                                           <tr>
                                              <th>Edit</th>
                                              <th>Del</th>
-                                             <th>View Service Type</th>
                                              <th>Vendor Code</th>
                                              <th>Vendor Name</th>
                                              <th>Address1</th>
@@ -259,15 +259,13 @@
                                              <th>SelfVendor</th>
                                              <th>Active</th>
                                              <th>ThirdPartyTracking</th>
-                                             <th>ThirdPartyVendor</th>
                                           </tr>
                                        </thead>
                                        <tbody>
                                        @foreach($vendor as $row)
                                        <tr>
-                                          <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
-                                          <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
-                                          <td><a class="btn btn-primary" href="#"> <i class="fa fa-eye"></i></a></td>
+                                          <td><a class="btn btn-primary editData" data-value="{{$row->id}}" href="javascript:void(0);"> <i class="fa fa-pencil-alt"></i></a></td>
+                                          <td><a class="btn btn-primary" href="{{route('vendor.master.delete',$row->id)}}" onclick="return confirm('Are you sure you want to delete this record?')"> <i class="fa fa-trash-alt"></i></a></td>
                                           <td>{{$row->vendor_code}}</td>
                                           <td>{{$row->name}}</td>
                                           <td>{{$row->address1}}</td>
@@ -282,7 +280,7 @@
                                           <td>{{ ($row->selfVendor==1?'YES':'NO')}}</td>
                                           <td>{{ ($row->isActive==1?'YES':'NO')}}</td>
                                           <td>{{ ($row->third_party_tracking==1?'YES':'NO')}}</td>
-                                          <td></td>
+                                          <td style="display: none;">{{$row->country_id}}</td>
                                        </tr>
                                        @endforeach
                                     </tbody>
@@ -312,15 +310,170 @@
       i++;
    });
 
+   $("#btnResetClientChargesDetails").on("click",function(){
+      $(".dynamic_add_filed").remove();
+      i=1;
+   });
+   
+
    $("body").on("click",".deleteAdd",function(){
       var id = $(this).data('id');
       $("#dynamic_"+id).remove();
    });
+
+   $("body").on("click",".dynamic_edit_delete",function(){
+      var id = $(this).data('id');
+      $("#dynamic_edit_"+id).remove();
+   });
+
+   $("body").on("click",".editData",function(){
+      var id = $(this).data('value');
+      $("#vendor_id").val(id);
+
+      var code = $(this).closest("tr").find('td:eq(2)').text();
+      $("#vendor_code").val(code);
+
+      var pincode = $(this).closest("tr").find('td:eq(6)').text();
+      $("#pincode").val(pincode);
+
+      var email = $(this).closest("tr").find('td:eq(10)').text();
+      $("#email").val(email);
+
+      var name = $(this).closest("tr").find('td:eq(3)').text();
+      $("#name").val(name);
+
+      var city_id = $(this).closest("tr").find('td:eq(7)').text();
+      $("#city_id").val(city_id);
+
+      var mobile_no = $(this).closest("tr").find('td:eq(11)').text();
+      $("#mobile_no").val(mobile_no);
+
+      var address1 = $(this).closest("tr").find('td:eq(4)').text();
+      $("#address1").val(address1);
+
+      var state_id = $(this).closest("tr").find('td:eq(8)').text();
+      $("#state_id").val(state_id);
+
+      var gstin = $(this).closest("tr").find('td:eq(12)').text();
+      $("#gstin").val(gstin);
+
+      var address2 = $(this).closest("tr").find('td:eq(5)').text();
+      $("#address2").val(address2);
+
+      var country_id = $(this).closest("tr").find('td:eq(16)').text();
+      $("#country_id").val(country_id).trigger('change');
+
+      var isActive = $(this).closest("tr").find('td:eq(14)').text();
+      if(isActive=='YES'){
+         $('#isActive').prop('checked', true);
+      }else{
+         $('#isActive').prop('checked', false);
+      }
+      
+
+      var selfVendor = $(this).closest("tr").find('td:eq(13)').text();
+      if(selfVendor=='YES'){
+         $('#selfVendor').prop('checked', true);
+      }else{
+         $('#selfVendor').prop('checked', false);
+      }
+
+      var third_party_tracking = $(this).closest("tr").find('td:eq(15)').text();
+      if(third_party_tracking=='YES'){
+         $('#third_party_tracking').prop('checked', true);
+      }else{
+         $('#third_party_tracking').prop('checked', false);
+      }
+
+      $.ajax({
+        url: "{{ route('get-vendor-service') }}",
+        dataType: "json",
+        type: "Post",
+        async: true,
+        data: {"id":id},
+        success: function (data) {
+         var addHml = GenrateAjaxHtml(data);
+         $("#dynamicAddFiled").html(addHml);
+        },
+      }); 
+   });
+   
 });
 
+function GenrateAjaxHtml(data){
+   var html = "";
+   var addval = "";
+   $.each(data, function(index,value) {
+      addval = "edit_"+ index;
+      // console.log(addval);
+      html+= '<div class="row col-md-12 dynamic_add_filed" id="dynamic_edit_'+index+'">'+
+                  '<div class="form-group col-md-2 col-12">'+
+                     '<label>Forwarder*</label>'+
+                     '<input type="hidden" name="vendor['+addval+'][id]" value="'+value.id+'">'+
+                     '<select class="form-control select" name="vendor['+addval+'][forwarder]">'+
+                        '<option>--Select--</option>'+
+                        '<option value="ARAMEX" '+(value.forwarder=='ARAMEX'?'selected':'')+'>ARAMEX</option>'+
+                        '<option value="BLUEDART" '+(value.forwarder=='BLUEDART'?'selected':'')+'>BLUEDART</option>'+
+                        '<option value="CRITICAL LOG" '+(value.forwarder=='CRITICAL LOG'?'selected':'')+'>CRITICAL LOG</option>'+
+                        '<option value="DELHIVERY" '+(value.forwarder=='DELHIVERY'?'selected':'')+'>DELHIVERY</option>'+
+                        '<option value="DELHIVERYB2B" '+(value.forwarder=='DELHIVERYB2B'?'selected':'')+'>DELHIVERYB2B</option>'+
+                        '<option value="DHL" '+(value.forwarder=='DHL'?'selected':'')+'>DHL</option>'+
+                        '<option value="DPD" '+(value.forwarder=='DPD'?'selected':'')+'>DPD</option>'+
+                        '<option value="DTDC" '+(value.forwarder=='DTDC'?'selected':'')+'>DTDC</option>'+
+                        '<option value="EKART" '+(value.forwarder=='EKART'?'selected':'')+'>EKART</option>'+
+                        '<option value="FEDEX" '+(value.forwarder=='FEDEX'?'selected':'')+'>FEDEX</option>'+
+                        '<option value="LINEX" '+(value.forwarder=='LINEX'?'selected':'')+'>LINEX</option>'+
+                        '<option value="NIMBUSPOST" '+(value.forwarder=='NIMBUSPOST'?'selected':'')+'>NIMBUSPOST</option>'+
+                        '<option value="PROFESSIONAL" '+(value.forwarder=='PROFESSIONAL'?'selected':'')+'>PROFESSIONAL</option>'+
+                        '<option value="SELF" '+(value.forwarder=='SELF'?'selected':'')+'>SELF</option>'+
+                        '<option value="SKYNET" '+(value.forwarder=='SKYNET'?'selected':'')+'>SKYNET</option>'+
+                        '<option value="SPOTON" '+(value.forwarder=='SPOTON'?'selected':'')+'>SPOTON</option>'+
+                        '<option value="TNT" '+(value.forwarder=='TNT'?'selected':'')+'>TNT</option>'+
+                        '<option value="TRACKON" '+(value.forwarder=='TRACKON'?'selected':'')+'>TRACKON</option>'+
+                        '<option value="UPS" '+(value.forwarder=='UPS'?'selected':'')+'>UPS</option>'+
+                        '<option value="USPS" '+(value.forwarder=='USPS'?'selected':'')+'>USPS</option>'+
+                        '<option value="XPRESSBEES" '+(value.forwarder=='XPRESSBEES'?'selected':'')+'>XPRESSBEES</option>'+
+                        '<option value="YODEL" '+(value.forwarder=='YODEL'?'selected':'')+'>YODEL</option>'+
+                     '</select>'+
+                  '</div>'+
+                  '<div class="form-group col-md-3 col-12">'+
+                     '<label>Service Name*</label>'+
+                     '<input type="text" class="form-control" value="'+value.service_name+'" name="vendor['+addval+'][service]" placeholder="Enter Service Name">'+
+                  '</div>'+
+                  '<div class="form-group col-md-2 col-12">'+
+                     '<label>Packaging Group*</label>'+
+                     '<select class="form-control select"  name="vendor['+addval+'][packaging]">'+
+                        '<option>--Select--</option>'+
+                        '<option value="FEDEX" '+(value.packagin_group=='FEDEX'?'selected':'')+'>FEDEX</option>'+
+                        '<option value="UPS" '+(value.packagin_group=='UPS'?'selected':'')+'>UPS</option>'+
+                     '</select>'+
+                  '</div>'+
+                  '<div class="form-group col-md-2 col-12">'+
+                     '<label>Mode*</label>'+
+                     '<select class="form-control select" name="vendor['+addval+'][mode]">'+
+                        '<option>--Select--</option>'+
+                        '<option value="FEDEX" '+(value.mode=='FEDEX'?'selected':'')+'>FEDEX</option>'+
+                        '<option value="UPS" '+(value.mode=='UPS'?'selected':'')+'>UPS</option>'+
+                     '</select>'+
+                  '</div>'+
+                  
+                  '<div class="form-group col-md-3 col-12 pl-0">'+
+                     '<div class="all-chk" style="display:inline-block; margin-right: 10px;">'+
+                        '<label><input type="checkbox" checked="" value="1" name="vendor['+addval+'][active]"> Active</label>'+
+                     '</div>'+
+                     '<div class="plusing-btn" style="display:inline-block;">'+
+                        '<button class="btn btn-danger dynamic_edit_delete btn-xs" tabindex="1" data-id="'+index+'" type="button" title="Delete Head">Delete<i class="fa fa-trash"></i>'+
+                        '</button>'+
+                     '</div>'+
+                  '</div>'+
+               '</div>';
+   });
+
+   return html;
+}
 
 function GenrateHtml(addval) { 
-   return '<div class="row col-md-12" id="dynamic_'+addval+'">'+
+   return '<div class="row col-md-12 dynamic_add_filed" id="dynamic_'+addval+'">'+
       '<div class="form-group col-md-2 col-12">'+
       '<label>Forwarder*</label>'+
       '<select class="form-control select" name="vendor['+addval+'][forwarder]">'+
@@ -371,16 +524,14 @@ function GenrateHtml(addval) {
                   '</div>'+
                   '<div class="form-group col-md-3 col-12 pl-0">'+
                      '<div class="all-chk" style="display:inline-block; margin-right: 10px;">'+
-                        '<label><input type="checkbox" checked="" value="0" name="vendor['+addval+'][active]"> Active</label>'+
+                        '<label><input type="checkbox" checked="" value="1" name="vendor['+addval+'][active]"> Active</label>'+
                      '</div>'+
                      '<div class="plusing-btn" style="display:inline-block;">'+
                         '<button class="btn btn-danger deleteAdd btn-xs" tabindex="1" data-id="'+addval+'" type="button" title="Delete Head">Delete <i class="fa fa-trash"></i>'+
                         '</button>'+
                      '</div>'+
-                  '</div>';
+                  '</div>'+
                '</div>';
-            '</div>';
-         '</div>';
 }
 </script>
 @endsection

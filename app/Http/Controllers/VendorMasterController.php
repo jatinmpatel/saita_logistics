@@ -37,6 +37,7 @@ class VendorMasterController extends Controller
            'pincode'=>'required',
            'gstin'=>'required',
         ]);
+
         $insData = [
             'vendor_code'=>isset($request->vendor_code) ? $request->vendor_code : NULL,
             'email'=>isset($request->email) ? $request->email : NULL,
@@ -53,23 +54,72 @@ class VendorMasterController extends Controller
             'selfVendor'=>isset($request->selfVendor) ? $request->selfVendor : 0, 
             'third_party_tracking'=>isset($request->third_party_tracking) ? $request->third_party_tracking : 0, 
         ];
-        $result= vendorMaster::create($insData);
 
-        if(isset($request->vendor) && count($request->vendor) > 0){
-            foreach($request->vendor as $vendorItem){
-                $saveVendor[] = [
-                    'vendor_id' => $result->id,
-                    'forwarder' => isset($vendorItem['forwarder']) ? $vendorItem['forwarder']: NULL,
-                    'service_name' => isset($vendorItem['service']) ? $vendorItem['service']: NULL,
-                    'packagin_group' => isset($vendorItem['packaging']) ? $vendorItem['packaging']: NULL,
-                    'mode' => isset($vendorItem['mode']) ? $vendorItem['mode']: NULL,
-                    'isActive' => isset($vendorItem['status']) ? $vendorItem['status']: 1,
-                    'created_at' => date('Y-m-d h:s:i'),
-                    'updated_at' => date('Y-m-d h:s:i'),
-                ];   
+        if($request->vendor_id == 0){
+            $result= vendorMaster::create($insData);
+
+            if(isset($request->vendor) && count($request->vendor) > 0){
+                foreach($request->vendor as $vendorItem){
+                    if(isset($vendorItem['service']) && !empty($vendorItem['service'])){
+                        $saveVendor[] = [
+                            'vendor_id' => $result->id,
+                            'forwarder' => isset($vendorItem['forwarder']) ? $vendorItem['forwarder']: NULL,
+                            'service_name' => isset($vendorItem['service']) ? $vendorItem['service']: NULL,
+                            'packagin_group' => isset($vendorItem['packaging']) ? $vendorItem['packaging']: NULL,
+                            'mode' => isset($vendorItem['mode']) ? $vendorItem['mode']: NULL,
+                            'isActive' => isset($vendorItem['status']) ? $vendorItem['status']: 0,
+                            'created_at' => date('Y-m-d h:s:i'),
+                            'updated_at' => date('Y-m-d h:s:i'),
+                        ];
+                    }   
+                }
+                if(count($saveVendor) > 0){
+                    VendorServiceType::insert($saveVendor);
+                }
+            }    
+        }else{
+            $result= vendorMaster::where('id',$request->vendor_id)->update($insData);
+
+            VendorServiceType::where('vendor_id',$request->vendor_id)->delete();
+
+            if(isset($request->vendor) && count($request->vendor) > 0){
+                $saveVendor = [];
+                foreach($request->vendor as $vendorItem){
+                    if(isset($vendorItem['id']) && $vendorItem['id'] > 0){
+                        if(isset($vendorItem['service']) && !empty($vendorItem['service'])){
+                            $updateVendor = [
+                                // 'vendor_id' => $request->vendor_id,
+                                'forwarder' => isset($vendorItem['forwarder']) ? $vendorItem['forwarder']: NULL,
+                                'service_name' => isset($vendorItem['service']) ? $vendorItem['service']: NULL,
+                                'packagin_group' => isset($vendorItem['packaging']) ? $vendorItem['packaging']: NULL,
+                                'mode' => isset($vendorItem['mode']) ? $vendorItem['mode']: NULL,
+                                'isActive' => isset($vendorItem['status']) ? $vendorItem['status']: 0,
+                                'updated_at' => date('Y-m-d h:s:i'),
+                            ];
+                            VendorServiceType::where('id',$vendorItem['id'])->restore();
+                            VendorServiceType::where('id',$vendorItem['id'])->update($updateVendor);
+                        }
+                    }else{
+                        if(isset($vendorItem['service']) && !empty($vendorItem['service'])){
+                            $saveVendor[] = [
+                                'vendor_id' => $request->vendor_id,
+                                'forwarder' => isset($vendorItem['forwarder']) ? $vendorItem['forwarder']: NULL,
+                                'service_name' => isset($vendorItem['service']) ? $vendorItem['service']: NULL,
+                                'packagin_group' => isset($vendorItem['packaging']) ? $vendorItem['packaging']: NULL,
+                                'mode' => isset($vendorItem['mode']) ? $vendorItem['mode']: NULL,
+                                'isActive' => isset($vendorItem['status']) ? $vendorItem['status']: 0,
+                                'created_at' => date('Y-m-d h:s:i'),
+                                'updated_at' => date('Y-m-d h:s:i'),
+                            ];
+                        }
+                    }   
+                }
+                if(count($saveVendor) > 0){
+                    VendorServiceType::insert($saveVendor);
+                }
             }
-            VendorServiceType::insert($saveVendor);
         }
+        
         
         if($result){
             return redirect()->back()->with('success','Vendor created successfully!');
@@ -78,6 +128,23 @@ class VendorMasterController extends Controller
         }  
 
     }
+
+    public function getVendorService(Request $request){
+        $data = VendorServiceType::where('vendor_id',$request->id)->get();
+        return json_encode($data);
+    }
+
+    public function vendorMasterDelete($id){
+        // dd($id);
+        $result = vendorMaster::where('id',$id)->delete();
+        if($result){
+            VendorServiceType::where('vendor_id',$id)->delete();
+            return redirect()->back()->with('success','Record deleted successfully!');
+        }else{
+            return redirect()->back()->with('error','Something went wrong please try again!');
+        }
+    }
+
     public function vendorAccountDetail(Request $request)
     {
          $editId = $request->query('id', 0);

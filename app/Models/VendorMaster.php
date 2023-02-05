@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class VendorMaster extends Model
 {
+    use SoftDeletes;
     use HasFactory;
     protected $table="vendor_masters";
     protected $primarykey= "id";
@@ -26,6 +28,7 @@ class VendorMaster extends Model
     'isActive',
     'selfVendor',
     'third_party_tracking',
+    'deleted_at'
     ];
 
 }

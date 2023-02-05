@@ -30,6 +30,7 @@ return new class extends Migration
             $table->tinyInteger('isActive')->default(0)->comment('1=active,0=inactive');
             $table->tinyInteger('selfVendor')->default(0)->comment('1=self vendor');
             $table->tinyInteger('third_party_tracking')->default(0)->comment('1=yes,0=no');
+            $table->string('deleted_at')->nullable();
             $table->timestamps();
         });
     }
