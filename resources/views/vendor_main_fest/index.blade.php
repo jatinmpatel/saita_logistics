@@ -20,7 +20,8 @@
        <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-12">
              <div class="card">
-               <form>
+               <form action="{{ route('vendor-manifest-create') }}" method="post">
+                  @csrf
                    <div class="card-body">
                          <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                            <div class="row">
@@ -32,26 +33,25 @@
                                 <div class="form-group col-md-12 col-12">
                                    <div class="smalling-wdh">
                                       <label>Booking Date*</label>
-                                     <input class="form-control datetimepicker-input datetimepicker" type="text" data-toggle="datetimepicker">
-                                     <input class="form-control datetimepicker-input datetimepicker" type="text" data-toggle="datetimepicker">
+                                     <input name="booking_date" class="form-control datetimepicker-input datetimepicker" type="text" data-toggle="datetimepicker">
                                    </div>
                                 </div>
                                   <div class="form-group col-md-12 col-12">
                                      <div class="row">
                                         <div class="form-group col-md-8 col-12">
                                             <label>Manifest No*</label>
-                                            <input disabled="" id="other" name="other" value="System Generated" type="text" class="form-control" aria-label="...">
+                                            <input disabled="" id="main_fast_no" name="no" placeholder="System Generated" type="text" class="form-control" aria-label="...">
                                          </div>
                                            <div class="form-group col-md-4 col-12">
                                               <span class="input-group-addon">
-                                                 <label><input type="checkbox" id="otherCheckbox" aria-label="..."> Update</label>
+                                                 <label><input type="checkbox" name="is_update" id="otherCheckbox" aria-label="..."> Update</label>
                                               </span>
                                            </div>
                                      </div>
                                   </div>
                                 <div class="form-group col-md-6 col-12">
                                      <label>Forwarder*</label>
-                                     <select class="form-control select">
+                                     <select class="form-control select" name="forwarder">
                                        <option>--Select Forwarder--</option>
                                        <option value="ARAMEX">ARAMEX</option>
                                        <option value="BLUEDART">BLUEDART</option>
@@ -80,11 +80,11 @@
                                 </div>
                                 <div class="form-group col-md-6 col-12">
                                      <label>Manifest Date*</label>
-                                     <input class="form-control datetimepicker-input datetimepicker" type="text" data-toggle="datetimepicker">
+                                     <input class="form-control datetimepicker-input datetimepicker" name="date" type="text" data-toggle="datetimepicker">
                                 </div>
                                 <div class="form-group col-md-12 col-12">
                                      <label>Manifest Remarks*</label>
-                                     <textarea type="text" class="form-control" placeholder="Enter Manifest Remarks"></textarea>
+                                     <textarea type="text" class="form-control" name="remark" placeholder="Enter Manifest Remarks"></textarea>
                                 </div>
                            </div>
                            <div class="row">
@@ -95,7 +95,7 @@
                                </div>
                                 <div class="form-group col-md-12 col-12">
                                      <label>AwbNo*</label>
-                                     <input type="text" class="form-control" placeholder="AwbNo">
+                                     <input type="text" name="awbno" class="form-control" placeholder="AwbNo">
                                 </div>
                            </div>
                          </div>
@@ -110,7 +110,8 @@
                             </div>
                         </div>
                      </div>
-                   </form></div>
+                   </form>
+                  </div>
                
              </div>
           </div>

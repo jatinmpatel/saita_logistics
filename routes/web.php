@@ -9,7 +9,7 @@ use App\Http\Controllers\ClientMasterController;
 use App\Http\Controllers\ZoneMasterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WebsiteSettingController;
-
+use App\Http\Controllers\VendorMainFestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ Route::group(['prefix' => '', 'middleware' => ['auth']], function(){
     Route::get('website-setting', [WebsiteSettingController::class, 'websiteSetting']);
     Route::post('website-setting-save', [WebsiteSettingController::class, 'websiteSettingSave'])->name('website.setting.save');
     
-    Route::get('vendor-manifest', [VendorMasterController::class, 'vendorManifest']);
+    // Route::get('vendor-manifest', [VendorMasterController::class, 'vendorManifest']);
     Route::get('vendor-master', [VendorMasterController::class, 'vendorMaster']);
     Route::post('vendor-master-save', [VendorMasterController::class, 'vendorMasterSave'])->name('vendor.master.save');
     Route::get('vendor-master-delete/{id}', [VendorMasterController::class, 'vendorMasterDelete'])->name('vendor.master.delete');
@@ -91,4 +91,6 @@ Route::group(['prefix' => '', 'middleware' => ['auth']], function(){
     
     Route::get('vendor-account-detail-delete/{id}',[VendorMasterController::class,'vendorAcccountDetailDelete'])->name('vendor.account.detail.delete');
 
+    Route::resource('vendor-manifest', VendorMainFestController::class);
+    Route::post('vendor-manifest', [VendorMainFestController::class,'create'])->name('vendor-manifest-create');
 });

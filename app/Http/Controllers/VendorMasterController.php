@@ -10,10 +10,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 class VendorMasterController extends Controller
 {
-    public function vendorManifest()
-    {
-        return view('vendor_module.vendor_manifest');
-    }
 
     public function vendorMaster()
     {
@@ -152,7 +148,7 @@ class VendorMasterController extends Controller
         $country = Country::where('isActive',1)->get();
         
         $vendorAccount = VendorAccountDetail::select('vendor_account_details.*','vendor_masters.name as vendor_name')
-        ->join('vendor_masters','vendor_account_details.vendor_id','=','vendor_masters.id')->whereNull('deleted_at')->get();
+        ->join('vendor_masters','vendor_account_details.vendor_id','=','vendor_masters.id')->whereNull('vendor_masters.deleted_at')->get();
         $editDetails = NULL;
         if($editId!=0){
             $editId;$editDetails = VendorAccountDetail::select('*')->whereNull('deleted_at')->where('id',$editId)->first();
