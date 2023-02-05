@@ -154,15 +154,23 @@
             <li class="nav-item dropdown has-arrow">
               <a href="javascript:void(0);" class=" nav-link user-link" data-toggle="dropdown">
                 <span class="user-img">
-                  <img class="rounded-circle" src="{{ asset('img/user-06.jpg') }}" width="30" alt="Admin">
+                  @php
+                    if(auth()->user()->profile_pic!=''){
+                      $profile_pic = asset('logistics/user/'.auth()->user()->profile_pic);
+                    }else{
+                      $profile_pic = asset('img/user-06.jpg');
+                    }
+                  @endphp
+                  <img class="rounded-circle" src="{{ $profile_pic }}" width="30" alt="Admin">
                   <span class="status online"></span>
                 </span>
                 <span>{{ auth()->user()->name }}</span>
               </a>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="javascript:void(0);">My Profile</a>
-                <a class="dropdown-item" href="javascript:void(0);">Edit Profile</a>
-                <a class="dropdown-item" href="javascript:void(0);">Settings</a>
+                <a class="dropdown-item" href="{{ url('/user-profile') }}">My Profile</a>
+                {{-- <a class="dropdown-item" href="javascript:void(0);">Edit Profile</a> --}}
+                <a class="dropdown-item" href="{{ url('/change-password') }}">Change Password</a>
+                <a class="dropdown-item" href="{{ url('/website-setting') }}">Settings</a>
                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                   @csrf
@@ -175,9 +183,10 @@
               <i class="fas fa-ellipsis-v"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="javascript:void(0);">My Profile</a>
-                <a class="dropdown-item" href="javascript:void(0);">Edit Profile</a>
-                <a class="dropdown-item" href="javascript:void(0);">Settings</a>
+                <a class="dropdown-item" href="{{ url('/user-profile') }}">My Profile</a>
+                <a class="dropdown-item" href="{{ url('/change-password') }}">Change Password</a>
+                {{-- <a class="dropdown-item" href="javascript:void(0);">Edit Profile</a> --}}
+                <a class="dropdown-item" href="{{ url('/website-setting') }}">Settings</a>
                 <a class="dropdown-item" href="javascript:void(0);">Logout</a>
             </div>
           </div>
@@ -195,46 +204,49 @@
              <ul class="sidebar-ul">
                <li class="menu-title">Menu</li>
 
-               <li class="active">
+               <li class="{{ Request::segment(1)=='home'?'active':'' }}">
                  <a href="{{ url('/home') }}">
                    <i class="fa fa-th-large"></i>
                    <span>Dashboard</span>
                  </a>
                </li>
 
+               @php 
+                  $operation_menu = ['packet-booking','import-packet','print-awb-document','vendor-manifest','shipment-movement','pod-upload'];
+               @endphp
                <li class="submenu">
-                 <a href="javascript:void(0);">
+                 <a href="javascript:void(0);" class="{{ in_array(Request::segment(1), $operation_menu)?'subdrop':'' }}">
                   <i class="fa fa-cogs"></i>
                    <span> Operation Management</span>
                    <span class="menu-arrow"></span>
                  </a>
-                 <ul class="list-unstyled" style="display: none;">
-                    <li>
+                 <ul class="list-unstyled" style="{{ in_array(Request::segment(1), $operation_menu)?'':'display: none;' }}">
+                    <li class="{{ Request::segment(1)=='packet-booking'?'active':'' }}">
                         <a href="{{ url('packet-booking') }}">
                             <span>Packet Booking</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1)=='import-packet'?'active':'' }}">
                       <a href="{{ url('import-packet') }}">
                           <span>Import Packet</span>
                       </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1)=='print-awb-document'?'active':'' }}">
                       <a href="{{ url('print-awb-document') }}">
                           <span>Print AWB Document</span>
                       </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1)=='vendor-manifest'?'active':'' }}">
                       <a href="{{ url('vendor-manifest') }}">
                           <span>Manifest to Vendor</span>
                       </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1)=='shipment-movement'?'active':'' }}">
                       <a href="{{ url('shipment-movement') }}">
                           <span>Shipment Movement</span>
                       </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1)=='pod-upload'?'active':'' }}">
                       <a href="{{ url('pod-upload') }}">
                           <span>POD Upload</span>
                       </a>
@@ -242,39 +254,43 @@
                  </ul>
                </li>
 
+                @php 
+                  $client_menu = ['client-master','vendor-master','vendor-account-detail','zone-master','country-master','reason-master'];
+                @endphp
                <li class="submenu">
-                 <a href="javascript:void(0);">
+                 <a href="javascript:void(0);" class="{{ in_array(Request::segment(1), $client_menu)?'subdrop':'' }}">
                   <i class="fa fa-database"></i>
                    <span> MASTER MANAGEMENT </span>
                    <span class="menu-arrow"></span>
                  </a>
-                 <ul class="list-unstyled" style="display: none;">
-                    <li>
+
+                 <ul class="list-unstyled" style="{{ in_array(Request::segment(1), $client_menu)?'':'display: none;' }}">
+                    <li class="{{ Request::segment(1)=='client-master'?'active':'' }}">
                         <a href="{{ url('client-master') }}">
                             <span>Client Master</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1)=='vendor-master'?'active':'' }}">
                       <a href="{{ url('vendor-master') }}">
                           <span>Vendor Master</span>
                       </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1)=='vendor-account-detail'?'active':'' }}">
                       <a href="{{ url('vendor-account-detail') }}">
                           <span>Vendor Account Details</span>
                       </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1)=='zone-master'?'active':'' }}">
                       <a href="{{ url('zone-master') }}">
                           <span>Zone Master</span>
                       </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1)=='country-master'?'active':'' }}">
                       <a href="{{ url('country-master') }}">
                           <span>Country Master</span>
                       </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1)=='reason-master'?'active':'' }}">
                       <a href="{{ url('reason-master') }}">
                           <span>Reason Master</span>
                       </a>
@@ -282,24 +298,28 @@
                  </ul>
                </li>
 
+
+              @php 
+                $report_menu = ['booking-report','manifest-report','delivered-report'];
+              @endphp
                <li class="submenu">
-                 <a href="javascript:void(0);">
+                 <a href="javascript:void(0);" class="{{ in_array(Request::segment(1), $report_menu)?'subdrop':'' }}">
                   <i class="fa fa-retweet"></i>
                    <span> REPORTS MANAGEMENT </span>
                    <span class="menu-arrow"></span>
                  </a>
-                 <ul class="list-unstyled" style="display: none;">
-                    <li>
+                 <ul class="list-unstyled" style="{{ in_array(Request::segment(1), $report_menu)?'':'display: none;' }}">
+                    <li class="{{ Request::segment(1)=='booking-report'?'active':'' }}">
                         <a href="{{ url('booking-report') }}">
                             <span>Booking Report</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1)=='manifest-report'?'active':'' }}">
                       <a href="{{ url('manifest-report') }}">
                           <span>Manifest Report</span>
                       </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1)=='delivered-report'?'active':'' }}">
                       <a href="{{ url('delivered-report') }}">
                           <span>Delivered Report</span>
                       </a>
@@ -307,19 +327,22 @@
                  </ul>
                </li>
 
+              @php 
+                $user_menu = ['change-password','manage-users'];
+              @endphp
                <li class="submenu">
-                 <a href="javascript:void(0);">
+                 <a href="javascript:void(0);" class="{{ in_array(Request::segment(1), $user_menu)?'subdrop':'' }}">
                   <i class="fa fa-users"></i>
                    <span> USER MANAGEMENT </span>
                    <span class="menu-arrow"></span>
                  </a>
-                 <ul class="list-unstyled" style="display: none;">
-                    <li>
+                 <ul class="list-unstyled" style="{{ in_array(Request::segment(1), $user_menu)?'':'display: none;' }}">
+                    <li class="{{ Request::segment(1)=='manage-users'?'active':'' }}">
                         <a href="{{ url('manage-users') }}">
                             <span>Manage Users</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1)=='change-password'?'active':'' }}">
                       <a href="{{ url('change-password') }}">
                           <span>Change Password</span>
                       </a>
@@ -327,19 +350,22 @@
                  </ul>
                </li>
 
+              @php 
+                $account_menu = ['invoice','create-invoice'];
+              @endphp
                <li class="submenu">
-                 <a href="javascript:void(0);">
+                 <a href="javascript:void(0);" class="{{ in_array(Request::segment(1), $account_menu)?'subdrop':'' }}">
                   <i class="fa fa-users"></i>
                    <span> Accounts </span>
                    <span class="menu-arrow"></span>
                  </a>
-                 <ul class="list-unstyled" style="display: none;">
-                    <li>
+                 <ul class="list-unstyled" style="{{ in_array(Request::segment(1), $account_menu)?'':'display: none;' }}">
+                    <li class="{{ Request::segment(1)=='create-invoice'?'active':'' }}">
                         <a href="{{ url('create-invoice') }}">
                             <span>Create Invoice</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1)=='invoice'?'active':'' }}">
                       <a href="{{ url('invoice') }}">
                           <span>Invoice</span>
                       </a>
@@ -347,29 +373,33 @@
                  </ul>
                </li>
 
+              @php 
+               $setting_menu = ['website-setting','payment-history','user-profile','vendor-api-configuration'];
+              @endphp
+
                <li class="submenu">
-                 <a href="javascript:void(0);">
+                 <a href="javascript:void(0);" class="{{ in_array(Request::segment(1), $setting_menu)?'subdrop':'' }}">
                   <i class="fa fa-cog"></i>
                    <span> SETTINGS MANAGEMENT </span>
                    <span class="menu-arrow"></span>
                  </a>
-                 <ul class="list-unstyled" style="display: none;">
-                    <li>
+                 <ul class="list-unstyled" style="{{ in_array(Request::segment(1), $setting_menu)?'':'display: none;' }}">
+                    <li class="{{ Request::segment(1)=='website-setting'?'active':'' }}">
                         <a href="{{ url('website-setting') }}">
                             <span>Website Setting </span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1)=='payment-history'?'active':'' }}">
                       <a href="{{ url('payment-history') }}">
                           <span>Payment History</span>
                       </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1)=='user-profile'?'active':'' }}">
                       <a href="{{ url('user-profile') }}">
                           <span>Your Profile</span>
                       </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1)=='vendor-api-configuration'?'active':'' }}">
                       <a href="{{ url('vendor-api-configuration') }}">
                           <span>Vendor API Configuratio</span>
                       </a>
