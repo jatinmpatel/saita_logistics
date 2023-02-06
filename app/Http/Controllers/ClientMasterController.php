@@ -90,36 +90,42 @@ class ClientMasterController extends Controller
                 return redirect()->back()->with('error','Something went wrong please try again!');
             }
         }else{
-            
+           
             $result = ClientMaster::where('id',$id)->update($insData);
             ClientOtherCharges::where('client_id',$id)->delete();
+            // dd($request->Other);
             if(isset($request->Other) && count($request->Other) > 0){
                 foreach($request->Other as $otherItem){
               
                     if(isset($otherItem['id']) && $otherItem['id'] > 0){
-                        $updateOther= [
-                        // 'client_id' => $result->id,
-                        'charge_type' => isset($otherItem['charge_type']) ? $otherItem['charge_type']: NULL,
-                        'type' => isset($otherItem['type']) ? $otherItem['type']: NULL,
-                        'amount_per' => isset($otherItem['amount_per']) ? $otherItem['amount_per']: 0,
-                        'created_at' => date('Y-m-d h:s:i'),
-                        'updated_at' => date('Y-m-d h:s:i'),
-                        ];   
-                        ClientOtherCharges::where('id',$otherItem['id'])->restore();
-                        ClientOtherCharges::where('id',$otherItem['id'])->update($updateOther);
-                        echo 'up;';
+                        if(!empty($otherItem['amount_per'])){
+                            $updateOther= [
+                                // 'client_id' => $result->id,
+                                'charge_type' => isset($otherItem['charge_type']) ? $otherItem['charge_type']: NULL,
+                                'type' => isset($otherItem['type']) ? $otherItem['type']: NULL,
+                                'amount_per' => isset($otherItem['amount_per']) ? $otherItem['amount_per']: 0,
+                                'created_at' => date('Y-m-d h:s:i'),
+                                'updated_at' => date('Y-m-d h:s:i'),
+                                ];   
+                            ClientOtherCharges::where('id',$otherItem['id'])->restore();
+                            ClientOtherCharges::where('id',$otherItem['id'])->update($updateOther);   
+                        }
+                        // echo 'up;';
                     }else{
-                        $saveOther[] = [
-                            'client_id' => $id,
-                            'charge_type' => isset($otherItem['charge_type']) ? $otherItem['charge_type']: NULL,
-                            'type' => isset($otherItem['type']) ? $otherItem['type']: NULL,
-                            'amount_per' => isset($otherItem['amount_per']) ? $otherItem['amount_per']: 0,
-                            'created_at' => date('Y-m-d h:s:i'),
-                            'updated_at' => date('Y-m-d h:s:i'),
-                            ];   
-                        ClientOtherCharges::insert($saveOther);
+                        if(!empty($otherItem['amount_per'])){
+                            $saveOtherData = [
+                                'client_id' => $id,
+                                'charge_type' => isset($otherItem['charge_type']) ? $otherItem['charge_type']: NULL,
+                                'type' => isset($otherItem['type']) ? $otherItem['type']: NULL,
+                                'amount_per' => isset($otherItem['amount_per']) ? $otherItem['amount_per']: 0,
+                                'created_at' => date('Y-m-d h:s:i'),
+                                'updated_at' => date('Y-m-d h:s:i'),
+                                ];   
+
+                            ClientOtherCharges::create($saveOtherData);
+                        }
                         // dd   ('ins');
-                        echo 'ins';
+                        // echo 'ins';
                    }
                 }
 

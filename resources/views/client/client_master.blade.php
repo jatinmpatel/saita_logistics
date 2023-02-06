@@ -289,12 +289,12 @@
                            <!--  -->
                            @if($OtherCharges)
                            @php 
-                           $i=0;
+                           $i=1;
                            @endphp
                               @foreach($OtherCharges as $key =>$value)
                                  <div class="form-group col-md-3 col-12">
                                     <label>Charge Type*</label>
-                                    <input type="hidden" name="Other[id_{{$i}}][id]" value="{{$value->id}}">
+                                    <input type="hidden" name="Other[{{$i}}][id]" value="{{$value->id}}">
                                        <select class="form-control select" name="Other[{{$i}}][charge_type]" required>
                                           <option value="">--Select Charge Type--</option>
                                           <option value="Loading Charge" <?php echo ($value->charge_type=='Loading Charge'?'selected':'')?>>Loading Charge</option>
@@ -510,14 +510,15 @@
           </div>
        </div>
 @endsection
+@php $newJ = $i + 1; @endphp
 @section('script')
 <script>
    $( document ).ready(function() {
-    var i = 1;
+    var j = "{{ $newJ }}";
     $("#btnAddClientChargesDetails1").on("click",function(){
-      var addHml = GenrateHtml(i);
+      var addHml = GenrateHtml(j);
       $("#dynamicAddFiled").append(addHml);
-      i++;
+      j++;
    });
 
    $("body").on("click",".deleteAdd",function(){
