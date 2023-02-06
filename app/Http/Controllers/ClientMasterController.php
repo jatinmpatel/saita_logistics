@@ -90,13 +90,14 @@ class ClientMasterController extends Controller
                 return redirect()->back()->with('error','Something went wrong please try again!');
             }
         }else{
-            $result = ClientMaster::where('id',$id)->update($insData);
-            // ClientOtherCharges::where('client_id',$id)->delete();
             
+            $result = ClientMaster::where('id',$id)->update($insData);
+            ClientOtherCharges::where('client_id',$id)->delete();
             if(isset($request->Other) && count($request->Other) > 0){
                 foreach($request->Other as $otherItem){
+              
                     if(isset($otherItem['id']) && $otherItem['id'] > 0){
-                        $updateOther[] = [
+                        $updateOther= [
                         // 'client_id' => $result->id,
                         'charge_type' => isset($otherItem['charge_type']) ? $otherItem['charge_type']: NULL,
                         'type' => isset($otherItem['type']) ? $otherItem['type']: NULL,
@@ -104,9 +105,11 @@ class ClientMasterController extends Controller
                         'created_at' => date('Y-m-d h:s:i'),
                         'updated_at' => date('Y-m-d h:s:i'),
                         ];   
+                        ClientOtherCharges::where('id',$otherItem['id'])->restore();
                         ClientOtherCharges::where('id',$otherItem['id'])->update($updateOther);
+                        echo 'up;';
                     }else{
-                        $saveVendor[] = [
+                        $saveOther[] = [
                             'client_id' => $id,
                             'charge_type' => isset($otherItem['charge_type']) ? $otherItem['charge_type']: NULL,
                             'type' => isset($otherItem['type']) ? $otherItem['type']: NULL,
@@ -114,10 +117,16 @@ class ClientMasterController extends Controller
                             'created_at' => date('Y-m-d h:s:i'),
                             'updated_at' => date('Y-m-d h:s:i'),
                             ];   
-                        ClientOtherCharges::insert($saveVendor);
-                    }
+                        ClientOtherCharges::insert($saveOther);
+                        // dd   ('ins');
+                        echo 'ins';
+                   }
                 }
+
+                // print_r($otherItem['id']); 
+
             }
+            // exit;
             if($result){
                 return redirect()->back()->with('success','Client created successfully!');
             }else{

@@ -294,7 +294,7 @@
                               @foreach($OtherCharges as $key =>$value)
                                  <div class="form-group col-md-3 col-12">
                                     <label>Charge Type*</label>
-                                    <input type="hidden" name="other[{{$i}}][id]" value="{{$value->id}}">
+                                    <input type="hidden" name="Other[id_{{$i}}][id]" value="{{$value->id}}">
                                        <select class="form-control select" name="Other[{{$i}}][charge_type]" required>
                                           <option value="">--Select Charge Type--</option>
                                           <option value="Loading Charge" <?php echo ($value->charge_type=='Loading Charge'?'selected':'')?>>Loading Charge</option>
