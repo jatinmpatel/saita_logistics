@@ -61,7 +61,7 @@ Route::group(['prefix' => '', 'middleware' => ['auth']], function(){
     Route::get('vendor-api-configuration', [OtherApiController::class, 'vendorApiConfiguration']);
 
     
-    Route::get('client-master', [ClientMasterController::class, 'clientMaster']);
+    Route::get('client-master', [ClientMasterController::class, 'clientMaster'])->name('client.master');
     Route::post('client-master-save',[ClientMasterController::class, 'clientMasterSave'])->name('client.master.save');
     Route::get('client-master-delete/{id}',[ClientMasterController::class, 'clientMasterDelete'])->name('client.master.delete');
     
@@ -81,7 +81,7 @@ Route::group(['prefix' => '', 'middleware' => ['auth']], function(){
     Route::post('website-setting-save', [WebsiteSettingController::class, 'websiteSettingSave'])->name('website.setting.save');
     
     // Route::get('vendor-manifest', [VendorMasterController::class, 'vendorManifest']);
-    Route::get('vendor-master', [VendorMasterController::class, 'vendorMaster']);
+    Route::get('vendor-master', [VendorMasterController::class, 'vendorMaster'])->name('vendor.master');
     Route::post('vendor-master-save', [VendorMasterController::class, 'vendorMasterSave'])->name('vendor.master.save');
     Route::get('vendor-master-delete/{id}', [VendorMasterController::class, 'vendorMasterDelete'])->name('vendor.master.delete');
     Route::get('vendor-account-detail', [VendorMasterController::class, 'vendorAccountDetail'])->name('vendor.account.detail');

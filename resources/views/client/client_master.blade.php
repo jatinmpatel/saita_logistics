@@ -22,24 +22,28 @@
              <div class="card">
                <form action="{{route('client.master.save')}}" method="post" name="client_frm" id="client_frm">
                   @csrf
+                  @php
+                  $client_id = isset($client->id) ? $client->id : 0;
+                  @endphp
+                  <input type="hidden" name="id" id="id" value="{{$client_id}}" />
                    <div class="card-body">
                          <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                            <div class="row">
                               <div class="form-group col-md-3 col-12">
                                  <label>Client Code*</label>
-                                 <input type="text" name="client_code" required id="client_code" class="form-control" placeholder="Enter Client Code">
+                                 <input type="text" name="client_code" value="{{(isset($client->client_code) ? $client->client_code : '')}}" required id="client_code" class="form-control" placeholder="Enter Client Code">
                               </div>
                               <div class="form-group col-md-3 col-12">
                                  <label>Client Name*</label>
-                                 <input type="text" name="client_name" id="client_name" required class="form-control" placeholder="Enter Client Name">
+                                 <input type="text" value="{{(isset($client->client_name) ? $client->client_name : '')}}" name="client_name" id="client_name" required class="form-control" placeholder="Enter Client Name">
                               </div>
                               <div class="form-group col-md-3 col-12">
                                  <label>Sales Person*</label>
-                                 <input type="text" name="sales_person" id="sales_person" required class="form-control" placeholder="Enter Sales Person">
+                                 <input type="text" value="{{(isset($client->sales_person) ? $client->sales_person : '')}}" name="sales_person" id="sales_person" required class="form-control" placeholder="Enter Sales Person">
                               </div>
                               <div class="form-group col-md-3 col-12">
                                  <label>Client*</label>
-                                 <input type="text" name="client" id="client" required class="form-control" placeholder="Enter Client">
+                                 <input type="text" value="{{(isset($client->client) ? $client->client : '')}}"  name="client" id="client" required class="form-control" placeholder="Enter Client">
                               </div>
                         </div>
 
@@ -51,64 +55,70 @@
                                </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Address 1*</label>
-                                   <input type="text" required name="address1" id="address1" class="form-control" placeholder="Enter Address1">
+                                   <input type="text" value="{{(isset($client->address1) ? $client->address1 : '')}}" required name="address1" id="address1" class="form-control" placeholder="Enter Address1">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>State*</label>
-                                   <input type="text" required name="state_id" id="state_id  " class="form-control" placeholder="Enter State">
+                                   <input type="text" value="{{(isset($client->state_id) ? $client->state_id : '')}}" required name="state_id" id="state_id  " class="form-control" placeholder="Enter State">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Email ID*</label>
-                                   <input type="email" required name="email_id" id="email_id" class="form-control" placeholder="Enter Email ID">
+                                   <input type="email" value="{{(isset($client->email_id) ? $client->email_id : '')}}" required name="email_id" id="email_id" class="form-control" placeholder="Enter Email ID">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Address2*</label>
-                                   <input type="text" required name="address2" id="address2" class="form-control" placeholder="Enter Address2">
+                                   <input type="text" required value="{{(isset($client->address2) ? $client->address2 : '')}}" name="address2" id="address2" class="form-control" placeholder="Enter Address2">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Country*</label>
                                    <select class="form-control select" required name="country_id">
                                       <option value="" disabled readonly selecyed>--Select Country--</option>
                                       @foreach($country as $rowc)
-                                       <option value="{{$rowc->id}}">{{$rowc->country_name}}</option>
+                                       <option value="{{$rowc->id}}" value="{{(isset($client->state_id) ? ($client->country_id==$rowc->id ? 'selected':'') : '')}}">{{$rowc->country_name}}</option>
                                       @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group col-md-3 col-12">
-                                   <label>PAN*</label>
-                                   <input type="text" required name="pan" id="pan" class="form-control" placeholder="Enter PAN">
+                                   <label>PAN</label>
+                                   <input type="text" value="{{(isset($client->pan) ? $client->pan : '')}}" name="pan" id="pan" class="form-control" placeholder="Enter PAN">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Pin Code*</label>
-                                   <input type="text" required name="pincode" id="pincode" class="form-control" placeholder="Enter Pin Code">
+                                   <input type="text" required value="{{(isset($client->pincode) ? $client->pincode :'')}}" name="pincode" id="pincode" class="form-control" placeholder="Enter Pin Code">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Mobile No*</label>
-                                   <input type="text" required name="mobile_no" id="mobile_no" class="form-control" placeholder="Enter Mobile No">
+                                   <input type="text" required value="{{(isset($client->mobile_no) ? $client->mobile_no :'')}}" name="mobile_no" id="mobile_no" class="form-control" placeholder="Enter Mobile No">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
-                                   <label>GSTIN*</label>
-                                   <input type="text" required name="gstin" id="gstin" class="form-control" placeholder="Enter GSTIN">
+                                   <label>GSTIN</label>
+                                   <input type="text" value="{{(isset($client->gstin) ? $client->gstin :'')}}" name="gstin" id="gstin" class="form-control" placeholder="Enter GSTIN">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>City*</label>
-                                   <input type="text" required name="city_id" id="city_id" class="form-control" placeholder="Enter City">
+                                   <input type="text" value="{{(isset($client->city_id) ? $client->city_id :'')}}" required name="city_id" id="city_id" class="form-control" placeholder="Enter City">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Office Phone No*</label>
-                                   <input type="text" required name="office_phone_no" id="office_phone_no" class="form-control" placeholder="Enter Office Phone No">
+                                   <input type="text" value="{{(isset($client->office_phone_no) ? $client->office_phone_no :'')}}" required name="office_phone_no" id="office_phone_no" class="form-control" placeholder="Enter Office Phone No">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
-                                   <label>IEC*</label>
-                                   <input type="text" required name="iec" id="iec" class="form-control" placeholder="Enter IEC">
+                                   <label>IEC</label>
+                                   <input type="text" value="{{(isset($client->iec) ? $client->iec :'')}}" name="iec" id="iec" class="form-control" placeholder="Enter IEC">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
-                                   <label>Aadhaar No*</label>
-                                   <input type="text" required name="aadhaar_no" id="aadhaar_no " class="form-control" placeholder="Enter Aadhaar No">
+                                   <label>Aadhaar No</label>
+                                   <input type="text" value="{{(isset($client->aadhaar_no) ? $client->aadhaar_no :'')}}"name="aadhaar_no" id="aadhaar_no " class="form-control" placeholder="Enter Aadhaar No">
                                 </div>
 
                            </div>
 
+                           @php 
+                              $bill_payment_type = '';
+                              if(isset($client->bill_payment_type)){
+                              $bill_payment_type = $client->bill_payment_type;
+                              }
+                           @endphp
                            <div class="row">
                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                  <div class="frm-heading">
@@ -119,23 +129,40 @@
                                    <label>Payment Type*</label>
                                    <select class="form-control select" name="bill_payment_type" id="bill_payment_type">
                                        <option value="">--Select Payment Type--</option>
-                                       <option value="CASH">CASH</option>
-                                       <option value="COD">COD</option>
-                                       <option value="CREDIT">CREDIT</option>
+                                       <option value="CASH" <?php echo ($bill_payment_type==='CASH'?"selected":'')?>>CASH</option>
+                                       <option value="COD" <?php echo ($bill_payment_type==='COD'?"selected":'')?>>COD</option>
+                                       <option value="CREDIT" <?php echo ($bill_payment_type==='CREDIT'?"selected":'')?>>CREDIT</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Credit Amount*</label>
-                                   <input type="text" name="bill_credit_amount" id="bill_credit_amount" class="form-control" placeholder="Enter Credit Limit">
+                                   <input type="text" value="{{(isset($client->bill_credit_amount) ? $client->bill_credit_amount:'')}}" name="bill_credit_amount" id="bill_credit_amount" class="form-control" placeholder="Enter Credit Limit">
                                 </div>
+                                <?php
+                                $bill_isActive = 0;
+                                $bill_tax_applicable= 0;
+                                if(isset($client->bill_isActive)){
+                                 $bill_isActive = $client->bill_isActive;
+                                }
+                                if(isset($client->bill_tax_applicable)){
+                                 $bill_tax_applicable = $client->bill_tax_applicable;
+                                }
+                                 $bill_vol = '';$bill_currency='';
+                                if(isset($client->bill_vol)){
+                                 $bill_vol = $client->bill_vol;
+                                }
+                                if(isset($client->bill_currency)){
+                                 $bill_currency = $client->bill_currency;
+                                }
+                                ?>
                                 <div class="form-group col-md-2 col-12">
                                      <div class="all-chk">
-                                         <label><input type="checkbox" name="bill_isActive" id="bill_isActive" value="1" checked=""> Active</label>
+                                         <label><input type="checkbox" value="1" name="bill_isActive" id="bill_isActive" <?php echo ($bill_isActive==1?'checked=""':'')?> > Active</label>
                                      </div>
                                 </div>
                                 <div class="form-group col-md-2 col-12">
                                      <div class="all-chk">
-                                         <label><input type="checkbox" name="bill_tax_applicable" id="bill_tax_applicable" value="1"> Tax Applicable</label>
+                                         <label><input type="checkbox" name="bill_tax_applicable" id="bill_tax_applicable" value="1" <?php echo ($bill_tax_applicable==1?'checked=""':'')?>> Tax Applicable</label>
                                      </div>
                                 </div>
                                 <div class="form-group col-md-4 col-12">
@@ -143,58 +170,81 @@
                                      <label>Vol. Div.*</label>
                                      <select class="form-control select" name="bill_vol" id="bill_vol">
                                        <option value="">--Select Divisor--</option>
-                                       <option value="5000">5000</option>
-                                       <option value="6000">6000</option>
-                                       <option value="4500">4500</option>
+                                       <option value="5000" <?php echo ($bill_vol==5000?'selected':'')?>>5000</option>
+                                       <option value="6000" <?php echo ($bill_vol==6000?'selected':'')?>>6000</option>
+                                       <option value="4500" <?php echo ($bill_vol==4500?'selected':'')?>>4500</option>
                                     </select>
                                      <b style="margin: 0 4px;">Currency</b>
                                      <select class="form-control select" name="bill_currency" id="bill_currency">
-                                       <option value="INR">INR</option>
-                                       <option value="AED">AED</option>
-                                       <option value="AUD">AUD</option>
-                                       <option value="CAD">CAD</option>
-                                       <option value="CHF">CHF</option>
-                                       <option value="CNY">CNY</option>
-                                       <option value="EUR">EUR</option>
-                                       <option value="GBP">GBP</option>
-                                       <option value="HKD">HKD</option>
-                                       <option value="INR">INR</option>
-                                       <option value="JPY">JPY</option>
-                                       <option value="RUB">RUB</option>
-                                       <option value="SAR">SAR</option>
-                                       <option value="SGD">SGD</option>
-                                       <option value="USD">USD</option>
+                                       <option value="INR" <?php echo ($bill_currency=='INR'?'selected':'')?>>INR</option>
+                                       <option value="AED" <?php echo ($bill_currency=='AED'?'selected':'')?>>AED</option>
+                                       <option value="AUD" <?php echo ($bill_currency=='AUD'?'selected':'')?>>AUD</option>
+                                       <option value="CAD" <?php echo ($bill_currency=='CAD'?'selected':'')?>>CAD</option>
+                                       <option value="CHF" <?php echo ($bill_currency=='CHF'?'selected':'')?>>CHF</option>
+                                       <option value="CNY" <?php echo ($bill_currency=='CNY'?'selected':'')?>>CNY</option>
+                                       <option value="EUR" <?php echo ($bill_currency=='EUR'?'selected':'')?>>EUR</option>
+                                       <option value="GBP" <?php echo ($bill_currency=='GBP'?'selected':'')?>>GBP</option>
+                                       <option value="HKD" <?php echo ($bill_currency=='HKD'?'selected':'')?>>HKD</option>
+                                       <option value="INR" <?php echo ($bill_currency=='INR'?'selected':'')?>>INR</option>
+                                       <option value="JPY" <?php echo ($bill_currency=='JPY'?'selected':'')?>>JPY</option>
+                                       <option value="RUB" <?php echo ($bill_currency=='RUB'?'selected':'')?>>RUB</option>
+                                       <option value="SAR" <?php echo ($bill_currency=='SAR'?'selected':'')?>>SAR</option>
+                                       <option value="SGD" <?php echo ($bill_currency=='SGD'?'selected':'')?>>SGD</option>
+                                       <option value="USD" <?php echo ($bill_currency=='USD'?'selected':'')?>>USD</option>
                                     </select>
                                    </div>
                                 </div>
+                                <?php
+                                $bill_no_invoice_amount= 0;$bill_generate_label= 0;$bill_enable_fedex_tpc= 0;$bill_fuel_applicable= 0;$bill_mail_notification= 0;
+                                $bill_self_service= 0;
+                                 if(isset($client->bill_no_invoice_amount)){
+                                    $bill_no_invoice_amount = $client->bill_no_invoice_amount;
+                                 }
+                                 if(isset($client->bill_generate_label)){
+                                    $bill_generate_label = $client->bill_generate_label;
+                                 }
+                                 if(isset($client->bill_enable_fedex_tpc)){
+                                    $bill_enable_fedex_tpc = $client->bill_enable_fedex_tpc;
+                                 }
+                                 if(isset($client->bill_fuel_applicable)){
+                                    $bill_fuel_applicable = $client->bill_fuel_applicable;
+                                 }
+                                 if(isset($client->bill_mail_notification)){
+                                    $bill_mail_notification = $client->bill_mail_notification;
+                                 }
+                                 if(isset($client->bill_self_service)){
+                                    $bill_self_service = $client->bill_self_service;
+                                 }
+
+                                ?>
                                 <div class="form-group col-md-2 col-12">
                                      <div class="all-chk">
-                                         <label><input type="checkbox" name="bill_self_service" id="bill_self_service" value="1"> Self Service</label>
+                                         <label><input type="checkbox" <?php echo ($bill_self_service==1?'checked=""':'')?>  name="bill_self_service" id="bill_self_service" value="1"> Self Service</label>
                                      </div>
                                 </div>
                                 <div class="form-group col-md-2 col-12">
                                      <div class="all-chk">
-                                         <label><input type="checkbox" name="bill_mail_notification" id="bill_mail_notification" value="1"> Mail Notification</label>
+                                         <label><input type="checkbox" <?php echo ($bill_mail_notification==1?'checked=""':'')?>  name="bill_mail_notification" id="bill_mail_notification" value="1"> Mail Notification</label>
                                      </div>
                                 </div>
                                 <div class="form-group col-md-2 col-12">
                                      <div class="all-chk">
-                                         <label><input type="checkbox" name="bill_fuel_applicable" id="bill_fuel_applicable" value="1"> Fuel Applicable</label>
+                                         <label><input type="checkbox" <?php echo ($bill_fuel_applicable==1?'checked=""':'')?>  name="bill_fuel_applicable" id="bill_fuel_applicable" value="1"> Fuel Applicable</label>
                                      </div>
                                 </div>
                                 <div class="form-group col-md-2 col-12">
                                      <div class="all-chk">
-                                         <label><input type="checkbox" name="bill_enable_fedex_tpc" id="bill_enable_fedex_tpc" value="1"> Enable FedEx TPC</label>
+                                         <label><input type="checkbox" <?php echo ($bill_enable_fedex_tpc==1?'checked=""':'')?> name="bill_enable_fedex_tpc" id="bill_enable_fedex_tpc" value="1"> Enable FedEx TPC</label>
                                      </div>
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                      <div class="all-chk" style="margin-top:0;">
-                                         <label><input type="checkbox" name="bill_generate_label" id="bill_generate_label" value="1"> Allow To Generate Label</label>
+                                         <label><input type="checkbox" <?php echo ($bill_generate_label==1?'checked=""':'')?> name="bill_generate_label" id="bill_generate_label" value="1"> Allow To Generate Label</label>
                                      </div>
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                      <div class="all-chk" style="margin-top:0;">
-                                         <label><input type="checkbox" name="bill_no_invoice_amount" id="bill_no_invoice_amount" value="1"> No Invoice Amount on FedEx Label</label>
+                                         <label><input type="checkbox" <?php echo ($bill_no_invoice_amount==1?'checked=""':'')?>  name="bill_no_invoice_amount" id="bill_no_invoice_amount" value="1"> No Invoice Amount on FedEx Label</label>
                                      </div>
                                 </div>
                            </div>
@@ -207,14 +257,14 @@
                                </div>
                                 <div class="form-group col-md-3 col-12">
                                  <label>Charge Type*</label>
-                                    <select class="form-control select" name="Other[0][charge_type]" required>
+                                    <select class="form-control select" name="Other[0][charge_type]">
                                        <option value="">--Select Charge Type--</option>
                                        <option value="Loading Charge">Loading Charge</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                  <label>Type*</label>
-                                 <select class="form-control select" name="Other[0][type]" required>
+                                 <select class="form-control select" name="Other[0][type]">
                                     <option value="">--Select Calculation Type--</option>
                                     <option value="% OF FREIGHT AMOUNT">% OF FREIGHT AMOUNT</option>
                                     <option value="% OF INVOICE AMOUNT">% OF INVOICE AMOUNT</option>
@@ -225,7 +275,7 @@
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Amount/Per*</label>
-                                   <input type="text" required class="form-control" name="Other[0][amount_per]" placeholder="Enter Amount/Per">
+                                   <input type="text" class="form-control" name="Other[0][amount_per]" placeholder="Enter Amount/Per">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                     <div class="plusing-btn">
@@ -236,6 +286,46 @@
                                     </div>
                                 </div>
                            <!--  -->
+                           <!--  -->
+                           @if($OtherCharges)
+                           @php 
+                           $i=0;
+                           @endphp
+                              @foreach($OtherCharges as $key =>$value)
+                                 <div class="form-group col-md-3 col-12">
+                                    <label>Charge Type*</label>
+                                    <input type="hidden" name="other[{{$i}}][id]" value="{{$value->id}}">
+                                       <select class="form-control select" name="Other[{{$i}}][charge_type]" required>
+                                          <option value="">--Select Charge Type--</option>
+                                          <option value="Loading Charge" <?php echo ($value->charge_type=='Loading Charge'?'selected':'')?>>Loading Charge</option>
+                                       </select>
+                                 </div>
+                                 <div class="form-group col-md-3 col-12">
+                                    <label>Type*</label>
+                                    <select class="form-control select" name="Other[{{$i}}][type]" required>
+                                       <option value="">--Select Calculation Type--</option>
+                                       <option value="% OF FREIGHT AMOUNT" <?php echo ($value->type=='% OF FREIGHT AMOUNT'?'selected':'')?>>% OF FREIGHT AMOUNT</option>
+                                       <option value="% OF INVOICE AMOUNT" <?php echo ($value->type=='% OF INVOICE AMOUNT'?'selected':'')?>>% OF INVOICE AMOUNT</option>
+                                       <option value="PER INVOICE" <?php echo ($value->type=='PER INVOICE'?'selected':'')?>>PER INVOICE</option>
+                                       <option value="PER KG" <?php echo ($value->type=='PER KG'?'selected':'')?>>PER KG</option>
+                                       <option value="PER SHIPMENT" <?php echo ($value->type=='PER SHIPMENT'?'selected':'')?>>PER SHIPMENT</option>
+                                    </select>
+                                 </div>
+                                 <div class="form-group col-md-3 col-12">
+                                    <label>Amount/Per*</label>
+                                    <input type="text" required class="form-control" value="{{$value->amount_per}}" name="Other[{{$i}}][amount_per]" placeholder="Enter Amount/Per">
+                                 </div>
+                                 <div class="form-group col-md-3 col-12">
+                                       <div class="plusing-btn">
+                                         
+                                       </div>
+                                 </div>
+                                 @php
+                                 $i++
+                                 @endphp
+                                 @endforeach
+                           <!--  -->
+                           @endif
                            </div>
                            <div id="dynamicAddFiled"></div>
 
@@ -293,12 +383,12 @@
                               <div class="form-group text-center custom-mt-form-group">
                                  <button class="btn btn-primary mr-2" type="submit"><i class="fa fa-check"></i> Save</button>
                                  <button class="btn btn-primary mr-2" type="button"><i class="fa fa-expand"></i> Export</button>
-                                 <button class="btn btn-secondary orng-btn" type="reset"><i class="fa fa-dot-circle"></i> Reset</button>
+                                 <button  onclick="window.location.reload();" class="btn btn-secondary orng-btn" type="reset"><i class="fa fa-dot-circle"></i> Reset</button>
                               </div>
                             </div>
                         </div>
 
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+               <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                   <div class="bg-clr">
                      <div class="row">
                            <div class="col-md-3">
@@ -382,7 +472,7 @@
                                     <tbody>
                                     @foreach($clientMaster as $row)
                                     <tr>
-                                       <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
+                                       <td><a class="btn btn-primary" href="{{route('client.master')}}?id={{$row->id}}"> <i class="fa fa-pencil-alt"></i></a></td>
                                        <td><a class="btn btn-primary" href="{{route('client.master.delete',$row->id)}}" onclick="return confirm('Are you sure you want to delete this record?')"> <i class="fa fa-trash-alt"></i></a></td>
                                        <td>{{$row->client_code}}</td>
                                        <td>{{$row->client_name}}</td>

@@ -33,23 +33,23 @@
                                </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Company Code*</label>
-                                   <input type="text" class="form-control" name="data[company_code]" value="{{ $website['company_code'] }}" placeholder="CM1739">
+                                   <input type="text" class="form-control" name="data[company_code]" value="{{ (isset($website['company_code']) ? $website['company_code'] :'') }}" placeholder="CM1739">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Mobile No*</label>
-                                   <input type="text" class="form-control" name="data[company_mobile_no]"  value="{{ $website['company_mobile_no'] }}" placeholder="9868404418">
+                                   <input type="text" class="form-control" name="data[company_mobile_no]"  value="{{ (isset($website['company_mobile_no']) ? $website['company_mobile_no'] :'') }}" placeholder="9868404418">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Company Name*</label>
-                                   <input type="text" name="data[company_name]" class="form-control"   value="{{ $website['company_name'] }}"  required value="sattvic">
+                                   <input type="text" name="data[company_name]" class="form-control"   value="{{ (isset($website['company_name']) ? $website['company_name'] :'') }}"  required value="sattvic">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Email ID*</label>
-                                   <input type="text" class="form-control" name="data[company_email_id]" value="{{ $website['company_email_id'] }}" placeholder="sunildrishti@gmail.com">
+                                   <input type="text" class="form-control" name="data[company_email_id]" value="{{ (isset($website['company_email_id']) ? $website['company_email_id'] :'') }}" placeholder="sunildrishti@gmail.com">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Contact Person*</label>
-                                   <input type="text" class="form-control" name="data[company_contact_person]" value="{{ $website['company_contact_person'] }}" required value="Sunil">
+                                   <input type="text" class="form-control" name="data[company_contact_person]" value="{{ (isset($website['company_contact_person']) ? $website['company_contact_person'] :'') }}" required value="Sunil">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>GSTIN*</label>
@@ -57,22 +57,22 @@
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>PAN*</label>
-                                   <input type="text" class="form-control" name="data[company_pan]"  value="{{ $website['company_pan'] }}" required placeholder="PAN">
+                                   <input type="text" class="form-control" name="data[company_pan]"  value="{{ (isset($website['company_pan']) ? $website['company_pan'] :'') }}" required placeholder="PAN">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Address 1*</label>
-                                   <input type="text" class="form-control" name="data[company_address1]" value="{{ $website['company_address1'] }}" required placeholder="Address 1">
+                                   <input type="text" class="form-control" name="data[company_address1]" value="{{ (isset($website['company_address1']) ? $website['company_address1'] :'') }}" required placeholder="Address 1">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Website*</label>
-                                   <input type="text" class="form-control" name="data[company_website]" value="{{ $website['company_website'] }}" required placeholder="Website">
+                                   <input type="text" class="form-control" name="data[company_website]" value="{{ (isset($website['company_website']) ? $website['company_website'] :'') }}" required placeholder="Website">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Address 2*</label>
-                                   <input type="text" class="form-control" name="data[company_address2]" value="{{ $website['company_address2'] }}" required placeholder="Address 2">
+                                   <input type="text" class="form-control" name="data[company_address2]" value="{{ (isset($website['company_address2']) ? $website['company_address2'] :'') }}" required placeholder="Address 2">
                                 </div>
                                 <?php
-                                 if($website['company_logo']!=null){
+                                 if(isset($website['company_logo'])){
                                     $checkReqLogo = '';
                                     $img_url = asset('logistics/website/').'/'.$website['company_logo'];
                                  }else{
@@ -91,34 +91,45 @@
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Pin Code*</label>
-                                   <input type="text" required class="form-control" name="data[company_pincode]" required value="{{ $website['company_pincode'] }}" placeholder="Pin Code">
+                                   <input type="text" required class="form-control" name="data[company_pincode]" required value="{{ (isset($website['company_pincode']) ? $website['company_pincode'] :'') }}" placeholder="Pin Code">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Country*</label>
-                                   <input type="text" required class="form-control" name="data[company_country_id]"  value="{{ $website['company_country_id'] }}">
+                                   <input type="text" required class="form-control" name="data[company_country_id]"  value="{{ (isset($website['company_country_id']) ? $website['company_country_id'] :'') }}">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>State*</label>
-                                   <input type="text" required class="form-control" name="data[company_state_id]"  value="{{ $website['company_state_id'] }}">
+                                   <input type="text" required class="form-control" name="data[company_state_id]"  value="{{ (isset($website['company_state_id']) ? $website['company_state_id'] :'') }}">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>City*</label>
-                                   <input type="text" required class="form-control" name="data[company_city_id]" value="{{ $website['company_city_id'] }}">
+                                   <input type="text" required class="form-control" name="data[company_city_id]" value="{{ (isset($website['company_city_id']) ? $website['company_city_id'] :'') }}">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>AWB Start From*</label>
-                                   <input type="text" required class="form-control" name="data[company_awb_start_from]" value="{{ $website['company_awb_start_from'] }}" placeholder="AWB Start From">
+                                   <input type="text" required class="form-control" name="data[company_awb_start_from]" value="{{ (isset($website['company_awb_start_from']) ? $website['company_awb_start_from'] :'') }}" placeholder="AWB Start From">
                                 </div>
+                                <?php
+                                 $company_awb_start_from = '';
+                                 $company_bill_currency = '';
+                                 if(isset($website['company_awb_start_from'])){
+                                    $company_awb_start_from = $website['company_awb_start_from'];
+                                 }
+                                 if(isset($website['company_bill_currency'])){
+                                    $company_bill_currency = $website['company_bill_currency'];
+                                 }
+
+                                ?>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Weight Unit*</label>
                                        <select class="form-control select required" name="data[company_weight_unit]">
                                           <option value="">--Select Weight Unit--</option>
-                                          <option value="KGS" <?php echo ($website['company_awb_start_from']=='KGS'?'':'selected');?>>KGS</option>
-                                          <option value="LBS" <?php echo ($website['company_awb_start_from']=='LBS'?'':'selected');?>>LBS</option>
+                                          <option value="KGS" <?php echo ($company_awb_start_from=='KGS'?'':'selected');?>>KGS</option>
+                                          <option value="LBS" <?php echo ($company_awb_start_from=='LBS'?'':'selected');?>>LBS</option>
                                        </select>
                                 </div>
                                 <?php
-                                 if($website['company_dashboard_img']!=null){
+                                 if(isset($website['company_dashboard_img'])){
                                     $checkReq = '';
                                     $img_url = asset('logistics/website/').'/'.$website['company_dashboard_img'];
                                  }else{
@@ -140,19 +151,19 @@
                                    <label>Billing Currency*</label>
                                        <select class="form-control select" required name="data[company_bill_currency]">
                                           <option value="">--Select Currency--</option>
-                                          <option value="AED" <?php echo ($website['company_awb_start_from']=='AED'?'':'selected');?>>AED</option>
-                                          <option value="AUD" <?php echo ($website['company_awb_start_from']=='AUD'?'':'selected');?>>AUD</option>
-                                          <option value="CAD" <?php echo ($website['company_awb_start_from']=='CAD'?'':'selected');?>>CAD</option>
-                                          <option value="CHF" <?php echo ($website['company_awb_start_from']=='CHF'?'':'selected');?>>CHF</option>
-                                          <option value="Euro" <?php echo ($website['company_awb_start_from']=='Euro'?'':'selected');?>>Euro</option>
-                                          <option value="GBP" <?php echo ($website['company_awb_start_from']=='GBP'?'':'selected');?>>GBP</option>
-                                          <option value="HKD" <?php echo ($website['company_awb_start_from']=='HKD'?'':'selected');?>>HKD</option>
-                                          <option value="Rupees" <?php echo ($website['company_awb_start_from']=='Rupees'?'':'selected');?>>Rupees</option>
-                                          <option value="JPY" <?php echo ($website['company_awb_start_from']=='JPY'?'':'selected');?>>JPY</option>
-                                          <option value="RUB" <?php echo ($website['company_awb_start_from']=='RUB'?'':'selected');?>>RUB</option>
-                                          <option value="SAR" <?php echo ($website['company_awb_start_from']=='SAR'?'':'selected');?>>SAR</option>
-                                          <option value="SGD" <?php echo ($website['company_awb_start_from']=='SGD'?'':'selected');?>>SGD</option>
-                                          <option value="USD" <?php echo ($website['company_awb_start_from']=='USD'?'':'selected');?>>USD</option>
+                                          <option value="AED" <?php echo ($company_bill_currency=='AED'?'':'selected');?>>AED</option>
+                                          <option value="AUD" <?php echo ($company_bill_currency=='AUD'?'':'selected');?>>AUD</option>
+                                          <option value="CAD" <?php echo ($company_bill_currency=='CAD'?'':'selected');?>>CAD</option>
+                                          <option value="CHF" <?php echo ($company_bill_currency=='CHF'?'':'selected');?>>CHF</option>
+                                          <option value="Euro" <?php echo ($company_bill_currency=='Euro'?'':'selected');?>>Euro</option>
+                                          <option value="GBP" <?php echo ($company_bill_currency=='GBP'?'':'selected');?>>GBP</option>
+                                          <option value="HKD" <?php echo ($company_bill_currency=='HKD'?'':'selected');?>>HKD</option>
+                                          <option value="Rupees" <?php echo ($company_bill_currency=='Rupees'?'':'selected');?>>Rupees</option>
+                                          <option value="JPY" <?php echo ($company_bill_currency=='JPY'?'':'selected');?>>JPY</option>
+                                          <option value="RUB" <?php echo ($company_bill_currency=='RUB'?'':'selected');?>>RUB</option>
+                                          <option value="SAR" <?php echo ($company_bill_currency=='SAR'?'':'selected');?>>SAR</option>
+                                          <option value="SGD" <?php echo ($company_bill_currency=='SGD'?'':'selected');?>>SGD</option>
+                                          <option value="USD" <?php echo ($company_bill_currency=='USD'?'':'selected');?>>USD</option>
                                        </select>
                                 </div>
 

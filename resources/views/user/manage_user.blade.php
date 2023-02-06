@@ -130,7 +130,7 @@
                              <div class="row">
                                 <div class="col-md-3">
                                     <div class="frm-heading">
-                                        <h3>Total Record(s) Found: 1</h3>
+                                        <h3>Total Record(s) Found: {{$users->count()}}</h3>
                                     </div>
                                 </div>
                                 <div class="col-md-2">

@@ -49,7 +49,7 @@
                                  <button class="btn btn-primary mr-2" type="submit"><i class="fa fa-paper-plane"></i> Submit</button>
                                  <button class="btn btn-primary mr-2" type="button"><i class="fa fa-search"></i> Search</button>
                                  <button class="btn btn-primary mr-2" type="button"><i class="fa fa-expand"></i> Export</button>
-                                 <button class="btn btn-secondary orng-btn" type="reset"><i class="fa fa-dot-circle"></i> Reset</button>
+                                 <button onclick="window.location.reload();" class="btn btn-secondary orng-btn" type="reset"><i class="fa fa-dot-circle"></i> Reset</button>
                               </div>
                             </div>
                         </div>

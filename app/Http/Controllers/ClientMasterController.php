@@ -11,12 +11,19 @@ use Illuminate\Http\Request;
 class ClientMasterController extends Controller
 {
     public function clientMaster(Request $request){
+        $editId = $request->query('id',0);
         $country = Country::select('*')->where('isActive',1)->get();
         $clientMaster = ClientMaster::join('country','country.id','=','client_masters.country_id')
-        ->select('client_masters.*','country.country_name')->get();
-        return view('client.client_master',compact('country','clientMaster'));
+        ->select('client_masters.*','country.country_name')->whereNull('deleted_at')->get();
+        $client=null;$OtherCharges=null;
+        if($editId!=0){
+            $client = ClientMaster::select('*')->where('id',$editId)->first();
+            $OtherCharges = ClientOtherCharges::select('*')->where('client_id',$editId)->get();
+        }
+        return view('client.client_master',compact('country','clientMaster','client','OtherCharges'));
     }
     public function clientMasterSave(Request $request){
+        $id = $request->id;
         $insData = [
         'client_code'=>isset($request->client_code) ? $request->client_code : null,
         'client_name'=>isset($request->client_name) ? $request->client_name : null,
@@ -48,46 +55,78 @@ class ClientMasterController extends Controller
         'bill_generate_label'=>isset($request->bill_generate_label) ? $request->bill_generate_label : 0,
         'bill_no_invoice_amount'=>isset($request->bill_no_invoice_amount) ? $request->bill_no_invoice_amount : 0,
         ];
-        $result = ClientMaster::create($insData);
-
-        if(isset($request->Other) && count($request->Other) > 0){
-            foreach($request->Other as $otherItem){
-                $saveVendor[] = [
-                'client_id' => $result->id,
-                'charge_type' => isset($otherItem['charge_type']) ? $otherItem['charge_type']: NULL,
-                'type' => isset($otherItem['type']) ? $otherItem['type']: NULL,
-                'amount_per' => isset($otherItem['amount_per']) ? $otherItem['amount_per']: 0,
-                'created_at' => date('Y-m-d h:s:i'),
-                'updated_at' => date('Y-m-d h:s:i'),
-                ];   
+        if($id==0){
+            $result = ClientMaster::create($insData);
+            if(isset($request->Other) && count($request->Other) > 0){
+                foreach($request->Other as $otherItem){
+                    $saveVendor[] = [
+                    'client_id' => $result->id,
+                    'charge_type' => isset($otherItem['charge_type']) ? $otherItem['charge_type']: NULL,
+                    'type' => isset($otherItem['type']) ? $otherItem['type']: NULL,
+                    'amount_per' => isset($otherItem['amount_per']) ? $otherItem['amount_per']: 0,
+                    'created_at' => date('Y-m-d h:s:i'),
+                    'updated_at' => date('Y-m-d h:s:i'),
+                    ];   
+                }
+                ClientOtherCharges::insert($saveVendor);
             }
-            ClientOtherCharges::insert($saveVendor);
-        }
-
-        
-        if(isset($request->contact) && count($request->contact) > 0){
-            foreach($request->contact as $contactItem){
-                $saveContact[] = [
-                'client_id' => $result->id,
-                'contact_person_name' => isset($contactItem['contact_person_name']) ? $contactItem['contact_person_name']: NULL,
-                'mobile_no' => isset($contactItem['mobile_no']) ? $contactItem['mobile_no']: NULL,
-                'email_id' => isset($contactItem['email_id']) ? $contactItem['email_id']: null,
-                'created_at' => date('Y-m-d h:s:i'),
-                'updated_at' => date('Y-m-d h:s:i'),
-                ];   
+            
+            if(isset($request->contact) && count($request->contact) > 0){
+                foreach($request->contact as $contactItem){
+                    $saveContact[] = [
+                    'client_id' => $result->id,
+                    'contact_person_name' => isset($contactItem['contact_person_name']) ? $contactItem['contact_person_name']: NULL,
+                    'mobile_no' => isset($contactItem['mobile_no']) ? $contactItem['mobile_no']: NULL,
+                    'email_id' => isset($contactItem['email_id']) ? $contactItem['email_id']: null,
+                    'created_at' => date('Y-m-d h:s:i'),
+                    'updated_at' => date('Y-m-d h:s:i'),
+                    ];   
+                }
+                ClientContactPerson::insert($saveContact);
             }
-            ClientContactPerson::insert($saveContact);
-        }
-        if($result){
-            return redirect()->back()->with('success','Client created successfully!');
+            if($result){
+                return redirect()->back()->with('success','Client created successfully!');
+            }else{
+                return redirect()->back()->with('error','Something went wrong please try again!');
+            }
         }else{
-            return redirect()->back()->with('error','Something went wrong please try again!');
+            $result = ClientMaster::where('id',$id)->update($insData);
+            // ClientOtherCharges::where('client_id',$id)->delete();
+            
+            if(isset($request->Other) && count($request->Other) > 0){
+                foreach($request->Other as $otherItem){
+                    if(isset($otherItem['id']) && $otherItem['id'] > 0){
+                        $updateOther[] = [
+                        // 'client_id' => $result->id,
+                        'charge_type' => isset($otherItem['charge_type']) ? $otherItem['charge_type']: NULL,
+                        'type' => isset($otherItem['type']) ? $otherItem['type']: NULL,
+                        'amount_per' => isset($otherItem['amount_per']) ? $otherItem['amount_per']: 0,
+                        'created_at' => date('Y-m-d h:s:i'),
+                        'updated_at' => date('Y-m-d h:s:i'),
+                        ];   
+                        ClientOtherCharges::where('id',$otherItem['id'])->update($updateOther);
+                    }else{
+                        $saveVendor[] = [
+                            'client_id' => $id,
+                            'charge_type' => isset($otherItem['charge_type']) ? $otherItem['charge_type']: NULL,
+                            'type' => isset($otherItem['type']) ? $otherItem['type']: NULL,
+                            'amount_per' => isset($otherItem['amount_per']) ? $otherItem['amount_per']: 0,
+                            'created_at' => date('Y-m-d h:s:i'),
+                            'updated_at' => date('Y-m-d h:s:i'),
+                            ];   
+                        ClientOtherCharges::insert($saveVendor);
+                    }
+                }
+            }
+            if($result){
+                return redirect()->back()->with('success','Client created successfully!');
+            }else{
+                return redirect()->back()->with('error','Something went wrong please try again!');
+            }
         }
     }
     public function clientMasterDelete($id){
-        $result =ClientMaster::where('id',$id)->delete();
-        ClientOtherCharges::where('client_id',$id)->delete();
-        ClientContactPerson::where('client_id',$id)->delete();
+        $result =ClientMaster::where('id',$id)->update(['deleted_at'=>NOW()]);
         if($result){
             return redirect()->back()->with('success','Client deleted successfully!');
         }else{
