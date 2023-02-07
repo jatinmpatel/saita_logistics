@@ -287,10 +287,11 @@
                                 </div>
                            <!--  -->
                            <!--  -->
-                           @if($OtherCharges)
                            @php 
                            $i=1;
                            @endphp
+                           @if($OtherCharges)
+                          
                               @foreach($OtherCharges as $key =>$value)
                                  <div class="form-group col-md-3 col-12">
                                     <label>Charge Type*</label>

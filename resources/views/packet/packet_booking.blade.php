@@ -93,19 +93,19 @@
                                    <input type="text" class="form-control" placeholder="Enter Email ID">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
-                                   <label>PAN*</label>
+                                   <label>PAN</label>
                                    <input type="text" class="form-control" placeholder="Enter PAN">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
-                                   <label>GSTIN*</label>
+                                   <label>GSTIN</label>
                                    <input type="text" class="form-control" placeholder="Enter GSTIN">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
-                                   <label>IEC*</label>
+                                   <label>IEC</label>
                                    <input type="text" class="form-control" placeholder="Enter IEC">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
-                                   <label>AadhaarNo*</label>
+                                   <label>AadhaarNo</label>
                                    <input type="text" class="form-control" placeholder="Enter AadhaarNo">
                                 </div>
                            </div>
@@ -161,19 +161,19 @@
                                    <input type="text" class="form-control" placeholder="Enter Email ID">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
-                                   <label>PAN*</label>
+                                   <label>PAN</label>
                                    <input type="text" class="form-control" placeholder="Enter PAN">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
-                                   <label>GSTIN*</label>
+                                   <label>GSTIN</label>
                                    <input type="text" class="form-control" placeholder="Enter GSTIN">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
-                                   <label>IEC*</label>
+                                   <label>IEC</label>
                                    <input type="text" class="form-control" placeholder="Enter IEC">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
-                                   <label>AadhaarNo*</label>
+                                   <label>AadhaarNo</label>
                                    <input type="text" class="form-control" placeholder="Enter AadhaarNo">
                                 </div>
                            </div>
@@ -240,8 +240,17 @@
                                    <div class="smalling-wdh">
                                      <label>Total Value*</label>
                                      <input type="text" class="form-control" placeholder="Total Value">
+                                      <select id="ddlCurrencyType" class="form-control" tabindex="1" name="ddlCurrencyType">
+<option value="AED">AED</option><option value="AUD">AUD</option><option value="CAD">CAD</option><option value="CHF">CHF</option><option value="CNY">CNY</option><option value="EUR">EUR</option><option value="GBP">GBP</option><option value="HKD">HKD</option><option value="INR">INR</option><option value="JPY">JPY</option><option value="RUB">RUB</option><option value="SAR">SAR</option><option value="SGD">SGD</option><option value="USD">USD</option>
+                                            </select>
                                    </div>
+                                   
                                 </div>
+                                
+                               
+                               
+                               
+                               
                                 <div class="form-group col-md-3 col-12">
                                    <label>Divisor*</label>
                                    <select class="form-control select">
@@ -251,6 +260,7 @@
                                        <option value="4500">4500</option>
                                     </select>
                                 </div>
+                                
                            </div>
 
                            <div class="row">

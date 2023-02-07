@@ -10,6 +10,7 @@ use App\Http\Controllers\ZoneMasterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WebsiteSettingController;
 use App\Http\Controllers\VendorMainFestController;
+use App\Http\Controllers\RoleMangerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,4 +94,7 @@ Route::group(['prefix' => '', 'middleware' => ['auth']], function(){
 
     Route::resource('vendor-manifest', VendorMainFestController::class);
     Route::post('vendor-manifest', [VendorMainFestController::class,'create'])->name('vendor-manifest-create');
+
+    Route::resource('role-manager', RoleMangerController::class);
+    Route::get('role-manager-delete/{id}', [RoleMangerController::class, 'delete'])->name('role-manager.delete');
 });
