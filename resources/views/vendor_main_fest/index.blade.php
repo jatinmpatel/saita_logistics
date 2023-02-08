@@ -53,17 +53,17 @@
                                      <label>Forwarder*</label>
                                      <select class="form-control select" name="forwarder">
                                        <option>--Select Forwarder--</option>
-                                       <option value="ARAMEX">ARAMEX</option>
+                                       <option value="DHL">DHL</option>
+                                       <option value="FEDEX">FEDEX</option>
+                                       <!-- <option value="ARAMEX">ARAMEX</option>
                                        <option value="BLUEDART">BLUEDART</option>
                                        <option value="CRITICAL LOG">CRITICAL LOG</option>
                                        <option value="DELHIVERY">DELHIVERY</option>
                                        <option value="DELHIVERYB2B">DELHIVERYB2B</option>
-                                       <option value="DHL">DHL</option>
                                        <option value="DPD">DPD</option>
                                        <option value="DTDC">DTDC</option>
                                        <option value="ECSSPL">ECSSPL</option>
                                        <option value="EKART">EKART</option>
-                                       <option value="FEDEX">FEDEX</option>
                                        <option value="LINEX">LINEX</option>
                                        <option value="NIMBUSPOST">NIMBUSPOST</option>
                                        <option value="PROFESSIONAL">PROFESSIONAL</option>
@@ -75,7 +75,7 @@
                                        <option value="UPS">UPS</option>
                                        <option value="USPS">USPS</option>
                                        <option value="XPRESSBEES">XPRESSBEES</option>
-                                       <option value="YODEL">YODEL</option>
+                                       <option value="YODEL">YODEL</option> -->
                                     </select>
                                 </div>
                                 <div class="form-group col-md-6 col-12">

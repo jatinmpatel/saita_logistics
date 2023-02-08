@@ -29,7 +29,6 @@ class ClientMasterController extends Controller
         $this->validate($request,[
             'country_name'=>'required',
             'client_name'=>'required',
-            'sales_person'=>'required',
             'client'=>'required',
             'address1'=>'required',
             'state_id'=>'required',
@@ -44,7 +43,6 @@ class ClientMasterController extends Controller
         $insData = [
         'client_code'=>isset($request->client_code) ? $request->client_code : null,
         'client_name'=>isset($request->client_name) ? $request->client_name : null,
-        'sales_person'=>isset($request->sales_person) ? $request->sales_person : null,
         'client'=>isset($request->client) ? $request->client : null,
         'address1'=>isset($request->address1) ? $request->address1 : null,
         'state_id'=>isset($request->state_id) ? $request->state_id : null,

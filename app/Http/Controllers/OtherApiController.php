@@ -6,6 +6,14 @@ use Illuminate\Http\Request;
 use App\Models\Country;
 use App\Models\Reason;
 use Auth;
+
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Reader\Exception;
+use PhpOffice\PhpSpreadsheet\Writer\Xls;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+
 class OtherApiController extends Controller
 {
    
@@ -22,6 +30,35 @@ class OtherApiController extends Controller
     }
 
     public function countryMaster(Request $request){
+
+        $fileName = 'Credit Card Authorization List.csv';
+        $employees = Country::select('*')->get();
+
+        $type = 'xlsx';
+       
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet->setCellValue('A1', 'Id');
+        $sheet->setCellValue('B1', 'Name');
+       
+        $rows = 2;
+        foreach($employees as $empDetails){
+        $sheet->setCellValue('A' . $rows, $empDetails['country_code']);
+        $sheet->setCellValue('B' . $rows, 'fdf');
+        $rows++;
+        }
+        $fileName = "emp.".$type;
+        if($type == 'xlsx') {
+        $writer = new Xlsx($spreadsheet);
+        } else if($type == 'xls') {
+        $writer = new Xls($spreadsheet);
+        }
+        $writer->save("export/".$fileName);
+        header("Content-Type: application/vnd.ms-excel");
+        // return redirect(url('/')."/export/".$fileName);
+        exit;
+
+
         $country = Country::select('*');
         $totalCoutry = $country->count();
         $country = $country->paginate(env('page_default_val'));

@@ -38,10 +38,10 @@
                                  <label>Client Name*</label>
                                  <input type="text" value="{{(isset($client->client_name) ? $client->client_name : '')}}" name="client_name" id="client_name" required class="form-control" placeholder="Enter Client Name">
                               </div>
-                              <div class="form-group col-md-3 col-12">
+                              <!-- <div class="form-group col-md-3 col-12">
                                  <label>Sales Person*</label>
-                                 <input type="text" value="{{(isset($client->sales_person) ? $client->sales_person : '')}}" name="sales_person" id="sales_person" required class="form-control" placeholder="Enter Sales Person">
-                              </div>
+                                 <input type="text" value="" name="sales_person" id="sales_person" required class="form-control" placeholder="Enter Sales Person">
+                              </div> -->
                               <div class="form-group col-md-3 col-12">
                                  <label>Client*</label>
                                  <input type="text" value="{{(isset($client->client) ? $client->client : '')}}"  name="client" id="client" required class="form-control" placeholder="Enter Client">
@@ -359,7 +359,7 @@
                                 </div>
                            </div>
                            <div id="dynamicAddFiledContact"></div>
-                           <div class="row">
+                           <!-- <div class="row">
                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                  <div class="frm-heading">
                                    <h3>Generate Client Booking API Token</h3>
@@ -376,7 +376,7 @@
                                        <input type="text" name="booking_API_token" class="form-control" placeholder="Booking API Token" disabled="">
                                      </div>
                                 </div>
-                           </div>
+                           </div> -->
 
                          </div>
                          <hr>

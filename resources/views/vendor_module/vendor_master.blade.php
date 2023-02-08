@@ -112,16 +112,17 @@
                                  <label>Forwarder*</label>
                                  <select class="form-control select" name="vendor[0][forwarder]">
                                     <option>--Select--</option>
-                                    <option value="ARAMEX">ARAMEX</option>
+                                    <option value="DHL">DHL</option>
+                                    <option value="FEDEX">FEDEX</option>
+                                    
+                                    <!-- <option value="ARAMEX">ARAMEX</option>
                                     <option value="BLUEDART">BLUEDART</option>
                                     <option value="CRITICAL LOG">CRITICAL LOG</option>
                                     <option value="DELHIVERY">DELHIVERY</option>
                                     <option value="DELHIVERYB2B">DELHIVERYB2B</option>
-                                    <option value="DHL">DHL</option>
                                     <option value="DPD">DPD</option>
                                     <option value="DTDC">DTDC</option>
                                     <option value="EKART">EKART</option>
-                                    <option value="FEDEX">FEDEX</option>
                                     <option value="LINEX">LINEX</option>
                                     <option value="NIMBUSPOST">NIMBUSPOST</option>
                                     <option value="PROFESSIONAL">PROFESSIONAL</option>
@@ -133,7 +134,7 @@
                                     <option value="UPS">UPS</option>
                                     <option value="USPS">USPS</option>
                                     <option value="XPRESSBEES">XPRESSBEES</option>
-                                    <option value="YODEL">YODEL</option>
+                                    <option value="YODEL">YODEL</option> -->
                                  </select>
                                 </div>
                                 <div class="form-group col-md-3 col-12">
@@ -145,7 +146,7 @@
                                     <select class="form-control select" name="vendor[0][packaging]">
                                           <option>--Select--</option>
                                           <option value="FEDEX">FEDEX</option>
-                                          <option value="UPS">UPS</option>
+                                          <!-- <option value="UPS">UPS</option> -->
                                     </select>
                                  </div>
                                  <div class="form-group col-md-2 col-12">
@@ -153,7 +154,7 @@
                                     <select class="form-control select" name="vendor[0][mode]">
                                           <option>--Select--</option>
                                           <option value="FEDEX">FEDEX</option>
-                                          <option value="UPS">UPS</option>
+                                          <!-- <option value="UPS">UPS</option> -->
                                     </select>
                                  </div>
                                 <div class="form-group col-md-3 col-12 pl-0">
@@ -410,28 +411,30 @@ function GenrateAjaxHtml(data){
                      '<input type="hidden" name="vendor['+addval+'][id]" value="'+value.id+'">'+
                      '<select class="form-control select" name="vendor['+addval+'][forwarder]">'+
                         '<option>--Select--</option>'+
-                        '<option value="ARAMEX" '+(value.forwarder=='ARAMEX'?'selected':'')+'>ARAMEX</option>'+
-                        '<option value="BLUEDART" '+(value.forwarder=='BLUEDART'?'selected':'')+'>BLUEDART</option>'+
-                        '<option value="CRITICAL LOG" '+(value.forwarder=='CRITICAL LOG'?'selected':'')+'>CRITICAL LOG</option>'+
-                        '<option value="DELHIVERY" '+(value.forwarder=='DELHIVERY'?'selected':'')+'>DELHIVERY</option>'+
-                        '<option value="DELHIVERYB2B" '+(value.forwarder=='DELHIVERYB2B'?'selected':'')+'>DELHIVERYB2B</option>'+
                         '<option value="DHL" '+(value.forwarder=='DHL'?'selected':'')+'>DHL</option>'+
-                        '<option value="DPD" '+(value.forwarder=='DPD'?'selected':'')+'>DPD</option>'+
-                        '<option value="DTDC" '+(value.forwarder=='DTDC'?'selected':'')+'>DTDC</option>'+
-                        '<option value="EKART" '+(value.forwarder=='EKART'?'selected':'')+'>EKART</option>'+
                         '<option value="FEDEX" '+(value.forwarder=='FEDEX'?'selected':'')+'>FEDEX</option>'+
-                        '<option value="LINEX" '+(value.forwarder=='LINEX'?'selected':'')+'>LINEX</option>'+
-                        '<option value="NIMBUSPOST" '+(value.forwarder=='NIMBUSPOST'?'selected':'')+'>NIMBUSPOST</option>'+
-                        '<option value="PROFESSIONAL" '+(value.forwarder=='PROFESSIONAL'?'selected':'')+'>PROFESSIONAL</option>'+
-                        '<option value="SELF" '+(value.forwarder=='SELF'?'selected':'')+'>SELF</option>'+
-                        '<option value="SKYNET" '+(value.forwarder=='SKYNET'?'selected':'')+'>SKYNET</option>'+
-                        '<option value="SPOTON" '+(value.forwarder=='SPOTON'?'selected':'')+'>SPOTON</option>'+
-                        '<option value="TNT" '+(value.forwarder=='TNT'?'selected':'')+'>TNT</option>'+
-                        '<option value="TRACKON" '+(value.forwarder=='TRACKON'?'selected':'')+'>TRACKON</option>'+
-                        '<option value="UPS" '+(value.forwarder=='UPS'?'selected':'')+'>UPS</option>'+
-                        '<option value="USPS" '+(value.forwarder=='USPS'?'selected':'')+'>USPS</option>'+
-                        '<option value="XPRESSBEES" '+(value.forwarder=='XPRESSBEES'?'selected':'')+'>XPRESSBEES</option>'+
-                        '<option value="YODEL" '+(value.forwarder=='YODEL'?'selected':'')+'>YODEL</option>'+
+                        // '<option value="ARAMEX" '+(value.forwarder=='ARAMEX'?'selected':'')+'>ARAMEX</option>'+
+                        // '<option value="BLUEDART" '+(value.forwarder=='BLUEDART'?'selected':'')+'>BLUEDART</option>'+
+                        // '<option value="CRITICAL LOG" '+(value.forwarder=='CRITICAL LOG'?'selected':'')+'>CRITICAL LOG</option>'+
+                        // '<option value="DELHIVERY" '+(value.forwarder=='DELHIVERY'?'selected':'')+'>DELHIVERY</option>'+
+                        // '<option value="DELHIVERYB2B" '+(value.forwarder=='DELHIVERYB2B'?'selected':'')+'>DELHIVERYB2B</option>'+
+                        
+                        // '<option value="DPD" '+(value.forwarder=='DPD'?'selected':'')+'>DPD</option>'+
+                        // '<option value="DTDC" '+(value.forwarder=='DTDC'?'selected':'')+'>DTDC</option>'+
+                        // '<option value="EKART" '+(value.forwarder=='EKART'?'selected':'')+'>EKART</option>'+
+                        
+                        // '<option value="LINEX" '+(value.forwarder=='LINEX'?'selected':'')+'>LINEX</option>'+
+                        // '<option value="NIMBUSPOST" '+(value.forwarder=='NIMBUSPOST'?'selected':'')+'>NIMBUSPOST</option>'+
+                        // '<option value="PROFESSIONAL" '+(value.forwarder=='PROFESSIONAL'?'selected':'')+'>PROFESSIONAL</option>'+
+                        // '<option value="SELF" '+(value.forwarder=='SELF'?'selected':'')+'>SELF</option>'+
+                        // '<option value="SKYNET" '+(value.forwarder=='SKYNET'?'selected':'')+'>SKYNET</option>'+
+                        // '<option value="SPOTON" '+(value.forwarder=='SPOTON'?'selected':'')+'>SPOTON</option>'+
+                        // '<option value="TNT" '+(value.forwarder=='TNT'?'selected':'')+'>TNT</option>'+
+                        // '<option value="TRACKON" '+(value.forwarder=='TRACKON'?'selected':'')+'>TRACKON</option>'+
+                        // '<option value="UPS" '+(value.forwarder=='UPS'?'selected':'')+'>UPS</option>'+
+                        // '<option value="USPS" '+(value.forwarder=='USPS'?'selected':'')+'>USPS</option>'+
+                        // '<option value="XPRESSBEES" '+(value.forwarder=='XPRESSBEES'?'selected':'')+'>XPRESSBEES</option>'+
+                        // '<option value="YODEL" '+(value.forwarder=='YODEL'?'selected':'')+'>YODEL</option>'+
                      '</select>'+
                   '</div>'+
                   '<div class="form-group col-md-3 col-12">'+
@@ -443,7 +446,7 @@ function GenrateAjaxHtml(data){
                      '<select class="form-control select"  name="vendor['+addval+'][packaging]">'+
                         '<option>--Select--</option>'+
                         '<option value="FEDEX" '+(value.packagin_group=='FEDEX'?'selected':'')+'>FEDEX</option>'+
-                        '<option value="UPS" '+(value.packagin_group=='UPS'?'selected':'')+'>UPS</option>'+
+                        // '<option value="UPS" '+(value.packagin_group=='UPS'?'selected':'')+'>UPS</option>'+
                      '</select>'+
                   '</div>'+
                   '<div class="form-group col-md-2 col-12">'+
@@ -451,7 +454,7 @@ function GenrateAjaxHtml(data){
                      '<select class="form-control select" name="vendor['+addval+'][mode]">'+
                         '<option>--Select--</option>'+
                         '<option value="FEDEX" '+(value.mode=='FEDEX'?'selected':'')+'>FEDEX</option>'+
-                        '<option value="UPS" '+(value.mode=='UPS'?'selected':'')+'>UPS</option>'+
+                        // '<option value="UPS" '+(value.mode=='UPS'?'selected':'')+'>UPS</option>'+
                      '</select>'+
                   '</div>'+
                   
@@ -476,28 +479,30 @@ function GenrateHtml(addval) {
       '<label>Forwarder*</label>'+
       '<select class="form-control select" name="vendor['+addval+'][forwarder]">'+
          '<option>--Select--</option>'+
-         '<option value="ARAMEX">ARAMEX</option>'+
-         '<option value="BLUEDART">BLUEDART</option>'+
-         '<option value="CRITICAL LOG">CRITICAL LOG</option>'+
-         '<option value="DELHIVERY">DELHIVERY</option>'+
-         '<option value="DELHIVERYB2B">DELHIVERYB2B</option>'+
          '<option value="DHL">DHL</option>'+
-         '<option value="DPD">DPD</option>'+
-         '<option value="DTDC">DTDC</option>'+
-         '<option value="EKART">EKART</option>'+
          '<option value="FEDEX">FEDEX</option>'+
-         '<option value="LINEX">LINEX</option>'+
-         '<option value="NIMBUSPOST">NIMBUSPOST</option>'+
-         '<option value="PROFESSIONAL">PROFESSIONAL</option>'+
-         '<option value="SELF">SELF</option>'+
-         '<option value="SKYNET">SKYNET</option>'+
-         '<option value="SPOTON">SPOTON</option>'+
-         '<option value="TNT">TNT</option>'+
-         '<option value="TRACKON">TRACKON</option>'+
-         '<option value="UPS">UPS</option>'+
-         '<option value="USPS">USPS</option>'+
-         '<option value="XPRESSBEES">XPRESSBEES</option>'+
-         '<option value="YODEL">YODEL</option>'+
+         // '<option value="ARAMEX">ARAMEX</option>'+
+         // '<option value="BLUEDART">BLUEDART</option>'+
+         // '<option value="CRITICAL LOG">CRITICAL LOG</option>'+
+         // '<option value="DELHIVERY">DELHIVERY</option>'+
+         // '<option value="DELHIVERYB2B">DELHIVERYB2B</option>'+
+         
+         // '<option value="DPD">DPD</option>'+
+         // '<option value="DTDC">DTDC</option>'+
+         // '<option value="EKART">EKART</option>'+
+         
+         // '<option value="LINEX">LINEX</option>'+
+         // '<option value="NIMBUSPOST">NIMBUSPOST</option>'+
+         // '<option value="PROFESSIONAL">PROFESSIONAL</option>'+
+         // '<option value="SELF">SELF</option>'+
+         // '<option value="SKYNET">SKYNET</option>'+
+         // '<option value="SPOTON">SPOTON</option>'+
+         // '<option value="TNT">TNT</option>'+
+         // '<option value="TRACKON">TRACKON</option>'+
+         // '<option value="UPS">UPS</option>'+
+         // '<option value="USPS">USPS</option>'+
+         // '<option value="XPRESSBEES">XPRESSBEES</option>'+
+         // '<option value="YODEL">YODEL</option>'+
          '</select>'+
          '</div>'+
          '<div class="form-group col-md-3 col-12">'+
@@ -509,7 +514,7 @@ function GenrateHtml(addval) {
                '<select class="form-control select"  name="vendor['+addval+'][packaging]">'+
                   '<option>--Select--</option>'+
                   '<option value="FEDEX">FEDEX</option>'+
-                  '<option value="UPS">UPS</option>'+
+                  // '<option value="UPS">UPS</option>'+
                   '</select>'+
                   '</div>'+
                   '<div class="form-group col-md-2 col-12">'+
@@ -517,7 +522,7 @@ function GenrateHtml(addval) {
                      '<select class="form-control select" name="vendor['+addval+'][mode]">'+
                         '<option>--Select--</option>'+
                         '<option value="FEDEX">FEDEX</option>'+
-                        '<option value="UPS">UPS</option>'+
+                        // '<option value="UPS">UPS</option>'+
                      '</select>'+
                   '</div>'+
                   '<div class="form-group col-md-3 col-12 pl-0">'+
