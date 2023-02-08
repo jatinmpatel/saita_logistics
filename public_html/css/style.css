@@ -924,7 +924,7 @@ label {
 	position: relative;
     width: 240px;
 }
-#toggle_btn {margin-top: 7px;margin-left:10px;margin-right:10px;}
+#toggle_btn {margin-top: 10px;margin-left:10px;margin-right:10px;}
 .top-nav-search .form-control {
     background-color: rgba(255, 255, 255, 0.1);
     border: 1px solid #D5DBE1;
@@ -979,7 +979,7 @@ label {
     top: 10px;
     width: 270px;
     z-index: 99;
-    background-color: #392791;
+    background-color: #343434;
     bottom: 0;
     margin-top: 0px;
     position: fixed;
@@ -1005,7 +1005,7 @@ label {
 }
 .sidebar-menu ul.sidebar-ul {
     top: 80px;
-    background: #392791;
+    background: #343434;
 }
 .sidebar-menu li a img {
     margin-right: 10px;
@@ -1023,7 +1023,7 @@ label {
     border-top: 1px solid #e7e7e7;
  }
 .sidebar-menu li a:hover {
-    color: #4f74e3;
+    color: #ff6200;
 }
 .sidebar-menu li a > .badge {
     margin-top: 10px;
@@ -1040,7 +1040,7 @@ label {
 }
 .sidebar-menu li.active a {
     color: #fff;
-    background: #228EE1;
+    background: #ff8030;
     border-radius: 0;
 }
 .sidebar-menu li.submenu a.active.subdrop {
@@ -1134,21 +1134,21 @@ label {
 .mobile_btn {
     display: none;
 }
+#sidebar-menu ul ul {
+    background-color: #000;
+}
 #sidebar-menu ul ul a {
     display: block;
     padding: 10px 32px;
     border-top: 0;
     line-height: inherit;
-    border-bottom: 1px dashed #342481;
+    border-bottom: 1px dashed #585858;
 }
 #sidebar-menu ul ul ul a {
     padding-left: 80px;
 }
 #sidebar-menu ul ul ul ul a {
     padding-left: 100px;
-}
-#sidebar-menu ul ul {
-    background-color: #23136D;
 }
 .sidebar-menu > ul > li {
     position: relative;
@@ -1231,7 +1231,7 @@ label {
     padding: 15px;
     border-radius: 0;
     margin-bottom: 30px;
-    background: #2494E9;
+    background: #ff6200;
 }
 .page-title {
     color: #fff;
@@ -1314,7 +1314,7 @@ label {
     padding: 30px;
 }
 .account-logo {
-    margin-bottom: 20px;
+    margin-bottom: 45px;
     text-align: center;
 }
 .account-box .form-group {
@@ -1336,7 +1336,7 @@ label {
     text-transform: capitalize;
 }
 .btn.btn-primary.btn-block.account-btn {
-    background: #282283;
+    background: #ff5d21;
 }
 .account-box a:hover {
     color: #ffffff;
@@ -7387,7 +7387,7 @@ body[data-layout-mode=dark] .alertify .ajs-footer .ajs-buttons .ajs-button.ajs-o
 
 
 .frm-heading h3 {
-    background: #39279126;
+    background: #e9825126;
     padding: 8px 15px;
     font-size: 16px;
     color: #333;
@@ -7418,14 +7418,14 @@ body[data-layout-mode=dark] .alertify .ajs-footer .ajs-buttons .ajs-button.ajs-o
     color: red;
 }
 .page-btns button {
-    background: #5843BF;
-    border-color: #5843BF;
+    background: #ff5d21;
+    border-color: #ff5d21;
     padding: 4px 15px;
     font-size: 14px;
 }
 .orng-btn {
-    background: #2792E3 !important;
-    border-color: #2792E3 !important;
+    background: #ff5d21 !important;
+    border-color: #ff5d21 !important;
 }
 #chkUpdate {
     position: relative;

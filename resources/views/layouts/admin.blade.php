@@ -198,7 +198,7 @@
            <div id="sidebar-menu" class="sidebar-menu">
              <div class="header-left">
                <a href="{{ url('/home') }}" class="logo">
-                 <img src="{{ asset('img/logo.png') }}" width="auto" height="auto" alt="">
+                 <img src="{{ asset('img/logo.png') }}" style="width: 100%" width="auto" height="auto" alt="">
                </a>
              </div>
              <ul class="sidebar-ul">
@@ -246,11 +246,11 @@
                           <span>Shipment Movement</span>
                       </a>
                     </li>
-                    <li class="{{ Request::segment(1)=='pod-upload'?'active':'' }}">
+                    <!-- <li class="{{ Request::segment(1)=='pod-upload'?'active':'' }}">
                       <a href="{{ url('pod-upload') }}">
                           <span>POD Upload</span>
                       </a>
-                    </li>
+                    </li> -->
                  </ul>
                </li>
 

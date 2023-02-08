@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h3 class="account-title">Login</h3>
+    <!-- <h3 class="account-title">Login</h3> -->
     <div class="account-box">
        <div class="account-wrapper">
           <div class="account-logo">
