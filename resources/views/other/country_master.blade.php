@@ -48,7 +48,7 @@
                               <div class="form-group text-center custom-mt-form-group">
                                  <button class="btn btn-primary mr-2" type="submit"><i class="fa fa-paper-plane"></i> Submit</button>
                                  <button class="btn btn-primary mr-2" type="button"><i class="fa fa-search"></i> Search</button>
-                                 <button class="btn btn-primary mr-2" type="button"><i class="fa fa-expand"></i> Export</button>
+                                 <a href="{{route('export.country')}}" class="btn btn-primary mr-2 btn-sm" type="button"><i class="fa fa-expand"></i> Export</a>
                                  <button onclick="window.location.reload();" class="btn btn-secondary orng-btn" type="reset"><i class="fa fa-dot-circle"></i> Reset</button>
                               </div>
                             </div>

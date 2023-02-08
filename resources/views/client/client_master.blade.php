@@ -384,7 +384,7 @@
                            <div class="page-btns">
                               <div class="form-group text-center custom-mt-form-group">
                                  <button class="btn btn-primary mr-2" type="submit"><i class="fa fa-check"></i> Save</button>
-                                 <button class="btn btn-primary mr-2" type="button"><i class="fa fa-expand"></i> Export</button>
+                                 <a href="{{route('export.client.master')}}" class="btn btn-primary mr-2 btn-sm" type="button"><i class="fa fa-expand"></i> Export</a>
                                  <a href="{{route('client.master')}}" class="btn btn-secondary orng-btn btn-sm" type="reset"><i class="fa fa-dot-circle"></i> Reset</a>
                               </div>
                             </div>
@@ -449,7 +449,7 @@
                                        <th>Del</th>
                                        <th>Client Code</th>
                                        <th>Client Name</th>
-                                       <th>Sales Person</th>
+                                       <!-- <th>Sales Person</th> -->
                                        <th>Client</th>
                                        <th>Address1</th>
                                        <th>Address2</th>
@@ -475,7 +475,7 @@
                                     <td><a class="btn btn-primary" href="{{route('client.master.delete',$row->id)}}" onclick="return confirm('Are you sure you want to delete this record?')"> <i class="fa fa-trash-alt"></i></a></td>
                                     <td>{{$row->client_code}}</td>
                                     <td>{{$row->client_name}}</td>
-                                    <td>{{$row->sales_person}}</td>
+                                    <!-- <td>{{$row->sales_person}}</td> -->
                                     <td>{{$row->client}}</td>
                                     <td>{{nl2br($row->address1)}}</td>
                                     <td>{{$row->address2}}</td>
@@ -487,7 +487,7 @@
                                     <td>{{$row->mobile_no}}</td>
                                     <td>{{$row->gstin}}</td>
                                     <td>{{$row->iec}}</td>
-                                    <td>{{$row->bill_isActive}}</td>
+                                    <td>{{($row->bill_isActive==1?'Active':'Inactive')}}</td>
                                     <td>{{$row->aadhaar_no}}</td>
                                     <td>-</td>
                                     <td>-</td>

@@ -7,7 +7,6 @@ use App\Models\Country;
 use App\Models\Reason;
 use Auth;
 
-
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Reader\Exception;
 use PhpOffice\PhpSpreadsheet\Writer\Xls;
@@ -31,32 +30,8 @@ class OtherApiController extends Controller
 
     public function countryMaster(Request $request){
 
-        $fileName = 'Credit Card Authorization List.csv';
-        $employees = Country::select('*')->get();
-
-        $type = 'xlsx';
-       
-        $spreadsheet = new Spreadsheet();
-        $sheet = $spreadsheet->getActiveSheet();
-        $sheet->setCellValue('A1', 'Id');
-        $sheet->setCellValue('B1', 'Name');
-       
-        $rows = 2;
-        foreach($employees as $empDetails){
-        $sheet->setCellValue('A' . $rows, $empDetails['country_code']);
-        $sheet->setCellValue('B' . $rows, 'fdf');
-        $rows++;
-        }
-        $fileName = "emp.".$type;
-        if($type == 'xlsx') {
-        $writer = new Xlsx($spreadsheet);
-        } else if($type == 'xls') {
-        $writer = new Xls($spreadsheet);
-        }
-        $writer->save("export/".$fileName);
-        header("Content-Type: application/vnd.ms-excel");
-        // return redirect(url('/')."/export/".$fileName);
-        exit;
+      
+        
 
 
         $country = Country::select('*');
@@ -202,5 +177,71 @@ class OtherApiController extends Controller
 
     public function vendorApiConfiguration(Request $request){
         return view('other.vendor_api_config');
+    }
+
+    ##################EXPORT########################
+    public function exportCountry(){
+        $countrys = Country::select('*')->get();
+        $type = 'xlsx';
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet->setCellValue('A1', 'Id');
+        $sheet->setCellValue('B1', 'Country Code');
+        $sheet->setCellValue('C1', 'Country Name');
+       
+        $rows = 2;
+        $i=1;
+        foreach($countrys as $country){
+        $sheet->setCellValue('A' . $rows, $i++);
+        $sheet->setCellValue('B' . $rows, $country['country_code']);
+        $sheet->setCellValue('C' . $rows, $country['country_name']);
+        $rows++;
+        }
+        $fileName = "country-master.".$type;
+        if($type == 'xlsx') {
+        $writer = new Xlsx($spreadsheet);
+        } else if($type == 'xls') {
+        $writer = new Xls($spreadsheet);
+        }
+        $writer->save("export/".$fileName);
+        header("Content-Type: application/vnd.ms-excel");
+        return redirect(url('/')."/export/".$fileName);
+        exit;
+    }
+    
+    public function exportReason(){
+        $reason = Reason::join('users','users.id','=','reason.created_by')
+        ->select('reason.*','users.name')->get();
+        $type = 'xlsx';
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet->setCellValue('A1', 'Id');
+        $sheet->setCellValue('B1', 'Reason Code');
+        $sheet->setCellValue('C1', 'Reason');
+        $sheet->setCellValue('D1', 'Active');
+        $sheet->setCellValue('E1', 'Created By');
+        $sheet->setCellValue('F1', 'Created Date');
+       
+        $rows = 2;
+        $i=1;
+        foreach($reason as $row){
+        $sheet->setCellValue('A' . $rows, $i++);
+        $sheet->setCellValue('B' . $rows, $row['reason_code']);
+        $sheet->setCellValue('C' . $rows, $row['reason_text']);
+        $sheet->setCellValue('D' . $rows, ($row['isActive']==1?'Yes':'No'));
+        $sheet->setCellValue('E' . $rows, $row['name']);
+        $sheet->setCellValue('F' . $rows, $row['created_at']);
+        $rows++;
+        }
+        $fileName = "reason-master.".$type;
+        if($type == 'xlsx') {
+        $writer = new Xlsx($spreadsheet);
+        } else if($type == 'xls') {
+        $writer = new Xls($spreadsheet);
+        }
+        $writer->save("export/".$fileName);
+        header("Content-Type: application/vnd.ms-excel");
+        return redirect(url('/')."/export/".$fileName);
+        exit;
     }
 }
