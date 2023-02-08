@@ -328,7 +328,7 @@
                </li>
 
               @php 
-                $user_menu = ['change-password','manage-users'];
+                $user_menu = ['change-password','manage-users','role-manager'];
               @endphp
                <li class="submenu">
                  <a href="javascript:void(0);" class="{{ in_array(Request::segment(1), $user_menu)?'subdrop':'' }}">
@@ -341,6 +341,11 @@
                         <a href="{{ url('manage-users') }}">
                             <span>Manage Users</span>
                         </a>
+                    </li>
+                    <li class="{{ Request::segment(1)=='role-manager'?'active':'' }}">
+                      <a href="{{ url('role-manager') }}">
+                          <span>Role Manager</span>
+                      </a>
                     </li>
                     <li class="{{ Request::segment(1)=='change-password'?'active':'' }}">
                       <a href="{{ url('change-password') }}">
