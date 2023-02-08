@@ -115,7 +115,7 @@
                                                 <tr>
                                                     <td><a class="btn btn-primary editData" href="javascript:void(0);" data-name="{{ $rowz->name }}" data-id="{{ $rowz->id }}"> <i class="fa fa-pencil-alt"></i></a></td>
                                                     <td><a class="btn btn-primary" href="{{route('role-manager.delete',$rowz->id)}}" onclick="return confirm('Are you sure you want to delete this record?')"> <i class="fa fa-trash-alt"></i></a></td>
-                                                    <td><a class="btn btn-primary" href="javascript:void(0);"> <i class="fa fa-sitemap"></i></a></td>
+                                                    <td><a class="btn btn-primary" href="{{route('role-manager.role-permission',$rowz->id)}}"> <i class="fa fa-sitemap"></i></a></td>
                                                     <td>{{$rowz->name}}</td>
                                                 </tr>
                                                 @endforeach

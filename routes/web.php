@@ -97,4 +97,9 @@ Route::group(['prefix' => '', 'middleware' => ['auth']], function(){
 
     Route::resource('role-manager', RoleMangerController::class);
     Route::get('role-manager-delete/{id}', [RoleMangerController::class, 'delete'])->name('role-manager.delete');
+    Route::get('role-permission/{id}', [RoleMangerController::class, 'rolePermission'])->name('role-manager.role-permission');
+    Route::post('role-permission', [RoleMangerController::class, 'saveRolePermission'])->name('save.rolePermission');
+
+    Route::get('user-permission/{id}', [userController::class, 'userPermission'])->name('user.user-permission');
+    Route::post('user-permission', [userController::class, 'saveUserPermission'])->name('save.user-permission');
 });

@@ -112,6 +112,19 @@
                                         <option value="0" <?php echo ($status== 0 ? 'selected' : '')?>>InActive</option>
                                     </select>
                                 </div>
+
+                                <div class="form-group col-md-3 col-12">
+                                    <label>User Role*</label>
+                                    <select class="form-control select" name="role_id" id="role_id">
+                                        @foreach($role as $key=>$userRole)
+                                            @if(isset($user->role_id))
+                                                <option value="{{ $key }}" <?php echo ($user->role_id==$key ? 'selected' : '')?>>{{ $userRole }}</option>
+                                            @else
+                                                <option value="{{ $key }}">{{ $userRole }}</option>
+                                            @endif
+                                        @endforeach
+                                   </select>
+                               </div>
                            </div>
                          </div>
                          <hr>
@@ -179,7 +192,9 @@
                                                 <tr>
                                                     <th>Edit</th>
                                                     <th>Delete</th>
+                                                    <th>Permission</th>
                                                     <th>User Name</th>
+                                                    <th>Role</th>
                                                     <th>DOJ</th>
                                                     <th>Mobile No</th>
                                                     <th>Email ID</th>
@@ -191,11 +206,13 @@
                                             <tr>
                                                 <td><a class="btn btn-primary" href="{{route('manage.user')}}?id={{$rowu->id}}"> <i class="fa fa-pencil-alt"></i></a></td>
                                                 <td><a class="btn btn-primary" href="{{route('user.delete',$rowu->id)}}" onclick="return confirm('Are you sure you want to delete this record?')"> <i class="fa fa-trash-alt"></i></a></td>
-                                                <td>{{$rowu->name}}</td>
-                                                <td>{{$rowu->doj}}</td>
-                                                <td>{{$rowu->mobile_no}}</td>
-                                                <td>{{$rowu->email}}</td>
-                                                <td>{{($rowu->status==1?'Yes':'No')}}</td>
+                                                <td><a class="btn btn-primary" href="{{route('user.user-permission',$rowu->id)}}"> <i class="fa fa-sitemap"></i></a></td>
+                                                <td>{{ $rowu->name }}</td>
+                                                <td>{{ $role[$rowu->role_id] }}</td>
+                                                <td>{{ $rowu->doj }}</td>
+                                                <td>{{ $rowu->mobile_no }}</td>
+                                                <td>{{ $rowu->email }}</td>
+                                                <td>{{ ($rowu->status==1?'Yes':'No') }}</td>
                                             </tr>
                                             @endforeach
                                         </tbody>
