@@ -8,6 +8,7 @@ use App\Models\Reason;
 use Auth;
 class OtherApiController extends Controller
 {
+   
     public function printAWBDocument(Request $request){
         return view('other.print_awb_document');
     }
@@ -21,11 +22,17 @@ class OtherApiController extends Controller
     }
 
     public function countryMaster(Request $request){
-        $country = Country::select('*')->get();
-        $data = ['country'=>$country];
-        return view('other.country_master',$data);
+        $country = Country::select('*');
+        $totalCoutry = $country->count();
+        $country = $country->paginate(env('page_default_val'));
+        return view('other.country_master',compact('country','totalCoutry'));
     }
     public function countrySave(Request $request){
+        $this->validate($request,[
+            'country_name'=>'required',
+            'country_code'=>'required|min:2|max:3',
+         ]);
+
         $checkCountry = Country::where('country_name',$request->country_name)
         ->where('country_code',$request->country_code)->first();
         if($checkCountry){
@@ -44,6 +51,10 @@ class OtherApiController extends Controller
         }
     }
     public function countryUpdate(Request $request){
+        $this->validate($request,[
+            'country_name'=>'required',
+            'country_code'=>'required|min:2|max:3',
+         ]);
         $updateData = [
             'country_name'=>isset($request->country_name) ? $request->country_name : NULL, 
             'country_code'=>isset($request->country_code) ? $request->country_code : NULL,
@@ -92,12 +103,18 @@ class OtherApiController extends Controller
     }
     public function reasonMaster(Request $request){
         $reason = Reason::join('users','users.id','=','reason.created_by')
-        ->select('reason.*','users.name')->get();
+        ->select('reason.*','users.name');
         $total = $reason->count();
+        $reason = $reason->paginate(env('page_default_val'));
+        
         $data = ['reason'=>$reason,'total'=>$total];
         return view('other.reason_master',$data);
     }
     public function reasonSave(Request $request){
+        $this->validate($request,[
+            'reason_code'=>'required',
+            'reason_text'=>'required',
+         ]);
         $user = Auth::user();
         $insData=[
             'reason_code'=>isset($request->reason_code) ? $request->reason_code : NULL,
@@ -113,6 +130,10 @@ class OtherApiController extends Controller
         }
     }
     public function reasonUpdate(Request $request){
+        $this->validate($request,[
+            'reason_code'=>'required',
+            'reason_text'=>'required',
+         ]);
         $id = $request->id;
         $updateData=[
             'reason_code'=>isset($request->reason_code) ? $request->reason_code : NULL,

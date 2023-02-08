@@ -14,15 +14,32 @@ class ClientMasterController extends Controller
         $editId = $request->query('id',0);
         $country = Country::select('*')->where('isActive',1)->get();
         $clientMaster = ClientMaster::join('country','country.id','=','client_masters.country_id')
-        ->select('client_masters.*','country.country_name')->whereNull('deleted_at')->get();
+        ->select('client_masters.*','country.country_name')->whereNull('deleted_at');
+        $totalClient = $clientMaster->count();
+        $clientMaster =$clientMaster->paginate(env('page_default_val'));
         $client=null;$OtherCharges=null;
         if($editId!=0){
             $client = ClientMaster::select('*')->where('id',$editId)->first();
             $OtherCharges = ClientOtherCharges::select('*')->where('client_id',$editId)->get();
         }
-        return view('client.client_master',compact('country','clientMaster','client','OtherCharges'));
+        return view('client.client_master',compact('country','clientMaster','client','OtherCharges','totalClient'));
     }
     public function clientMasterSave(Request $request){
+
+        $this->validate($request,[
+            'country_name'=>'required',
+            'client_name'=>'required',
+            'sales_person'=>'required',
+            'client'=>'required',
+            'address1'=>'required',
+            'state_id'=>'required',
+            'email_id'=>'required',
+            'country_id'=>'required',
+            'pincode'=>'required',
+            'city_id'=>'required',
+            
+         ]);
+         
         $id = $request->id;
         $insData = [
         'client_code'=>isset($request->client_code) ? $request->client_code : null,

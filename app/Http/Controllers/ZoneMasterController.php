@@ -17,12 +17,20 @@ class ZoneMasterController extends Controller
             $editZone = ZoneMaster::find($request->id);
         }
         $zoneMaster = ZoneMaster::select('zone_masters.*','vendor_masters.name')->join('vendor_masters','zone_masters.vendor_id','=','vendor_masters.id')
-        ->whereNull('zone_masters.deleted_at')->get();
-        $data = ['vendorMaster'=>$vendorMaster,'editZone'=>$editZone,'zoneMaster'=>$zoneMaster];
+        ->whereNull('zone_masters.deleted_at');
+        $total = $zoneMaster->count();
+       $zoneMaster =  $zoneMaster->paginate(env('page_default_val'));
         
-        return view('zone.index',$data);
+        return view('zone.index',compact('vendorMaster','editZone','zoneMaster','total'));
     }
     public function zoneMasterSave(Request $request){
+        $this->validate($request,[
+            'vendor_id'=>'required',
+            'service_name'=>'required',
+            'zone_name'=>'required',
+            'zone_type'=>'required',
+            'effctv_from'=>'required',
+         ]);
         if($request->id!=0){
             $msg = 'Zone master updated successfully!';
             $zoneMaster = ZoneMaster::find($request->id);
@@ -43,7 +51,6 @@ class ZoneMasterController extends Controller
         }
     }
     public function zoneMasterDelete($id){
-        // dd($id);
         $result = ZoneMaster::where('id',$id)->update(['deleted_at'=>NOW()]);
         if($result){
             return redirect()->back()->with('success','Record deleted successfully!');

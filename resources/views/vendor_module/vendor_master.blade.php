@@ -22,8 +22,6 @@
           <div class="col-lg-12 col-md-12 col-sm-12 col-12">
              <div class="card">
                @include('message.error_validation')
-
-               <!--  -->
                <!--  -->
                <form action="{{route('vendor.master.save')}}" method="post" name="vendor_frm" id="vendor_frm">
                    <div class="card-body">
@@ -190,7 +188,7 @@
                              <div class="row">
                                  <div class="col-md-3">
                                        <div class="frm-heading">
-                                       <h3>Total Record(s) Found: {{$vendor->Count()}}</h3>
+                                       <h3>Total Record(s) Found: {{$totalVendor}}</h3>
                                        </div>
                                  </div>
                                  <div class="col-md-2">
@@ -231,9 +229,6 @@
                                              <button type="submit"><i class="fa fa-search"></i></button>
                                        </div>
                                  </div>
-
-                                 
-
                               </div>
                              </div>
 
@@ -285,6 +280,9 @@
                                        @endforeach
                                     </tbody>
                                  </table>
+                                 <div class="mt-3 float-right">
+                                 {{$vendor->links()}}
+                                 </div>
                               </div>
                            </div>
                         </div>

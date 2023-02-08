@@ -26,19 +26,19 @@
                            <div class="row">
                                 <div class="form-group col-md-3 col-12">
                                    <label>AWB No*</label>
-                                   <input type="text" class="form-control" placeholder="Enter AWB No">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter AWB No">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Ref No*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Ref No">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter Ref No">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Booking Date*</label>
-                                   <input type="text" class="form-control" placeholder="">
+                                   <input type="text" name="" id="" class="form-control" placeholder="">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Client*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Client">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter Client">
                                 </div>
                            </div>
 
@@ -50,43 +50,43 @@
                                </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Consignor*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Consignor">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter Consignor">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>CPerson*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Contact Person">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter Contact Person">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Address1*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Address1">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter Address1">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Address2*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Address2">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter Address2">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Address3*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Address3">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter Address3">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Pin Code*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Pin Code">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter Pin Code">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Country*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Country">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter Country">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>State*</label>
-                                   <input type="text" class="form-control" placeholder="Enter State">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter State">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>City*</label>
-                                   <input type="text" class="form-control" placeholder="Enter City">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter City">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Mobile No*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Mobile No">
+                                   <input type="text"  name="" id="" class="form-control" placeholder="Enter Mobile No">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Email ID*</label>
@@ -94,19 +94,19 @@
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>PAN*</label>
-                                   <input type="text" class="form-control" placeholder="Enter PAN">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter PAN">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>GSTIN*</label>
-                                   <input type="text" class="form-control" placeholder="Enter GSTIN">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter GSTIN">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>IEC*</label>
-                                   <input type="text" class="form-control" placeholder="Enter IEC">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter IEC">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>AadhaarNo*</label>
-                                   <input type="text" class="form-control" placeholder="Enter AadhaarNo">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter AadhaarNo">
                                 </div>
                            </div>
 
@@ -118,63 +118,63 @@
                                </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Consignor*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Consignor">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter Consignor">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>CPerson*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Contact Person">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter Contact Person">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Address1*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Address1">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter Address1">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Address2*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Address2">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter Address2">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Address3*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Address3">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter Address3">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Pin Code*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Pin Code">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter Pin Code">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Country*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Country">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter Country">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>State*</label>
-                                   <input type="text" class="form-control" placeholder="Enter State">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter State">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>City*</label>
-                                   <input type="text" class="form-control" placeholder="Enter City">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter City">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Mobile No*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Mobile No">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter Mobile No">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Email ID*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Email ID">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter Email ID">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>PAN*</label>
-                                   <input type="text" class="form-control" placeholder="Enter PAN">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter PAN">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>GSTIN*</label>
-                                   <input type="text" class="form-control" placeholder="Enter GSTIN">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter GSTIN">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>IEC*</label>
-                                   <input type="text" class="form-control" placeholder="Enter IEC">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter IEC">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>AadhaarNo*</label>
-                                   <input type="text" class="form-control" placeholder="Enter AadhaarNo">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter AadhaarNo">
                                 </div>
                            </div>
 
@@ -186,7 +186,7 @@
                                </div>
                                 <div class="form-group col-md-3 col-12">
                                  <label>Packet Type*</label>
-                                 <select class="form-control select">
+                                 <select class="form-control select" name="" id="">
                                     <option>--Select Packet Type--</option>
                                     <option>DOX</option>
                                     <option>SPX</option>
@@ -194,7 +194,7 @@
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                  <label>Payment Type*</label>
-                                 <select class="form-control select">
+                                 <select class="form-control select" name="" id="">
                                     <option>--Select Payment Type--</option>
                                     <option value="CASH">CASH</option>
                                     <option value="COD">COD</option>
@@ -203,11 +203,11 @@
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Invoice No*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Invoice No">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter Invoice No">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Packet Description*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Packet Description">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter Packet Description">
                                 </div>
                            </div>
 
@@ -219,17 +219,17 @@
                                </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>PCS*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Pieces">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter Pieces">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Actual Weight*</label>
-                                   <input type="text" class="form-control" placeholder="Enter Actual Weight">
+                                   <input type="text" name="" id="" class="form-control" placeholder="Enter Actual Weight">
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <div class="smalling-wdh">
                                      <label>Vendor Weight*</label>
-                                     <input type="text" class="form-control" placeholder="Enter Vendor Weight">
-                                    <select class="form-control select">
+                                     <input type="text" name="" id="" class="form-control" placeholder="Enter Vendor Weight">
+                                    <select class="form-control select" name="" id="">
                                        <option>--Select Packet Type--</option>
                                        <option>DOX</option>
                                        <option>SPX</option>
@@ -239,12 +239,12 @@
                                 <div class="form-group col-md-3 col-12">
                                    <div class="smalling-wdh">
                                      <label>Total Value*</label>
-                                     <input type="text" class="form-control" placeholder="Total Value">
+                                     <input type="text" name="" id="" class="form-control" placeholder="Total Value">
                                    </div>
                                 </div>
                                 <div class="form-group col-md-3 col-12">
                                    <label>Divisor*</label>
-                                   <select class="form-control select">
+                                   <select class="form-control select" name="" id="">
                                        <option>Select</option>
                                        <option value="5000">5000</option>
                                        <option value="6000">6000</option>
@@ -261,7 +261,7 @@
                                </div>
                                 <div class="form-group col-md-6 col-12">
                                    <label>Operation Remarks*</label>
-                                   <textarea type="text" class="form-control" placeholder="Enter Operation Remarks"></textarea>
+                                   <textarea type="text" name="" id="" class="form-control" placeholder="Enter Operation Remarks"></textarea>
                                 </div>
                                 <div class="form-group col-md-6 col-12">
                                    <label>Accounting Remarks*</label>
@@ -277,7 +277,7 @@
                                </div>
                                 <div class="form-group col-md-6 col-12">
                                    <label>Choose File*</label>
-                                   <input type="file" class="form-control">
+                                   <input type="file" name="" id="" accept=".pdf" class="form-control">
                                 </div>
                                 <div class="form-group col-md-6 col-12">
                                    <div class="formet-clr">

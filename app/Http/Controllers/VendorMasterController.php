@@ -14,9 +14,11 @@ class VendorMasterController extends Controller
     public function vendorMaster()
     {
         $country = Country::where('isActive',1)->get();
-        $vendor = vendorMaster::select('vendor_masters.*','country.country_name')->leftjoin('country','country.id','=','vendor_masters.country_id')->get();
-        $data = ['country'=>$country,'vendor'=>$vendor];
-        return view('vendor_module.vendor_master',$data);
+        $vendor = vendorMaster::select('vendor_masters.*','country.country_name')
+        ->leftjoin('country','country.id','=','vendor_masters.country_id');
+        $totalVendor = $vendor->count();
+        $vendor = $vendor->paginate(env('page_default_val'));
+        return view('vendor_module.vendor_master',compact('country','vendor','totalVendor'));
     }
 
     public function vendormasterSave(Request $request){
@@ -148,16 +150,27 @@ class VendorMasterController extends Controller
         $country = Country::where('isActive',1)->get();
         
         $vendorAccount = VendorAccountDetail::select('vendor_account_details.*','vendor_masters.name as vendor_name')
-        ->join('vendor_masters','vendor_account_details.vendor_id','=','vendor_masters.id')->whereNull('vendor_masters.deleted_at')->get();
+        ->join('vendor_masters','vendor_account_details.vendor_id','=','vendor_masters.id')
+        ->whereNull('vendor_masters.deleted_at');
+        $totalvendorAccount =$vendorAccount->count();
+        $vendorAccount = $vendorAccount->paginate(env('page_default_val'));
         $editDetails = NULL;
         if($editId!=0){
             $editId;$editDetails = VendorAccountDetail::select('*')->whereNull('deleted_at')->where('id',$editId)->first();
         }
         
-        $data = ['vendorMaster'=>$vendorMaster,'country'=>$country,'vendorAccount'=>$vendorAccount,'editDetails'=>$editDetails];
-        return view('vendor_module.vendor_account_detail',$data);
+        return view('vendor_module.vendor_account_detail',compact('vendorMaster','country','vendorAccount','editDetails','totalvendorAccount'));
     }
     public function vendorAcccountSave(Request $request){
+
+        $this->validate($request,[
+            'vendor_id'=>'required',
+            'token'=>'required',
+            'meter_no'=>'required',
+            'account_no'=>'required',
+            'account_no1'=>'required',
+            'environment'=>'required',
+         ]);
        if($request->id!=0){
             $VendorAccountDetail = VendorAccountDetail::find($request->id);
             $msg = 'Vendor account details updated successfully!';

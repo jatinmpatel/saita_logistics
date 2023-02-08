@@ -20,7 +20,7 @@
        <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-12">
              <div class="card">
-               
+               @include('message.error_validation')
                    <div class="card-body">
                      <form action="{{ route('country.save')}}" method="post" name="country_frm" id="country_frm">
                         @csrf
@@ -33,7 +33,7 @@
                                </div>
                                 <div class="form-group col-md-6 col-12">
                                    <label>Country Code*</label>
-                                   <input type="text" required class="form-control" name="country_code" id="country_code" placeholder="Enter Country Code">
+                                   <input type="text" min="2" max="3" required class="form-control" name="country_code" id="country_code" placeholder="Enter Country Code">
                                 </div>
                                 <div class="form-group col-md-6 col-12">
                                    <label>Country Name*</label>
@@ -58,8 +58,11 @@
                            <div class="bg-clr">
                               <div class="row">
                                  <div class="col-md-10">
+                                 <div class="frm-heading">
+                                        <h3>Total Country (s) Found: {{$totalCoutry}}</h3>
+                                    </div>
                                  </div>
-                                 <div class="col-md-2">
+                                 {{--<div class="col-md-2">
                                        <div class="searching-fld">
                                        <select class="form-control select">
                                           <option value="20">20</option>
@@ -67,7 +70,7 @@
                                           <option value="100">100</option>
                                        </select>
                                        </div>
-                                 </div>
+                                 </div>--}}
                               </div>
                            </div>
                              <div class="col-md-12">    
@@ -125,8 +128,13 @@
                                              @endforeach
                                        </tbody>
                                        </table>
+                                       
+                                    </div>
+                                    <div class="mt-3 float-right">
+                                    {{ $country ->links() }}
                                     </div>
                                  </div>
+                                 
                            </div>
                         </div>
                      </div>

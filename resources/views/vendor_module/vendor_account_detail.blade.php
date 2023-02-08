@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="content container-fluid">
-    <div class="page-header">
+   <div class="page-header">
        <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6 col-12">
              <h5 class="text-uppercase mb-0 mt-0 page-title">Vendor Account Detail</h5>
@@ -20,6 +20,7 @@
        <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-12">
              <div class="card">
+               @include('message.error_validation')
                <form action="{{route('vendor.acccount.save')}}" method="post" name="vendor_account_frm" id="vendor_account_frm">
                   @csrf
                    <div class="card-body">
@@ -168,7 +169,7 @@
                               <div class="form-group text-center custom-mt-form-group">
                                  <button class="btn btn-primary mr-2" type="submit"><i class="fa fa-check"></i> Save</button>
                                  <button class="btn btn-primary mr-2" type="button"><i class="fa fa-expand"></i> Export</button>
-                                 <button onclick="window.location.reload();" class="btn btn-secondary orng-btn" type="reset"><i class="fa fa-dot-circle"></i> Reset</button>
+                                 <a href="{{route('vendor.account.detail')}}" class="btn btn-secondary orng-btn btn-sm" type="reset"><i class="fa fa-dot-circle"></i> Reset</a>
                               </div>
                             </div>
                         </div>
@@ -178,7 +179,7 @@
                              <div class="row">
                                  <div class="col-md-3">
                                        <div class="frm-heading">
-                                       <h3>Total Record(s) Found: {{$vendorAccount->count()}}</h3>
+                                       <h3>Total Record(s) Found: {{$totalvendorAccount}}</h3>
                                        </div>
                                  </div>
                                  <div class="col-md-2">
@@ -220,7 +221,7 @@
                                        </div>
                               </div>
                              </div>
-
+                           </div>
                              <div class="col-md-12">    
                               <div class="x_content">
                                  <div class="table-responsive">
@@ -256,6 +257,9 @@
                                           @endforeach
                                        </tbody>
                                        </table>
+                                       <div class="mt-3 float-right">
+                                       {{$vendorAccount->links()}}
+                                       </div>
                                  </div>
                               </div>
                            </div>
