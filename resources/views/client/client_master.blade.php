@@ -20,6 +20,7 @@
        <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-12">
              <div class="card">
+             @include('message.error_validation')
                <form action="{{route('client.master.save')}}" method="post" name="client_frm" id="client_frm">
                   @csrf
                   @php
@@ -37,10 +38,10 @@
                                  <label>Client Name*</label>
                                  <input type="text" value="{{(isset($client->client_name) ? $client->client_name : '')}}" name="client_name" id="client_name" required class="form-control" placeholder="Enter Client Name">
                               </div>
-                              <div class="form-group col-md-3 col-12">
+                              <!-- <div class="form-group col-md-3 col-12">
                                  <label>Sales Person*</label>
-                                 <input type="text" value="{{(isset($client->sales_person) ? $client->sales_person : '')}}" name="sales_person" id="sales_person" required class="form-control" placeholder="Enter Sales Person">
-                              </div>
+                                 <input type="text" value="" name="sales_person" id="sales_person" required class="form-control" placeholder="Enter Sales Person">
+                              </div> -->
                               <div class="form-group col-md-3 col-12">
                                  <label>Client*</label>
                                  <input type="text" value="{{(isset($client->client) ? $client->client : '')}}"  name="client" id="client" required class="form-control" placeholder="Enter Client">
@@ -358,7 +359,7 @@
                                 </div>
                            </div>
                            <div id="dynamicAddFiledContact"></div>
-                           <div class="row">
+                           <!-- <div class="row">
                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                  <div class="frm-heading">
                                    <h3>Generate Client Booking API Token</h3>
@@ -375,7 +376,7 @@
                                        <input type="text" name="booking_API_token" class="form-control" placeholder="Booking API Token" disabled="">
                                      </div>
                                 </div>
-                           </div>
+                           </div> -->
 
                          </div>
                          <hr>
@@ -383,8 +384,8 @@
                            <div class="page-btns">
                               <div class="form-group text-center custom-mt-form-group">
                                  <button class="btn btn-primary mr-2" type="submit"><i class="fa fa-check"></i> Save</button>
-                                 <button class="btn btn-primary mr-2" type="button"><i class="fa fa-expand"></i> Export</button>
-                                 <button  onclick="window.location.reload();" class="btn btn-secondary orng-btn" type="reset"><i class="fa fa-dot-circle"></i> Reset</button>
+                                 <a href="{{route('export.client.master')}}" class="btn btn-primary mr-2 btn-sm" type="button"><i class="fa fa-expand"></i> Export</a>
+                                 <a href="{{route('client.master')}}" class="btn btn-secondary orng-btn btn-sm" type="reset"><i class="fa fa-dot-circle"></i> Reset</a>
                               </div>
                             </div>
                         </div>
@@ -394,7 +395,7 @@
                      <div class="row">
                            <div class="col-md-3">
                               <div class="frm-heading">
-                                 <h3>Total Record(s) Found: 9</h3>
+                                 <h3>Total Record(s) Found: {{$totalClient}}</h3>
                               </div>
                            </div>
                            <div class="col-md-2">
@@ -435,69 +436,69 @@
                                     <button type="submit"><i class="fa fa-search"></i></button>
                               </div>
                            </div>
-
-                           
-
                      </div>
                   </div>
 
                   <div class="col-md-12">    
                         <div class="x_content">
                            <div class="table-responsive">
-                                 <table>
-                                    <thead>
-                                       <tr>
-                                          <th>Edit</th>
-                                          <th>Del</th>
-                                          <th>Client Code</th>
-                                          <th>Client Name</th>
-                                          <th>Sales Person</th>
-                                          <th>Client</th>
-                                          <th>Address1</th>
-                                          <th>Address2</th>
-                                          <th>Pin Code</th>
-                                          <th>City</th>
-                                          <th>State</th>
-                                          <th>Country</th>
-                                          <th>Email ID</th>
-                                          <th>Mobile No</th>
-                                          <th>GSTIN</th>
-                                          <th>IEC</th>
-                                          <th>Active</th>
-                                          <th>Aadhaar No</th>
-                                          <th>Payment Type</th>
-                                          <th>Type</th>
-                                          <th>Amount/Per</th>
-                                       </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($clientMaster as $row)
+                              <table>
+                                 <thead>
                                     <tr>
-                                       <td><a class="btn btn-primary" href="{{route('client.master')}}?id={{$row->id}}"> <i class="fa fa-pencil-alt"></i></a></td>
-                                       <td><a class="btn btn-primary" href="{{route('client.master.delete',$row->id)}}" onclick="return confirm('Are you sure you want to delete this record?')"> <i class="fa fa-trash-alt"></i></a></td>
-                                       <td>{{$row->client_code}}</td>
-                                       <td>{{$row->client_name}}</td>
-                                       <td>{{$row->sales_person}}</td>
-                                       <td>{{$row->client}}</td>
-                                       <td>{{nl2br($row->address1)}}</td>
-                                       <td>{{$row->address2}}</td>
-                                       <td>{{$row->pincode}}</td>
-                                       <td>{{$row->city_id}}</td>
-                                       <td>{{$row->state_id}}</td>
-                                       <td>{{$row->country_name}}</td>
-                                       <td>{{$row->email_id}}</td>
-                                       <td>{{$row->mobile_no}}</td>
-                                       <td>{{$row->gstin}}</td>
-                                       <td>{{$row->iec}}</td>
-                                       <td>{{$row->bill_isActive}}</td>
-                                       <td>{{$row->aadhaar_no}}</td>
-                                       <td>-</td>
-                                       <td>-</td>
-                                       <td>-</td>
+                                       <th>Edit</th>
+                                       <th>Del</th>
+                                       <th>Client Code</th>
+                                       <th>Client Name</th>
+                                       <!-- <th>Sales Person</th> -->
+                                       <th>Client</th>
+                                       <th>Address1</th>
+                                       <th>Address2</th>
+                                       <th>Pin Code</th>
+                                       <th>City</th>
+                                       <th>State</th>
+                                       <th>Country</th>
+                                       <th>Email ID</th>
+                                       <th>Mobile No</th>
+                                       <th>GSTIN</th>
+                                       <th>IEC</th>
+                                       <th>Active</th>
+                                       <th>Aadhaar No</th>
+                                       <th>Payment Type</th>
+                                       <th>Type</th>
+                                       <th>Amount/Per</th>
                                     </tr>
-                                    @endforeach
-                                 </tbody>
-                                 </table>
+                                 </thead>
+                                 <tbody>
+                                 @foreach($clientMaster as $row)
+                                 <tr>
+                                    <td><a class="btn btn-primary" href="{{route('client.master')}}?id={{$row->id}}"> <i class="fa fa-pencil-alt"></i></a></td>
+                                    <td><a class="btn btn-primary" href="{{route('client.master.delete',$row->id)}}" onclick="return confirm('Are you sure you want to delete this record?')"> <i class="fa fa-trash-alt"></i></a></td>
+                                    <td>{{$row->client_code}}</td>
+                                    <td>{{$row->client_name}}</td>
+                                    <!-- <td>{{$row->sales_person}}</td> -->
+                                    <td>{{$row->client}}</td>
+                                    <td>{{nl2br($row->address1)}}</td>
+                                    <td>{{$row->address2}}</td>
+                                    <td>{{$row->pincode}}</td>
+                                    <td>{{$row->city_id}}</td>
+                                    <td>{{$row->state_id}}</td>
+                                    <td>{{$row->country_name}}</td>
+                                    <td>{{$row->email_id}}</td>
+                                    <td>{{$row->mobile_no}}</td>
+                                    <td>{{$row->gstin}}</td>
+                                    <td>{{$row->iec}}</td>
+                                    <td>{{($row->bill_isActive==1?'Active':'Inactive')}}</td>
+                                    <td>{{$row->aadhaar_no}}</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                 </tr>
+                                 @endforeach
+                              </tbody>
+                              </table>
+                              <div class="mt-3 float-right">
+                              {{$clientMaster->links()}}
+                              </div>
                            </div>
                         </div>
                      </div>
@@ -511,7 +512,7 @@
           </div>
        </div>
 @endsection
-@php $newJ = $i + 1; @endphp
+@php $i=1;$newJ = $i + 1; @endphp
 @section('script')
 <script>
    $( document ).ready(function() {

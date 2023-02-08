@@ -20,7 +20,7 @@
        <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-12">
              <div class="card">
-               
+             @include('message.error_validation')
                    <div class="card-body">
                     <form action="{{route('reason.save')}}" method="post" id="reason_frm" name="reason_frm">
                         @csrf
@@ -52,7 +52,7 @@
                            <div class="page-btns">
                               <div class="form-group text-center custom-mt-form-group">
                                  <button class="btn btn-primary mr-2" type="submit"><i class="fa fa-check"></i> Save</button>
-                                 <button class="btn btn-primary mr-2" type="button"><i class="fa fa-expand"></i> Export</button>
+                                 <a href="{{route('export.reason')}}" class="btn btn-primary mr-2 btn-sm" type="button"><i class="fa fa-expand"></i> Export</a>
                                  <button onclick="window.location.reload();" class="btn btn-secondary orng-btn" type="reset"><i class="fa fa-dot-circle"></i> Reset</button>
                               </div>
                             </div>
@@ -67,7 +67,7 @@
                                         <h3>No Record(s) Found: {{$total}}</h3>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                {{--<div class="col-md-2">
                                     <div class="searching-fld">
                                         <select class="form-control select">
                                             <option value="20">20</option>
@@ -83,8 +83,8 @@
                                             <option value="RM.Reason">Reason</option>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="col-md-2">
+                                </div>--}}
+                                {{--<div class="col-md-2">
                                     <div class="searching-fld">
                                         <select class="form-control select">
                                             <option value="1">Exactly</option>
@@ -92,7 +92,7 @@
                                             <option value="3">Start with</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div>--}}
                                 <div class="col-md-3">                
                                     <div class="search-container">
                                             <input type="text" placeholder="Search Here.." name="search">
@@ -178,7 +178,10 @@
                                                 </div>
                                             @endforeach
                                         </tbody>
-                                    </table>
+                                        </table>
+                                        <div class="mt-3 float-right">
+                                        {!! $reason->links() !!}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

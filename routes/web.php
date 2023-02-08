@@ -60,15 +60,19 @@ Route::group(['prefix' => '', 'middleware' => ['auth']], function(){
     Route::get('create-invoice', [OtherApiController::class, 'createInvoice']);
     Route::get('invoice', [OtherApiController::class, 'invoice']);
     Route::get('vendor-api-configuration', [OtherApiController::class, 'vendorApiConfiguration']);
-
+    Route::get('export-country',[OtherApiController::class,'exportCountry'])->name('export.country');
+    Route::get('export-reason',[OtherApiController::class,'exportReason'])->name('export.reason');
     
     Route::get('client-master', [ClientMasterController::class, 'clientMaster'])->name('client.master');
+    Route::get('export-client-master', [ClientMasterController::class, 'exportClientMaster'])->name('export.client.master');
     Route::post('client-master-save',[ClientMasterController::class, 'clientMasterSave'])->name('client.master.save');
     Route::get('client-master-delete/{id}',[ClientMasterController::class, 'clientMasterDelete'])->name('client.master.delete');
     
     Route::get('zone-master', [ZoneMasterController::class, 'zoneMaster'])->name('zone.master');
     Route::post('zone-master-save', [ZoneMasterController::class, 'zoneMasterSave'])->name('zone.master.save');
     Route::get('zone-master-delete/{id}', [ZoneMasterController::class, 'zoneMasterDelete'])->name('zone.master.delete');
+    Route::get('export-zone',[ZoneMasterController::class,'exportZone'])->name('export.zone');
+
     Route::get('manage-users', [UserController::class, 'manageUser'])->name('manage.user');
     Route::post('user-master-save',[UserController::class, 'userMasterSave'])->name('user.master.save');
     Route::post('user-master-update',[UserController::class, 'userMasterUpdate'])->name('user.master.update');
@@ -83,9 +87,13 @@ Route::group(['prefix' => '', 'middleware' => ['auth']], function(){
     
     // Route::get('vendor-manifest', [VendorMasterController::class, 'vendorManifest']);
     Route::get('vendor-master', [VendorMasterController::class, 'vendorMaster'])->name('vendor.master');
+    Route::get('export-vendor-master', [VendorMasterController::class, 'exportVendorMaster'])->name('export.vendor.master');
     Route::post('vendor-master-save', [VendorMasterController::class, 'vendorMasterSave'])->name('vendor.master.save');
     Route::get('vendor-master-delete/{id}', [VendorMasterController::class, 'vendorMasterDelete'])->name('vendor.master.delete');
     Route::get('vendor-account-detail', [VendorMasterController::class, 'vendorAccountDetail'])->name('vendor.account.detail');
+    Route::get('export-vendor-account-detail', [VendorMasterController::class, 'exportVendorAccountDetail'])->name('export.vendor.account.detail');
+
+    
     Route::post('vendor-acccount-save',[VendorMasterController::class,'vendorAcccountSave'])->name('vendor.acccount.save');
 
     Route::post('get-vendor-service',[VendorMasterController::class,'getVendorService'])->name('get-vendor-service');
@@ -102,4 +110,6 @@ Route::group(['prefix' => '', 'middleware' => ['auth']], function(){
 
     Route::get('user-permission/{id}', [userController::class, 'userPermission'])->name('user.user-permission');
     Route::post('user-permission', [userController::class, 'saveUserPermission'])->name('save.user-permission');
+
+   
 });

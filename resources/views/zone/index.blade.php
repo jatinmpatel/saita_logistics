@@ -20,6 +20,8 @@
        <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-12">
              <div class="card">
+               @include('message.error_validation')
+
                <form action="{{route('zone.master.save')}}" method="post" name="zone_frm" id="zone_frm">
                 @csrf
                    <div class="card-body">
@@ -50,15 +52,15 @@
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Service*</label>
-                                   <input type="text" value="{{$service_name}}" name="service_name" id="service_name" class="form-control" placeholder="Enter Service">
+                                   <input type="text" value="{{$service_name}}" required name="service_name" id="service_name" class="form-control" placeholder="Enter Service">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Zone Name*</label>
-                                   <input type="text" name="zone_name" value="{{$zone_name}}" id="zone_name" class="form-control" placeholder="Enter Zone Name">
+                                   <input type="text" name="zone_name" required value="{{$zone_name}}" id="zone_name" class="form-control" placeholder="Enter Zone Name">
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Zone Type*</label>
-                                   <select class="form-control select" name="zone_type" id="zone_type">
+                                   <select class="form-control select" required name="zone_type" id="zone_type">
                                         <option>--Select--</option>
                                         <option value="International" <?php echo ($zone_type=='International'?'selected' :'')?>>International</option>
                                         <option value="Domestic" <?php echo ($zone_type=='Domestic'?'selected' :'')?>>Domestic</option>
@@ -66,7 +68,7 @@
                                 </div>
                                 <div class="form-group col-md-4 col-12">
                                    <label>Effect From*</label>
-                                     <input  name="effctv_from" id="effctv_from" value="{{$effctv_from}}" class="form-control datetimepicker-input datetimepicker" type="text" data-toggle="datetimepicker">
+                                     <input  name="effctv_from" required id="effctv_from" value="{{$effctv_from}}" class="form-control datetimepicker-input datetimepicker" type="text" data-toggle="datetimepicker">
                                 </div>
 
                            </div>
@@ -77,8 +79,8 @@
                            <div class="page-btns">
                               <div class="form-group text-center custom-mt-form-group">
                                  <button class="btn btn-primary mr-2" type="submit"><i class="fa fa-check"></i> Save</button>
-                                 <button class="btn btn-primary mr-2" type="button"><i class="fa fa-expand"></i> Export</button>
-                                 <button  onclick="window.location.reload();" class="btn btn-secondary orng-btn" type="reset"><i class="fa fa-dot-circle"></i> Reset</a>
+                                 <a href="{{route('export.zone')}}" class="btn btn-primary mr-2 btn-sm" type="button"><i class="fa fa-expand"></i> Export</a>
+                                 <a href="{{route('zone.master')}}"  class="btn btn-secondary orng-btn btn-sm" type="reset"><i class="fa fa-dot-circle"></i> Reset</a>
                               </div>
                             </div>
                         </div>
@@ -88,10 +90,10 @@
                              <div class="row">
                                 <div class="col-md-3">
                                     <div class="frm-heading">
-                                        <h3>Total Zone (s) Found: 9</h3>
+                                        <h3>Total Zone (s) Found: {{$total}}</h3>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                {{--<div class="col-md-2">
                                     <div class="searching-fld">
                                         <select class="form-control select">
                                             <option value="20">20</option>
@@ -99,7 +101,7 @@
                                             <option value="100">100</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div>--}}
                                 <div class="col-md-2">
                                     <div class="searching-fld">
                                         <select class="form-control select">
@@ -163,6 +165,9 @@
                                                 @endforeach
                                             </tbody>
                                         </table>
+                                        <div class="mt-3 float-right">
+                                            {{$zoneMaster->links()}}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

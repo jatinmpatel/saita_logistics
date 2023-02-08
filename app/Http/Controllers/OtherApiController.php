@@ -6,8 +6,16 @@ use Illuminate\Http\Request;
 use App\Models\Country;
 use App\Models\Reason;
 use Auth;
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Reader\Exception;
+use PhpOffice\PhpSpreadsheet\Writer\Xls;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+
 class OtherApiController extends Controller
 {
+   
     public function printAWBDocument(Request $request){
         return view('other.print_awb_document');
     }
@@ -21,11 +29,22 @@ class OtherApiController extends Controller
     }
 
     public function countryMaster(Request $request){
-        $country = Country::select('*')->get();
-        $data = ['country'=>$country];
-        return view('other.country_master',$data);
+
+      
+        
+
+
+        $country = Country::select('*');
+        $totalCoutry = $country->count();
+        $country = $country->paginate(env('page_default_val'));
+        return view('other.country_master',compact('country','totalCoutry'));
     }
     public function countrySave(Request $request){
+        $this->validate($request,[
+            'country_name'=>'required',
+            'country_code'=>'required|min:2|max:3',
+         ]);
+
         $checkCountry = Country::where('country_name',$request->country_name)
         ->where('country_code',$request->country_code)->first();
         if($checkCountry){
@@ -44,6 +63,10 @@ class OtherApiController extends Controller
         }
     }
     public function countryUpdate(Request $request){
+        $this->validate($request,[
+            'country_name'=>'required',
+            'country_code'=>'required|min:2|max:3',
+         ]);
         $updateData = [
             'country_name'=>isset($request->country_name) ? $request->country_name : NULL, 
             'country_code'=>isset($request->country_code) ? $request->country_code : NULL,
@@ -92,12 +115,18 @@ class OtherApiController extends Controller
     }
     public function reasonMaster(Request $request){
         $reason = Reason::join('users','users.id','=','reason.created_by')
-        ->select('reason.*','users.name')->get();
+        ->select('reason.*','users.name');
         $total = $reason->count();
+        $reason = $reason->paginate(env('page_default_val'));
+        
         $data = ['reason'=>$reason,'total'=>$total];
         return view('other.reason_master',$data);
     }
     public function reasonSave(Request $request){
+        $this->validate($request,[
+            'reason_code'=>'required',
+            'reason_text'=>'required',
+         ]);
         $user = Auth::user();
         $insData=[
             'reason_code'=>isset($request->reason_code) ? $request->reason_code : NULL,
@@ -113,6 +142,10 @@ class OtherApiController extends Controller
         }
     }
     public function reasonUpdate(Request $request){
+        $this->validate($request,[
+            'reason_code'=>'required',
+            'reason_text'=>'required',
+         ]);
         $id = $request->id;
         $updateData=[
             'reason_code'=>isset($request->reason_code) ? $request->reason_code : NULL,
@@ -144,5 +177,71 @@ class OtherApiController extends Controller
 
     public function vendorApiConfiguration(Request $request){
         return view('other.vendor_api_config');
+    }
+
+    ##################EXPORT########################
+    public function exportCountry(){
+        $countrys = Country::select('*')->get();
+        $type = 'xlsx';
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet->setCellValue('A1', 'Id');
+        $sheet->setCellValue('B1', 'Country Code');
+        $sheet->setCellValue('C1', 'Country Name');
+       
+        $rows = 2;
+        $i=1;
+        foreach($countrys as $country){
+        $sheet->setCellValue('A' . $rows, $i++);
+        $sheet->setCellValue('B' . $rows, $country['country_code']);
+        $sheet->setCellValue('C' . $rows, $country['country_name']);
+        $rows++;
+        }
+        $fileName = "country-master.".$type;
+        if($type == 'xlsx') {
+        $writer = new Xlsx($spreadsheet);
+        } else if($type == 'xls') {
+        $writer = new Xls($spreadsheet);
+        }
+        $writer->save("export/".$fileName);
+        header("Content-Type: application/vnd.ms-excel");
+        return redirect(url('/')."/export/".$fileName);
+        exit;
+    }
+    
+    public function exportReason(){
+        $reason = Reason::join('users','users.id','=','reason.created_by')
+        ->select('reason.*','users.name')->get();
+        $type = 'xlsx';
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet->setCellValue('A1', 'Id');
+        $sheet->setCellValue('B1', 'Reason Code');
+        $sheet->setCellValue('C1', 'Reason');
+        $sheet->setCellValue('D1', 'Active');
+        $sheet->setCellValue('E1', 'Created By');
+        $sheet->setCellValue('F1', 'Created Date');
+       
+        $rows = 2;
+        $i=1;
+        foreach($reason as $row){
+        $sheet->setCellValue('A' . $rows, $i++);
+        $sheet->setCellValue('B' . $rows, $row['reason_code']);
+        $sheet->setCellValue('C' . $rows, $row['reason_text']);
+        $sheet->setCellValue('D' . $rows, ($row['isActive']==1?'Yes':'No'));
+        $sheet->setCellValue('E' . $rows, $row['name']);
+        $sheet->setCellValue('F' . $rows, $row['created_at']);
+        $rows++;
+        }
+        $fileName = "reason-master.".$type;
+        if($type == 'xlsx') {
+        $writer = new Xlsx($spreadsheet);
+        } else if($type == 'xls') {
+        $writer = new Xls($spreadsheet);
+        }
+        $writer->save("export/".$fileName);
+        header("Content-Type: application/vnd.ms-excel");
+        return redirect(url('/')."/export/".$fileName);
+        exit;
     }
 }
