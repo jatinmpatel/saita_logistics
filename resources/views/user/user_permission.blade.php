@@ -37,7 +37,7 @@
                                                 <th style="text-align: center;">Add</th>
                                                 <th style="text-align: center;">Edit</th>
                                                 <th style="text-align: center;">Search</th>
-                                                <th style="text-align: center;">Import</th>
+                                                <th style="text-align: center;">Import / Export</th>
                                                 <th style="text-align: center;">Delete</th>
                                             </tr>
                                         </thead>

@@ -152,8 +152,8 @@
               </a>
             </li>
             <li class="nav-item dropdown has-arrow">
-              <a href="javascript:void(0);" class=" nav-link user-link" data-toggle="dropdown">
-                <span class="user-img">
+              <a href="javascript:void(0);" class="nav-link user-link" data-toggle="dropdown">
+                <span class="user-img"> 
                   @php
                     if(auth()->user()->profile_pic!=''){
                       $profile_pic = asset('logistics/user/'.auth()->user()->profile_pic);
@@ -213,7 +213,9 @@
 
                @php 
                   $operation_menu = ['packet-booking','import-packet','print-awb-document','vendor-manifest','shipment-movement','pod-upload'];
+                  $accessMenu = mainMenu();
                @endphp
+               @if(array_intersect($operation_menu, $accessMenu))
                <li class="submenu">
                  <a href="javascript:void(0);" class="{{ in_array(Request::segment(1), $operation_menu)?'subdrop':'' }}">
                   <i class="fa fa-cogs"></i>
@@ -221,31 +223,41 @@
                    <span class="menu-arrow"></span>
                  </a>
                  <ul class="list-unstyled" style="{{ in_array(Request::segment(1), $operation_menu)?'':'display: none;' }}">
-                    <li class="{{ Request::segment(1)=='packet-booking'?'active':'' }}">
-                        <a href="{{ url('packet-booking') }}">
-                            <span>Packet Booking</span>
+                    @if(in_array("packet-booking",$accessMenu))
+                      <li class="{{ Request::segment(1)=='packet-booking'?'active':'' }}">
+                          <a href="{{ url('packet-booking') }}">
+                              <span>Packet Booking</span>
+                          </a>
+                      </li>
+                    @endif
+                    @if(in_array("import-packet",$accessMenu))
+                      <li class="{{ Request::segment(1)=='import-packet'?'active':'' }}">
+                        <a href="{{ url('import-packet') }}">
+                            <span>Import Packet</span>
                         </a>
-                    </li>
-                    <li class="{{ Request::segment(1)=='import-packet'?'active':'' }}">
-                      <a href="{{ url('import-packet') }}">
-                          <span>Import Packet</span>
-                      </a>
-                    </li>
-                    <li class="{{ Request::segment(1)=='print-awb-document'?'active':'' }}">
-                      <a href="{{ url('print-awb-document') }}">
-                          <span>Print AWB Document</span>
-                      </a>
-                    </li>
-                    <li class="{{ Request::segment(1)=='vendor-manifest'?'active':'' }}">
-                      <a href="{{ url('vendor-manifest') }}">
-                          <span>Manifest to Vendor</span>
-                      </a>
-                    </li>
-                    <li class="{{ Request::segment(1)=='shipment-movement'?'active':'' }}">
-                      <a href="{{ url('shipment-movement') }}">
-                          <span>Shipment Movement</span>
-                      </a>
-                    </li>
+                      </li>
+                    @endif
+                    @if(in_array("print-awb-document",$accessMenu))
+                      <li class="{{ Request::segment(1)=='print-awb-document'?'active':'' }}">
+                        <a href="{{ url('print-awb-document') }}">
+                            <span>Print AWB Document</span>
+                        </a>
+                      </li>
+                    @endif
+                    @if(in_array("vendor-manifest",$accessMenu))
+                      <li class="{{ Request::segment(1)=='vendor-manifest'?'active':'' }}">
+                        <a href="{{ url('vendor-manifest') }}">
+                            <span>Manifest to Vendor</span>
+                        </a>
+                      </li>
+                    @endif
+                    @if(in_array("shipment-movement",$accessMenu))
+                      <li class="{{ Request::segment(1)=='shipment-movement'?'active':'' }}">
+                        <a href="{{ url('shipment-movement') }}">
+                            <span>Shipment Movement</span>
+                        </a>
+                      </li>
+                    @endif
                     <!-- <li class="{{ Request::segment(1)=='pod-upload'?'active':'' }}">
                       <a href="{{ url('pod-upload') }}">
                           <span>POD Upload</span>
@@ -253,10 +265,12 @@
                     </li> -->
                  </ul>
                </li>
+               @endif
 
                 @php 
                   $client_menu = ['client-master','vendor-master','vendor-account-detail','zone-master','country-master','reason-master'];
                 @endphp
+              @if(array_intersect($client_menu, $accessMenu))
                <li class="submenu">
                  <a href="javascript:void(0);" class="{{ in_array(Request::segment(1), $client_menu)?'subdrop':'' }}">
                   <i class="fa fa-database"></i>
@@ -265,43 +279,56 @@
                  </a>
 
                  <ul class="list-unstyled" style="{{ in_array(Request::segment(1), $client_menu)?'':'display: none;' }}">
-                    <li class="{{ Request::segment(1)=='client-master'?'active':'' }}">
-                        <a href="{{ url('client-master') }}">
-                            <span>Client Master</span>
+                    @if(in_array("client-master",$accessMenu))
+                      <li class="{{ Request::segment(1)=='client-master'?'active':'' }}">
+                          <a href="{{ url('client-master') }}">
+                              <span>Client Master</span>
+                          </a>
+                      </li>
+                    @endif
+                    @if(in_array("vendor-master",$accessMenu))
+                      <li class="{{ Request::segment(1)=='vendor-master'?'active':'' }}">
+                        <a href="{{ url('vendor-master') }}">
+                            <span>Vendor Master</span>
                         </a>
-                    </li>
-                    <li class="{{ Request::segment(1)=='vendor-master'?'active':'' }}">
-                      <a href="{{ url('vendor-master') }}">
-                          <span>Vendor Master</span>
-                      </a>
-                    </li>
-                    <li class="{{ Request::segment(1)=='vendor-account-detail'?'active':'' }}">
-                      <a href="{{ url('vendor-account-detail') }}">
-                          <span>Vendor Account Details</span>
-                      </a>
-                    </li>
-                    <li class="{{ Request::segment(1)=='zone-master'?'active':'' }}">
-                      <a href="{{ url('zone-master') }}">
-                          <span>Zone Master</span>
-                      </a>
-                    </li>
-                    <li class="{{ Request::segment(1)=='country-master'?'active':'' }}">
-                      <a href="{{ url('country-master') }}">
-                          <span>Country Master</span>
-                      </a>
-                    </li>
-                    <li class="{{ Request::segment(1)=='reason-master'?'active':'' }}">
-                      <a href="{{ url('reason-master') }}">
-                          <span>Reason Master</span>
-                      </a>
-                    </li>
+                      </li>
+                    @endif
+                    @if(in_array("vendor-account-detail",$accessMenu))
+                      <li class="{{ Request::segment(1)=='vendor-account-detail'?'active':'' }}">
+                        <a href="{{ url('vendor-account-detail') }}">
+                            <span>Vendor Account Details</span>
+                        </a>
+                      </li>
+                    @endif
+                    @if(in_array("zone-master",$accessMenu))
+                      <li class="{{ Request::segment(1)=='zone-master'?'active':'' }}">
+                        <a href="{{ url('zone-master') }}">
+                            <span>Zone Master</span>
+                        </a>
+                      </li>
+                    @endif
+                    @if(in_array("country-master",$accessMenu))
+                      <li class="{{ Request::segment(1)=='country-master'?'active':'' }}">
+                        <a href="{{ url('country-master') }}">
+                            <span>Country Master</span>
+                        </a>
+                      </li>
+                    @endif
+                    @if(in_array("reason-master",$accessMenu))
+                      <li class="{{ Request::segment(1)=='reason-master'?'active':'' }}">
+                        <a href="{{ url('reason-master') }}">
+                            <span>Reason Master</span>
+                        </a>
+                      </li>
+                    @endif
                  </ul>
                </li>
-
+              @endif
 
               @php 
                 $report_menu = ['booking-report','manifest-report','delivered-report'];
               @endphp
+              @if(array_intersect($report_menu, $accessMenu))
                <li class="submenu">
                  <a href="javascript:void(0);" class="{{ in_array(Request::segment(1), $report_menu)?'subdrop':'' }}">
                   <i class="fa fa-retweet"></i>
@@ -309,27 +336,35 @@
                    <span class="menu-arrow"></span>
                  </a>
                  <ul class="list-unstyled" style="{{ in_array(Request::segment(1), $report_menu)?'':'display: none;' }}">
-                    <li class="{{ Request::segment(1)=='booking-report'?'active':'' }}">
-                        <a href="{{ url('booking-report') }}">
-                            <span>Booking Report</span>
+                    @if(in_array("booking-report",$accessMenu))
+                      <li class="{{ Request::segment(1)=='booking-report'?'active':'' }}">
+                          <a href="{{ url('booking-report') }}">
+                              <span>Booking Report</span>
+                          </a>
+                      </li>
+                    @endif
+                    @if(in_array("v",$accessMenu))
+                      <li class="{{ Request::segment(1)=='manifest-report'?'active':'' }}">
+                        <a href="{{ url('manifest-report') }}">
+                            <span>Manifest Report</span>
                         </a>
-                    </li>
-                    <li class="{{ Request::segment(1)=='manifest-report'?'active':'' }}">
-                      <a href="{{ url('manifest-report') }}">
-                          <span>Manifest Report</span>
-                      </a>
-                    </li>
-                    <li class="{{ Request::segment(1)=='delivered-report'?'active':'' }}">
-                      <a href="{{ url('delivered-report') }}">
-                          <span>Delivered Report</span>
-                      </a>
-                    </li>
+                      </li>
+                    @endif
+                    @if(in_array("delivered-report",$accessMenu))
+                      <li class="{{ Request::segment(1)=='delivered-report'?'active':'' }}">
+                        <a href="{{ url('delivered-report') }}">
+                            <span>Delivered Report</span>
+                        </a>
+                      </li>
+                    @endif
                  </ul>
                </li>
+              @endif
 
               @php 
                 $user_menu = ['change-password','manage-users','role-manager'];
               @endphp
+              @if(array_intersect($user_menu, $accessMenu))
                <li class="submenu">
                  <a href="javascript:void(0);" class="{{ in_array(Request::segment(1), $user_menu)?'subdrop':'' }}">
                   <i class="fa fa-users"></i>
@@ -337,27 +372,35 @@
                    <span class="menu-arrow"></span>
                  </a>
                  <ul class="list-unstyled" style="{{ in_array(Request::segment(1), $user_menu)?'':'display: none;' }}">
-                    <li class="{{ Request::segment(1)=='manage-users'?'active':'' }}">
-                        <a href="{{ url('manage-users') }}">
-                            <span>Manage Users</span>
+                    @if(in_array("manage-users",$accessMenu))
+                      <li class="{{ Request::segment(1)=='manage-users'?'active':'' }}">
+                          <a href="{{ url('manage-users') }}">
+                              <span>Manage Users</span>
+                          </a>
+                      </li>
+                    @endif
+                    @if(in_array("role-manager",$accessMenu))
+                      <li class="{{ Request::segment(1)=='role-manager'?'active':'' }}">
+                        <a href="{{ url('role-manager') }}">
+                            <span>Role Manager</span>
                         </a>
-                    </li>
-                    <li class="{{ Request::segment(1)=='role-manager'?'active':'' }}">
-                      <a href="{{ url('role-manager') }}">
-                          <span>Role Manager</span>
-                      </a>
-                    </li>
-                    <li class="{{ Request::segment(1)=='change-password'?'active':'' }}">
-                      <a href="{{ url('change-password') }}">
-                          <span>Change Password</span>
-                      </a>
-                    </li>
+                      </li>
+                    @endif
+                    @if(in_array("change-password",$accessMenu))
+                      <li class="{{ Request::segment(1)=='change-password'?'active':'' }}">
+                        <a href="{{ url('change-password') }}">
+                            <span>Change Password</span>
+                        </a>
+                      </li>
+                    @endif
                  </ul>
                </li>
+              @endif
 
               @php 
                 $account_menu = ['invoice','create-invoice'];
               @endphp
+              @if(array_intersect($account_menu, $accessMenu))
                <li class="submenu">
                  <a href="javascript:void(0);" class="{{ in_array(Request::segment(1), $account_menu)?'subdrop':'' }}">
                   <i class="fa fa-users"></i>
@@ -365,23 +408,28 @@
                    <span class="menu-arrow"></span>
                  </a>
                  <ul class="list-unstyled" style="{{ in_array(Request::segment(1), $account_menu)?'':'display: none;' }}">
-                    <li class="{{ Request::segment(1)=='create-invoice'?'active':'' }}">
-                        <a href="{{ url('create-invoice') }}">
-                            <span>Create Invoice</span>
+                    @if(in_array("create-invoice",$accessMenu))
+                      <li class="{{ Request::segment(1)=='create-invoice'?'active':'' }}">
+                          <a href="{{ url('create-invoice') }}">
+                              <span>Create Invoice</span>
+                          </a>
+                      </li>
+                    @endif
+                    @if(in_array("invoice",$accessMenu))
+                      <li class="{{ Request::segment(1)=='invoice'?'active':'' }}">
+                        <a href="{{ url('invoice') }}">
+                            <span>Invoice</span>
                         </a>
-                    </li>
-                    <li class="{{ Request::segment(1)=='invoice'?'active':'' }}">
-                      <a href="{{ url('invoice') }}">
-                          <span>Invoice</span>
-                      </a>
-                    </li>
+                      </li>
+                    @endif
                  </ul>
                </li>
+              @endif
 
               @php 
                $setting_menu = ['website-setting','payment-history','user-profile','vendor-api-configuration'];
               @endphp
-
+              @if(array_intersect($setting_menu, $accessMenu))
                <li class="submenu">
                  <a href="javascript:void(0);" class="{{ in_array(Request::segment(1), $setting_menu)?'subdrop':'' }}">
                   <i class="fa fa-cog"></i>
@@ -389,29 +437,37 @@
                    <span class="menu-arrow"></span>
                  </a>
                  <ul class="list-unstyled" style="{{ in_array(Request::segment(1), $setting_menu)?'':'display: none;' }}">
-                    <li class="{{ Request::segment(1)=='website-setting'?'active':'' }}">
-                        <a href="{{ url('website-setting') }}">
-                            <span>Website Setting </span>
+                    @if(in_array("website-setting",$accessMenu))
+                      <li class="{{ Request::segment(1)=='website-setting'?'active':'' }}">
+                          <a href="{{ url('website-setting') }}">
+                              <span>Website Setting </span>
+                          </a>
+                      </li>
+                    @endif
+                    @if(in_array("payment-history",$accessMenu))
+                      <li class="{{ Request::segment(1)=='payment-history'?'active':'' }}">
+                        <a href="{{ url('payment-history') }}">
+                            <span>Payment History</span>
                         </a>
-                    </li>
-                    <li class="{{ Request::segment(1)=='payment-history'?'active':'' }}">
-                      <a href="{{ url('payment-history') }}">
-                          <span>Payment History</span>
-                      </a>
-                    </li>
-                    <li class="{{ Request::segment(1)=='user-profile'?'active':'' }}">
-                      <a href="{{ url('user-profile') }}">
-                          <span>Your Profile</span>
-                      </a>
-                    </li>
-                    <li class="{{ Request::segment(1)=='vendor-api-configuration'?'active':'' }}">
-                      <a href="{{ url('vendor-api-configuration') }}">
-                          <span>Vendor API Configuratio</span>
-                      </a>
-                    </li>
+                      </li>
+                    @endif
+                    @if(in_array("user-profile",$accessMenu))
+                      <li class="{{ Request::segment(1)=='user-profile'?'active':'' }}">
+                        <a href="{{ url('user-profile') }}">
+                            <span>Your Profile</span>
+                        </a>
+                      </li>
+                    @endif
+                    @if(in_array("vendor-api-configuration",$accessMenu))
+                      <li class="{{ Request::segment(1)=='vendor-api-configuration'?'active':'' }}">
+                        <a href="{{ url('vendor-api-configuration') }}">
+                            <span>Vendor API Configuratio</span>
+                        </a>
+                      </li>
+                    @endif
                  </ul>
                </li>
-
+              @endif
              </ul>
            </div>
          </div>

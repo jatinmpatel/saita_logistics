@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('reference_no')->nullable();
             $table->string('booking_date')->nullable();
             $table->integer('client_id')->default(0);
+
             $table->string('csr_consignor')->nullable();
             $table->string('csr_contact_person')->nullable();
             $table->string('csr_address1')->nullable();
@@ -62,9 +63,11 @@ return new class extends Migration
             $table->string('vendor_weight')->nullable();
             $table->string('vendor_weight_type')->nullable();
             $table->string('total_weight')->nullable();
+            $table->string('currency',25)->nullable();
             $table->string('devisor')->nullable();
             $table->string('operation_remark')->nullable();
-            $table->string('accountin_remark')->nullable();
+            $table->string('accounting_remark')->nullable();
+            
             $table->string('invoice_doc')->nullable();
             $table->integer('created_by')->default(0)->comment('login user id');
             $table->string('is_deleted')->nullable();

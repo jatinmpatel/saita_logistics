@@ -38,6 +38,10 @@ Route::group(['prefix' => '', 'middleware' => ['auth']], function(){
 
 
     Route::get('packet-booking', [PacketBookingController::class, 'packetBooking']);
+    Route::post('save-packet-booking', [PacketBookingController::class, 'savePacketBooking']);
+    Route::post('search-packet-booking', [PacketBookingController::class, 'searchPacketBooking']);
+
+
     Route::get('import-packet', [PacketBookingController::class, 'importPacket']);
     Route::get('booking-report', [PacketBookingController::class, 'bookingReport']);
     Route::get('manifest-report', [PacketBookingController::class, 'manifestReport']);

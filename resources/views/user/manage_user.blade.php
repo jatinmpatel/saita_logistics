@@ -131,8 +131,8 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                            <div class="page-btns">
                               <div class="form-group text-center custom-mt-form-group">
-                                 <button class="btn btn-primary mr-2" type="submit"><i class="fa fa-check"></i> Save</button>
-                                 <button class="btn btn-primary mr-2" type="submit"><i class="fa fa-expand"></i> Export</button>
+                                 @if(checkAccess('manage-users','add_permission'))<button class="btn btn-primary mr-2" type="submit"><i class="fa fa-check"></i> Save</button>@endif
+                                 @if(checkAccess('manage-users','import_permission'))<button class="btn btn-primary mr-2" type="submit"><i class="fa fa-expand"></i> Export</button>@endif
                                  <a class="btn btn-secondary orng-btn" style="font-size:inherit;" href="{{route('manage.user')}}"><i class="fa fa-dot-circle"></i> Reset</a>
                               </div>
                             </div>
@@ -155,6 +155,7 @@
                                         </select>
                                     </div>
                                 </div>
+                                @if(checkAccess('manage-users','search_permission'))
                                 <div class="col-md-2">
                                     <div class="searching-fld">
                                         <select class="form-control select">
@@ -181,7 +182,7 @@
                                             <button type="submit"><i class="fa fa-search"></i></button>
                                     </div>
                                 </div>
-
+                                @endif
                             </div>
                              </div>
                              <div class="col-md-12">    
@@ -190,11 +191,11 @@
                                         <table>
                                             <thead>
                                                 <tr>
-                                                    <th>Edit</th>
-                                                    <th>Delete</th>
+                                                    @if(checkAccess('manage-users','edit_permission'))<th>Edit</th>@endif
+                                                    @if(checkAccess('manage-users','delete_permission')) <th>Delete</th>@endif
                                                     <th>Permission</th>
                                                     <th>User Name</th>
-                                                    <th>Role</th>
+                                                    @if(auth()->user()->role_id==2)<th>Role</th>@endif
                                                     <th>DOJ</th>
                                                     <th>Mobile No</th>
                                                     <th>Email ID</th>
@@ -204,11 +205,11 @@
                                             <tbody>
                                             @foreach($users as $rowu)
                                             <tr>
-                                                <td><a class="btn btn-primary" href="{{route('manage.user')}}?id={{$rowu->id}}"> <i class="fa fa-pencil-alt"></i></a></td>
-                                                <td><a class="btn btn-primary" href="{{route('user.delete',$rowu->id)}}" onclick="return confirm('Are you sure you want to delete this record?')"> <i class="fa fa-trash-alt"></i></a></td>
+                                                @if(checkAccess('manage-users','edit_permission')) <td><a class="btn btn-primary" href="{{route('manage.user')}}?id={{$rowu->id}}"> <i class="fa fa-pencil-alt"></i></a></td>@endif
+                                                @if(checkAccess('manage-users','delete_permission'))<td><a class="btn btn-primary" href="{{route('user.delete',$rowu->id)}}" onclick="return confirm('Are you sure you want to delete this record?')"> <i class="fa fa-trash-alt"></i></a></td>@endif
                                                 <td><a class="btn btn-primary" href="{{route('user.user-permission',$rowu->id)}}"> <i class="fa fa-sitemap"></i></a></td>
                                                 <td>{{ $rowu->name }}</td>
-                                                <td>{{ $role[$rowu->role_id] }}</td>
+                                                @if(auth()->user()->role_id==2)<td>{{ $role[$rowu->role_id] }}</td>@endif
                                                 <td>{{ $rowu->doj }}</td>
                                                 <td>{{ $rowu->mobile_no }}</td>
                                                 <td>{{ $rowu->email }}</td>
