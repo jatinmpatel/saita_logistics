@@ -12,7 +12,7 @@ class ClientMaster extends Model
     protected $primaryKey = 'id';
     public $timeStamps = true;
     protected $fillable = [ 
-        'client_code','client_name', 'sales_person', 'client',
+        'id','client_code','client_name', 'sales_person', 'client',
         'address1', 'state_id', 'email_id', 'address2', 'country_id', 'pan',
         'pincode','mobile_no','gstin','city_id','office_phone_no','iec','aadhaar_no',
         'bill_payment_type','bill_credit_amount','bill_isActive','bill_tax_applicable','bill_vol','bill_currency',

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('packet_bookings', function (Blueprint $table) {
             $table->id();
             $table->string('uuid')->nullable();
-            $table->string('awb_np')->unique()->nullable();
+            $table->string('awb_no')->unique()->nullable();
             $table->string('reference_no')->nullable();
             $table->string('booking_date')->nullable();
             $table->integer('client_id')->default(0);

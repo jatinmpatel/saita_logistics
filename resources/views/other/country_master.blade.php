@@ -46,9 +46,9 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                            <div class="page-btns">
                               <div class="form-group text-center custom-mt-form-group">
-                                 <button class="btn btn-primary mr-2" type="submit"><i class="fa fa-paper-plane"></i> Submit</button>
-                                 <button class="btn btn-primary mr-2" type="button"><i class="fa fa-search"></i> Search</button>
-                                 <a href="{{route('export.country')}}" class="btn btn-primary mr-2 btn-sm" type="button"><i class="fa fa-expand"></i> Export</a>
+                              @if(checkAccess('country-master','add_permission'))<button class="btn btn-primary mr-2" type="submit"><i class="fa fa-paper-plane"></i> Submit</button>@endif
+                              @if(checkAccess('country-master','search_permission'))<button class="btn btn-primary mr-2" type="button"><i class="fa fa-search"></i> Search</button>@endif
+                              @if(checkAccess('country-master','import_permission'))<a href="{{route('export.country')}}" class="btn btn-primary mr-2 btn-sm" type="button"><i class="fa fa-expand"></i> Export</a>@endif
                                  <button onclick="window.location.reload();" class="btn btn-secondary orng-btn" type="reset"><i class="fa fa-dot-circle"></i> Reset</button>
                               </div>
                             </div>
@@ -79,8 +79,8 @@
                                        <table id="t1">
                                              <thead>
                                                 <tr>
-                                                   <th>Edit</th>
-                                                   <th>Delete</th>
+                                                @if(checkAccess('country-master','edit_permission'))<th>Edit</th>@endif
+                                                @if(checkAccess('country-master','delete_permission'))<th>Delete</th>@endif
                                                    <th>Country Code</th>
                                                    <th>Country Name</th>
                                                 </tr>
@@ -88,8 +88,8 @@
                                              <tbody>
                                              @foreach($country as $row)
                                              <tr>
-                                                <td><a class="btn btn-primary" data-toggle="modal" data-target="#myModal{{$row->id}}" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
-                                                <td><a class="btn btn-primary" href="{{route('country.delete',$row->id)}}" onclick="return confirm('Are you sure you want to delete this record?')"> <i class="fa fa-trash-alt"></i></a></td>
+                                             @if(checkAccess('country-master','edit_permission'))<td><a class="btn btn-primary" data-toggle="modal" data-target="#myModal{{$row->id}}" href="#"> <i class="fa fa-pencil-alt"></i></a></td>@endif
+                                             @if(checkAccess('country-master','delete_permission'))<td><a class="btn btn-primary" href="{{route('country.delete',$row->id)}}" onclick="return confirm('Are you sure you want to delete this record?')"> <i class="fa fa-trash-alt"></i></a></td>@endif
                                                 <td>{{$row->country_code}}</td>
                                                 <td>{{$row->country_name}}</td>
                                              </tr>

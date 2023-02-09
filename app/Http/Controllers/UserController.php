@@ -17,7 +17,7 @@ class UserController extends Controller
         if($user_id!=0){
             $user = User::select('id','name','mobile_no','email','doj','role_id','status')->where('id',$user_id)->first();    
         }
-        $users = User::select('id','name','mobile_no','email','doj','status','role_id')->where('id','!=',1)->get();
+        $users = User::select('id','name','mobile_no','email','doj','status','role_id')->get();
         return view('user.manage_user',compact('users','user','role'));
     }
     public function userMasterSave(Request $request){

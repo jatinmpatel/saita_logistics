@@ -67,7 +67,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                            <div class="page-btns">
                               <div class="form-group text-center custom-mt-form-group">
-                                 <button class="btn btn-primary mr-2" type="submit"><i class="fa fa-check"></i> Submit</button>
+                              @if(checkAccess('shipment-movement','add_permission'))<button class="btn btn-primary mr-2" type="submit"><i class="fa fa-check"></i> Submit</button>@endif
                                  <button class="btn btn-secondary orng-btn" type="reset"><i class="fa fa-dot-circle"></i> Reset</button>
                               </div>
                             </div>
@@ -99,8 +99,8 @@
                                          <table>
                                              <thead>
                                                  <tr>
-                                                     <th>Edit</th>
-                                                     <th>Delete</th>
+                                                 @if(checkAccess('shipment-movement','edit_permission'))<th>Edit</th>@endif
+                                                @if(checkAccess('shipment-movement','delete_permission')) <th>Delete</th>@endif
                                                      <th>Booking Date</th>
                                                      <th>Consignee</th>
                                                      <th>AWB No.</th>
@@ -115,8 +115,8 @@
                                              </thead>
                                              <tbody>
                                                  <tr>
-                                                     <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
-                                                     <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
+                                                 @if(checkAccess('shipment-movement','edit_permission'))<td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>@endif
+                                                 @if(checkAccess('shipment-movement','delete_permission'))<td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>@endif
                                                      <td>12-1-2023 10:20 PM </td>
                                                      <td></td>
                                                      <td>ABCD123</td>
@@ -128,34 +128,7 @@
                                                      <td>RC1232</td>
                                                      <td>0123456789</td>
                                                  </tr>
-                                                 <tr>
-                                                     <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
-                                                     <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
-                                                     <td>12-1-2023 10:20 PM </td>
-                                                     <td></td>
-                                                     <td>ABCD123</td>
-                                                     <td>Sunil</td>
-                                                     <td>Deliverd</td>
-                                                     <td></td>
-                                                     <td></td>
-                                                     <td></td>
-                                                     <td>RC1232</td>
-                                                     <td>0123456789</td>
-                                                 </tr> 
-                                                 <tr>
-                                                     <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
-                                                     <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
-                                                     <td>12-1-2023 10:20 PM </td>
-                                                     <td></td>
-                                                     <td>ABCD123</td>
-                                                     <td>Sunil</td>
-                                                     <td>Un-Deliverd</td>
-                                                     <td></td>
-                                                     <td></td>
-                                                     <td></td>
-                                                     <td>RC1232</td>
-                                                     <td>0123456789</td>
-                                                 </tr> 
+                                                 
                                                  </tbody>                                                           
                                              </table>
                                      </div>

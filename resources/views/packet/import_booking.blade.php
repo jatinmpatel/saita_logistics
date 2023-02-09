@@ -45,15 +45,16 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                            <div class="page-btns">
                               <div class="form-group text-center custom-mt-form-group">
-                                 <button class="btn btn-primary mr-2" type="submit"><i class="fa fa-file-import"></i> Import</button>
+                                 
+                              @if(checkAccess('import-packet','import_permission'))<button class="btn btn-primary mr-2" type="submit"><i class="fa fa-file-import"></i> Import</button>@endif
                                  <button class="btn btn-primary mr-2" type="submit"><i class="fa fa-download"></i> Download Format</button>
                                  <button class="btn btn-secondary orng-btn" type="reset"><i class="fa fa-dot-circle"></i> Reset</button>
                               </div>
                             </div>
                         </div>
                      </div>
-                   </form></div>
-               
+                   </form>
+                  </div>
              </div>
           </div>
        </div>

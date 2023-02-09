@@ -43,8 +43,8 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                            <div class="page-btns">
                               <div class="form-group text-center custom-mt-form-group">
-                                 <button class="btn btn-primary mr-2" type="submit"><i class="fa fa-search"></i> Search</button>
-                                 <button class="btn btn-primary mr-2" type="button"><i class="fa fa-expand"></i> Export</button>
+                              @if(checkAccess('payment-history','search_permission'))<button class="btn btn-primary mr-2" type="submit"><i class="fa fa-search"></i> Search</button>@endif
+                              @if(checkAccess('payment-history','import_permission'))<button class="btn btn-primary mr-2" type="button"><i class="fa fa-expand"></i> Export</button>@endif
                                  <button class="btn btn-secondary orng-btn" type="reset"><i class="fa fa-dot-circle"></i> Reset</button>
                               </div>
                             </div>
@@ -72,22 +72,16 @@
                                         <table>
                                             <thead>
                                                 <tr>
-                                                    <th>Edit</th>
-                                                    <th>Delete</th>
+                                                @if(checkAccess('payment-history','edit_permission'))<th>Edit</th>@endif
+                                                @if(checkAccess('payment-history','delete_permission'))<th>Delete</th>@endif
                                                     <th>Date From</th>
                                                     <th>Status</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                             <tr>
-                                                <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
-                                                <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
-                                                <td>12-1-2023 10:20 PM</td>
-                                                <td>Done</td>
-                                            </tr>
-                                            <tr>
-                                                <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
-                                                <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
+                                            @if(checkAccess('payment-history','edit_permission'))<td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>@endif
+                                            @if(checkAccess('payment-history','delete_permission'))<td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>@endif
                                                 <td>12-1-2023 10:20 PM</td>
                                                 <td>Done</td>
                                             </tr>

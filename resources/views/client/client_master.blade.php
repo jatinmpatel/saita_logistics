@@ -383,9 +383,9 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                            <div class="page-btns">
                               <div class="form-group text-center custom-mt-form-group">
-                                 <button class="btn btn-primary mr-2" type="submit"><i class="fa fa-check"></i> Save</button>
-                                 <a href="{{route('export.client.master')}}" class="btn btn-primary mr-2 btn-sm" type="button"><i class="fa fa-expand"></i> Export</a>
-                                 <a href="{{route('client.master')}}" class="btn btn-secondary orng-btn btn-sm" type="reset"><i class="fa fa-dot-circle"></i> Reset</a>
+                              @if(checkAccess('client-master','edit_permission'))<button class="btn btn-primary mr-2" type="submit"><i class="fa fa-check"></i> Save</button>@endif
+                              @if(checkAccess('client-master','import_permission'))   <a href="{{route('export.client.master')}}" class="btn btn-primary mr-2 btn-sm" type="button"><i class="fa fa-expand"></i> Export</a>@endif
+                              <a href="{{route('client.master')}}" class="btn btn-secondary orng-btn btn-sm" type="reset"><i class="fa fa-dot-circle"></i> Reset</a>
                               </div>
                             </div>
                         </div>
@@ -445,8 +445,8 @@
                               <table>
                                  <thead>
                                     <tr>
-                                       <th>Edit</th>
-                                       <th>Del</th>
+                                       @if(checkAccess('client-master','edit_permission'))<th>Edit</th>@endif
+                                       @if(checkAccess('client-master','delete_permission'))<th>Del</th>>@endif
                                        <th>Client Code</th>
                                        <th>Client Name</th>
                                        <!-- <th>Sales Person</th> -->
@@ -471,8 +471,8 @@
                                  <tbody>
                                  @foreach($clientMaster as $row)
                                  <tr>
-                                    <td><a class="btn btn-primary" href="{{route('client.master')}}?id={{$row->id}}"> <i class="fa fa-pencil-alt"></i></a></td>
-                                    <td><a class="btn btn-primary" href="{{route('client.master.delete',$row->id)}}" onclick="return confirm('Are you sure you want to delete this record?')"> <i class="fa fa-trash-alt"></i></a></td>
+                                 @if(checkAccess('client-master','edit_permission'))<td><a class="btn btn-primary" href="{{route('client.master')}}?id={{$row->id}}"> <i class="fa fa-pencil-alt"></i></a></td>@endif
+                                 @if(checkAccess('client-master','delete_permission'))<td><a class="btn btn-primary" href="{{route('client.master.delete',$row->id)}}" onclick="return confirm('Are you sure you want to delete this record?')"> <i class="fa fa-trash-alt"></i></a></td>@endif
                                     <td>{{$row->client_code}}</td>
                                     <td>{{$row->client_name}}</td>
                                     <!-- <td>{{$row->sales_person}}</td> -->

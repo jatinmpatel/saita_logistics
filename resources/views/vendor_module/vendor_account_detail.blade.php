@@ -167,8 +167,8 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                            <div class="page-btns">
                               <div class="form-group text-center custom-mt-form-group">
-                                 <button class="btn btn-primary mr-2" type="submit"><i class="fa fa-check"></i> Save</button>
-                                 <a href="{{route('export.vendor.account.detail')}}" class="btn btn-primary mr-2 btn-sm" type="button"><i class="fa fa-expand"></i> Export</a>
+                              @if(checkAccess('vendor-account-detail','add_permission'))<button class="btn btn-primary mr-2" type="submit"><i class="fa fa-check"></i> Save</button>@endif
+                              @if(checkAccess('vendor-account-detail','import_permission'))<a href="{{route('export.vendor.account.detail')}}" class="btn btn-primary mr-2 btn-sm" type="button"><i class="fa fa-expand"></i> Export</a>@endif
                                  <a href="{{route('vendor.account.detail')}}" class="btn btn-secondary orng-btn btn-sm" type="reset"><i class="fa fa-dot-circle"></i> Reset</a>
                               </div>
                             </div>
@@ -228,8 +228,8 @@
                                        <table>
                                           <thead>
                                              <tr>
-                                                <th>Edit</th>
-                                                <th>Delete</th>
+                                             @if(checkAccess('vendor-account-detail','edit_permission'))<th>Edit</th>@endif
+                                             @if(checkAccess('vendor-account-detail','delete_permission'))<th>Delete</th>@endif
                                                 <th>Vendor</th>
                                                 <th>Token</th>
                                                 <th>Meter No</th>
@@ -243,8 +243,8 @@
                                           <tbody>
                                           @foreach($vendorAccount as $rowv)
                                           <tr>
-                                             <td><a class="btn btn-primary" href="<?php echo route('vendor.account.detail').'?id='.$rowv->id.''?>"> <i class="fa fa-pencil-alt"></i></a></td>
-                                             <td><a class="btn btn-primary" href="{{route('vendor.account.detail.delete',$rowv->id)}}" onclick="return confirm('Are you sure you want to delete this record')"> <i class="fa fa-trash-alt"></i></a></td>
+                                          @if(checkAccess('vendor-account-detail','edit_permission'))<td><a class="btn btn-primary" href="<?php echo route('vendor.account.detail').'?id='.$rowv->id.''?>"> <i class="fa fa-pencil-alt"></i></a></td>@endif
+                                          @if(checkAccess('vendor-account-detail','delete_permission'))<td><a class="btn btn-primary" href="{{route('vendor.account.detail.delete',$rowv->id)}}" onclick="return confirm('Are you sure you want to delete this record')"> <i class="fa fa-trash-alt"></i></a></td>@endif
                                              <td>{{$rowv->vendor_name}}</td>
                                              <td>{{$rowv->token}}</td>
                                              <td>{{$rowv->meter_no}}</td>

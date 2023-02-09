@@ -47,8 +47,8 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                            <div class="page-btns">
                               <div class="form-group text-center custom-mt-form-group">
-                                 <button class="btn btn-primary mr-2" type="button"><i class="fa fa-search"></i> Search</button>
-                                 <button class="btn btn-primary mr-2" type="submit"><i class="fa fa-check"></i> Submit</button>
+                              @if(checkAccess('delivered-report','add_permission'))<button class="btn btn-primary mr-2" type="submit"><i class="fa fa-check"></i> Submit</button>@endif
+                              @if(checkAccess('delivered-report','search_permission'))<button class="btn btn-primary mr-2" type="button"><i class="fa fa-search"></i> Search</button>@endif
                                  <button class="btn btn-secondary orng-btn" type="reset"><i class="fa fa-dot-circle"></i> Reset</button>
                               </div>
                             </div>
@@ -79,8 +79,8 @@
                                         <table>
                                             <thead>
                                                 <tr>
-                                                    <th>Edit</th>
-                                                    <th>Delete</th>
+                                                @if(checkAccess('delivered-report','edit_permission'))<th>Edit</th>@endif
+                                                @if(checkAccess('delivered-report','delete_permission'))<th>Delete</th>@endif
                                                     <th>Booking Date</th>
                                                     <th>Status</th>
                                                     <th>AWB No.</th>
@@ -89,8 +89,8 @@
 
                                             <tbody>
                                                 <tr>
-                                                    <td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>
-                                                    <td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>
+                                                @if(checkAccess('delivered-report','edit_permission'))<td><a class="btn btn-primary" href="#"> <i class="fa fa-pencil-alt"></i></a></td>@endif
+                                                @if(checkAccess('delivered-report','delete_permission'))<td><a class="btn btn-primary" href="#"> <i class="fa fa-trash-alt"></i></a></td>@endif
                                                     <td>12-1-2023 10:20 PM</td>
                                                     <td>Done</td>
                                                     <td>ABCD123</td>
@@ -102,8 +102,8 @@
                             </div>
                         </div>
                      </div>
-                   </form></div>
-               
+                   </form>
+                </div>
              </div>
           </div>
        </div>

@@ -3,17 +3,62 @@
 namespace App\Http\Controllers;
 
 use App\Models\PacketBooking;
+use App\Models\ClientMaster;
+use App\Models\Country;
 use Illuminate\Http\Request;
 
 class PacketBookingController extends Controller
 {
     public function packetBooking(Request $request){
-        return view('packet.packet_booking');
+        $client = ClientMaster::select('id','client_name')->whereNull('deleted_at')->get();
+        $country = Country::select('id','country_name','country_code')->where('isActive',1)->get();
+        return view('packet.packet_booking',compact('client','country'));
     }
 
     public function savePacketBooking(Request $request){
+        $this->validate($request,[
+            'awb_no'=>'required',
+            'ref_no'=>'required',
+            'booking_date'=>'required',
+            'client_id'=>'required',
+            'consignor' =>'required',
+            'consignor_c_person' =>'required',
+            'consignor_address_1' =>'required',
+            'consignor_address_2' =>'required',
+            'consignor_address_3' =>'required',
+            'consignor_pin_code' =>'required',
+            'consignor_country' =>'required',
+            'consignor_state' =>'required',
+            'consignor_city' =>'required',
+            'consignor_mobile' => 'required',
+            'consignor_email' => 'required',
+            'consignee' => 'required',
+            'consignee_cname' => 'required',
+            'consignee_address_1' => 'required',
+            'consignee_address_2' => 'required',
+            'consignee_address_3' => 'required',
+            'consignee_pincode' => 'required',
+            'consignee_country' => 'required',
+            'consignee_state' => 'required',
+            'consignee_city' => 'required',
+            'consignee_mobile' => 'required',
+            'consignee_email' => 'required',
+            'packet_type' => 'required',
+            'payment_type' => 'required',
+            'invoice_no' => 'required',
+            'packet_detail' => 'required',
+            'pcs' => 'required',
+            'actual_weight' => 'required',
+            'vendor_weight' => 'required',
+            'vendor_packet_type' => 'required',
+            'total_value' => 'required',
+            'ddlCurrencyType' => 'required',
+            'divisor' => 'required',
+            'accounting_remark' => 'required',
+            'accounting_remark' => 'required',
+         ]);
         $data = [
-            'awb_np' => isset($request->awb_no) ? $request->awb_no : null,
+            'awb_no' => isset($request->awb_no) ? $request->awb_no : null,
             'reference_no' => isset($request->ref_no) ? $request->ref_no : null,
             'booking_date' => isset($request->booking_date) ? $request->booking_date : null,
             'client_id' => isset($request->client_id) ? $request->client_id : null,
@@ -91,7 +136,7 @@ class PacketBookingController extends Controller
     }
 
     public function searchPacketBooking(Request $request){
-        $data = PacketBooking::where('awb_np', $request->awb_no)->first();
+        $data = PacketBooking::where('awb_no', $request->awb_no)->first();
         echo json_encode($data);
     }
 

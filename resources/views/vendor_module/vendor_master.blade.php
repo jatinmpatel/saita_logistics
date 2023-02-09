@@ -177,8 +177,8 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                            <div class="page-btns">
                               <div class="form-group text-center custom-mt-form-group">
-                                 <button class="btn btn-primary mr-2" type="submit"><i class="fa fa-check"></i> Save</button>
-                                 <a href="{{route('export.vendor.master')}}" class="btn btn-primary mr-2 btn btn-sm" type="button"><i class="fa fa-expand"></i> Export</a>
+                              @if(checkAccess('vendor-master','add_permission')) <button class="btn btn-primary mr-2" type="submit"><i class="fa fa-check"></i> Save</button>@endif
+                              @if(checkAccess('vendor-master','edit_permission'))<a href="{{route('export.vendor.master')}}" class="btn btn-primary mr-2 btn btn-sm" type="button"><i class="fa fa-expand"></i> Export</a>@endif
                                  <button onclick="window.location.reload();" class="btn btn-secondary orng-btn" type="reset"><i class="fa fa-dot-circle"></i> Reset</button>
                               </div>
                             </div>
@@ -239,8 +239,8 @@
                                     <table>
                                        <thead>
                                           <tr>
-                                             <th>Edit</th>
-                                             <th>Del</th>
+                                          @if(checkAccess('vendor-master','edit_permission'))<th>Edit</th>@endif
+                                          @if(checkAccess('vendor-master','delete_permission'))<th>Del</th>@endif
                                              <th>Vendor Code</th>
                                              <th>Vendor Name</th>
                                              <th>Address1</th>
@@ -260,8 +260,8 @@
                                        <tbody>
                                        @foreach($vendor as $row)
                                        <tr>
-                                          <td><a class="btn btn-primary editData" data-value="{{$row->id}}" href="javascript:void(0);"> <i class="fa fa-pencil-alt"></i></a></td>
-                                          <td><a class="btn btn-primary" href="{{route('vendor.master.delete',$row->id)}}" onclick="return confirm('Are you sure you want to delete this record?')"> <i class="fa fa-trash-alt"></i></a></td>
+                                       @if(checkAccess('vendor-master','edit_permission'))<td><a class="btn btn-primary editData" data-value="{{$row->id}}" href="javascript:void(0);"> <i class="fa fa-pencil-alt"></i></a></td>@endif
+                                       @if(checkAccess('vendor-master','delete_permission'))<td><a class="btn btn-primary" href="{{route('vendor.master.delete',$row->id)}}" onclick="return confirm('Are you sure you want to delete this record?')"> <i class="fa fa-trash-alt"></i></a></td>@endif
                                           <td>{{$row->vendor_code}}</td>
                                           <td>{{$row->name}}</td>
                                           <td>{{$row->address1}}</td>

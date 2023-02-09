@@ -205,7 +205,7 @@
                                             <tbody>
                                             @foreach($users as $rowu)
                                             <tr>
-                                                @if(checkAccess('manage-users','edit_permission')) <td><a class="btn btn-primary" href="{{route('manage.user')}}?id={{$rowu->id}}"> <i class="fa fa-pencil-alt"></i></a></td>@endif
+                                                @if(checkAccess('manage-users','edit_permission'))<td><a class="btn btn-primary" href="{{route('manage.user')}}?id={{$rowu->id}}"> <i class="fa fa-pencil-alt"></i></a></td>@endif
                                                 @if(checkAccess('manage-users','delete_permission'))<td><a class="btn btn-primary" href="{{route('user.delete',$rowu->id)}}" onclick="return confirm('Are you sure you want to delete this record?')"> <i class="fa fa-trash-alt"></i></a></td>@endif
                                                 <td><a class="btn btn-primary" href="{{route('user.user-permission',$rowu->id)}}"> <i class="fa fa-sitemap"></i></a></td>
                                                 <td>{{ $rowu->name }}</td>
