@@ -5,19 +5,19 @@
     <title>Saita Logistics Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/favicon.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin/img/favicon.png') }}">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/fontawesome/css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/fontawesome/css/fontawesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/fullcalendar.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/morris/morris.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/datetimepicker/css/tempusdominus-bootstrap-4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/datetimepicker/css/tempusdominus-bootstrap-4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('admin/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/plugins/fontawesome/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/plugins/fontawesome/css/fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/css/fullcalendar.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/plugins/morris/morris.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/plugins/datetimepicker/css/tempusdominus-bootstrap-4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/plugins/datetimepicker/css/tempusdominus-bootstrap-4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
+    <script src="{{ asset('admin/js/jquery-3.5.1.min.js') }}"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
   </head>
   
@@ -29,7 +29,7 @@
             <i class="fas fa-bars" aria-hidden="true"></i>
           </a>
           <a id="toggle_btn" class="float-left" href="javascript:void(0);">
-            <img src="{{ asset('img/sidebar/icon-21.png') }}" alt="">
+            <img src="{{ asset('admin/img/sidebar/icon-21.png') }}" alt="">
           </a>
           <ul class="nav float-left">
             <li>
@@ -46,15 +46,15 @@
               </div>
             </li>
             <li>
-              <a href="{{ url('/') }}" class="mobile-logo d-md-block d-lg-none d-block">
-                <img src="{{ asset('img/logo.png') }}" alt="" width="30" height="30">
+              <a href="{{ url('/admin//') }}" class="mobile-logo d-md-block d-lg-none d-block">
+                <img src="{{ asset('admin/img/logo.png') }}" alt="" width="30" height="30">
               </a>
             </li>
           </ul>
           <ul class="nav user-menu float-right">
             <li class="nav-item dropdown d-none d-sm-block">
               <a href="javascript:void(0);" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                <img src="{{ asset('img/sidebar/icon-22.png') }}" alt="">
+                <img src="{{ asset('admin/img/sidebar/icon-22.png') }}" alt="">
               </a>
               <div class="dropdown-menu notifications">
                 <div class="topnav-dropdown-header">
@@ -66,7 +66,7 @@
                       <a href="javascript:void(0);">
                         <div class="media">
                           <span class="avatar">
-                            <img alt="John Doe" src="{{ asset('img/user-06.jpg') }}" class="img-fluid rounded-circle">
+                            <img alt="John Doe" src="{{ asset('admin/img/user-06.jpg') }}" class="img-fluid rounded-circle">
                           </span>
                           <div class="media-body">
                             <p class="noti-details">
@@ -148,7 +148,7 @@
             </li>
             <li class="nav-item dropdown d-none d-sm-block">
               <a href="javascript:void(0);" id="open_msg_box" class="hasnotifications nav-link">
-                <img src="{{ asset('img/sidebar/icon-23.png') }}" alt="">
+                <img src="{{ asset('admin/img/sidebar/icon-23.png') }}" alt="">
               </a>
             </li>
             <li class="nav-item dropdown has-arrow">
@@ -158,7 +158,7 @@
                     if(auth()->user()->profile_pic!=''){
                       $profile_pic = asset('logistics/user/'.auth()->user()->profile_pic);
                     }else{
-                      $profile_pic = asset('img/user-06.jpg');
+                      $profile_pic = asset('admin/img/user-06.jpg');
                     }
                   @endphp
                   <img class="rounded-circle" src="{{ $profile_pic }}" width="30" alt="Admin">
@@ -167,10 +167,10 @@
                 <span>{{ auth()->user()->name }}</span>
               </a>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="{{ url('/user-profile') }}">My Profile</a>
+                <a class="dropdown-item" href="{{ url('/admin//user-profile') }}">My Profile</a>
                 {{-- <a class="dropdown-item" href="javascript:void(0);">Edit Profile</a> --}}
-                <a class="dropdown-item" href="{{ url('/change-password') }}">Change Password</a>
-                <a class="dropdown-item" href="{{ url('/website-setting') }}">Settings</a>
+                <a class="dropdown-item" href="{{ url('/admin//change-password') }}">Change Password</a>
+                <a class="dropdown-item" href="{{ url('/admin//website-setting') }}">Settings</a>
                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                   @csrf
@@ -183,10 +183,10 @@
               <i class="fas fa-ellipsis-v"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="{{ url('/user-profile') }}">My Profile</a>
-                <a class="dropdown-item" href="{{ url('/change-password') }}">Change Password</a>
+                <a class="dropdown-item" href="{{ url('/admin//user-profile') }}">My Profile</a>
+                <a class="dropdown-item" href="{{ url('/admin//change-password') }}">Change Password</a>
                 {{-- <a class="dropdown-item" href="javascript:void(0);">Edit Profile</a> --}}
-                <a class="dropdown-item" href="{{ url('/website-setting') }}">Settings</a>
+                <a class="dropdown-item" href="{{ url('/admin//website-setting') }}">Settings</a>
                 <a class="dropdown-item" href="javascript:void(0);">Logout</a>
             </div>
           </div>
@@ -198,7 +198,7 @@
            <div id="sidebar-menu" class="sidebar-menu">
              <div class="header-left">
                <a href="{{ url('/home') }}" class="logo">
-                 <img src="{{ asset('img/logo.png') }}" style="width: 100%" width="auto" height="auto" alt="">
+                 <img src="{{ asset('admin/img/logo.png') }}" style="width: 100%" width="auto" height="auto" alt="">
                </a>
              </div>
              <ul class="sidebar-ul">
@@ -217,49 +217,49 @@
                @endphp
                @if(array_intersect($operation_menu, $accessMenu))
                <li class="submenu">
-                 <a href="javascript:void(0);" class="{{ in_array(Request::segment(1), $operation_menu)?'subdrop':'' }}">
+                 <a href="javascript:void(0);" class="{{ in_array(Request::segment(2), $operation_menu)?'subdrop':'' }}">
                   <i class="fa fa-cogs"></i>
                    <span> Operation Management</span>
                    <span class="menu-arrow"></span>
                  </a>
-                 <ul class="list-unstyled" style="{{ in_array(Request::segment(1), $operation_menu)?'':'display: none;' }}">
+                 <ul class="list-unstyled" style="{{ in_array(Request::segment(2), $operation_menu)?'':'display: none;' }}">
                     @if(in_array("packet-booking",$accessMenu))
-                      <li class="{{ Request::segment(1)=='packet-booking'?'active':'' }}">
-                          <a href="{{ url('packet-booking') }}">
+                      <li class="{{ Request::segment(2)=='packet-booking'?'active':'' }}">
+                          <a href="{{ url('/admin/packet-booking') }}">
                               <span>Packet Booking</span>
                           </a>
                       </li>
                     @endif
                     @if(in_array("import-packet",$accessMenu))
-                      <li class="{{ Request::segment(1)=='import-packet'?'active':'' }}">
-                        <a href="{{ url('import-packet') }}">
+                      <li class="{{ Request::segment(2)=='import-packet'?'active':'' }}">
+                        <a href="{{ url('/admin/import-packet') }}">
                             <span>Import Packet</span>
                         </a>
                       </li>
                     @endif
                     @if(in_array("print-awb-document",$accessMenu))
-                      <li class="{{ Request::segment(1)=='print-awb-document'?'active':'' }}">
-                        <a href="{{ url('print-awb-document') }}">
+                      <li class="{{ Request::segment(2)=='print-awb-document'?'active':'' }}">
+                        <a href="{{ url('/admin/print-awb-document') }}">
                             <span>Print AWB Document</span>
                         </a>
                       </li>
                     @endif
                     @if(in_array("vendor-manifest",$accessMenu))
-                      <li class="{{ Request::segment(1)=='vendor-manifest'?'active':'' }}">
-                        <a href="{{ url('vendor-manifest') }}">
+                      <li class="{{ Request::segment(2)=='vendor-manifest'?'active':'' }}">
+                        <a href="{{ url('/admin/vendor-manifest') }}">
                             <span>Manifest to Vendor</span>
                         </a>
                       </li>
                     @endif
                     @if(in_array("shipment-movement",$accessMenu))
-                      <li class="{{ Request::segment(1)=='shipment-movement'?'active':'' }}">
-                        <a href="{{ url('shipment-movement') }}">
+                      <li class="{{ Request::segment(2)=='shipment-movement'?'active':'' }}">
+                        <a href="{{ url('/admin/shipment-movement') }}">
                             <span>Shipment Movement</span>
                         </a>
                       </li>
                     @endif
-                    <!-- <li class="{{ Request::segment(1)=='pod-upload'?'active':'' }}">
-                      <a href="{{ url('pod-upload') }}">
+                    <!-- <li class="{{ Request::segment(2)=='pod-upload'?'active':'' }}">
+                      <a href="{{ url('/admin/pod-upload') }}">
                           <span>POD Upload</span>
                       </a>
                     </li> -->
@@ -272,51 +272,51 @@
                 @endphp
               @if(array_intersect($client_menu, $accessMenu))
                <li class="submenu">
-                 <a href="javascript:void(0);" class="{{ in_array(Request::segment(1), $client_menu)?'subdrop':'' }}">
+                 <a href="javascript:void(0);" class="{{ in_array(Request::segment(2), $client_menu)?'subdrop':'' }}">
                   <i class="fa fa-database"></i>
                    <span> MASTER MANAGEMENT </span>
                    <span class="menu-arrow"></span>
                  </a>
 
-                 <ul class="list-unstyled" style="{{ in_array(Request::segment(1), $client_menu)?'':'display: none;' }}">
+                 <ul class="list-unstyled" style="{{ in_array(Request::segment(2), $client_menu)?'':'display: none;' }}">
                     @if(in_array("client-master",$accessMenu))
-                      <li class="{{ Request::segment(1)=='client-master'?'active':'' }}">
-                          <a href="{{ url('client-master') }}">
+                      <li class="{{ Request::segment(2)=='client-master'?'active':'' }}">
+                          <a href="{{ url('/admin/client-master') }}">
                               <span>Client Master</span>
                           </a>
                       </li>
                     @endif
                     @if(in_array("vendor-master",$accessMenu))
-                      <li class="{{ Request::segment(1)=='vendor-master'?'active':'' }}">
-                        <a href="{{ url('vendor-master') }}">
+                      <li class="{{ Request::segment(2)=='vendor-master'?'active':'' }}">
+                        <a href="{{ url('/admin/vendor-master') }}">
                             <span>Vendor Master</span>
                         </a>
                       </li>
                     @endif
                     @if(in_array("vendor-account-detail",$accessMenu))
-                      <li class="{{ Request::segment(1)=='vendor-account-detail'?'active':'' }}">
-                        <a href="{{ url('vendor-account-detail') }}">
+                      <li class="{{ Request::segment(2)=='vendor-account-detail'?'active':'' }}">
+                        <a href="{{ url('/admin/vendor-account-detail') }}">
                             <span>Vendor Account Details</span>
                         </a>
                       </li>
                     @endif
                     @if(in_array("zone-master",$accessMenu))
-                      <li class="{{ Request::segment(1)=='zone-master'?'active':'' }}">
-                        <a href="{{ url('zone-master') }}">
+                      <li class="{{ Request::segment(2)=='zone-master'?'active':'' }}">
+                        <a href="{{ url('/admin/zone-master') }}">
                             <span>Zone Master</span>
                         </a>
                       </li>
                     @endif
                     @if(in_array("country-master",$accessMenu))
-                      <li class="{{ Request::segment(1)=='country-master'?'active':'' }}">
-                        <a href="{{ url('country-master') }}">
+                      <li class="{{ Request::segment(2)=='country-master'?'active':'' }}">
+                        <a href="{{ url('/admin/country-master') }}">
                             <span>Country Master</span>
                         </a>
                       </li>
                     @endif
                     @if(in_array("reason-master",$accessMenu))
-                      <li class="{{ Request::segment(1)=='reason-master'?'active':'' }}">
-                        <a href="{{ url('reason-master') }}">
+                      <li class="{{ Request::segment(2)=='reason-master'?'active':'' }}">
+                        <a href="{{ url('/admin/reason-master') }}">
                             <span>Reason Master</span>
                         </a>
                       </li>
@@ -330,29 +330,29 @@
               @endphp
               @if(array_intersect($report_menu, $accessMenu))
                <li class="submenu">
-                 <a href="javascript:void(0);" class="{{ in_array(Request::segment(1), $report_menu)?'subdrop':'' }}">
+                 <a href="javascript:void(0);" class="{{ in_array(Request::segment(2), $report_menu)?'subdrop':'' }}">
                   <i class="fa fa-retweet"></i>
                    <span> REPORTS MANAGEMENT </span>
                    <span class="menu-arrow"></span>
                  </a>
-                 <ul class="list-unstyled" style="{{ in_array(Request::segment(1), $report_menu)?'':'display: none;' }}">
+                 <ul class="list-unstyled" style="{{ in_array(Request::segment(2), $report_menu)?'':'display: none;' }}">
                     @if(in_array("booking-report",$accessMenu))
-                      <li class="{{ Request::segment(1)=='booking-report'?'active':'' }}">
-                          <a href="{{ url('booking-report') }}">
+                      <li class="{{ Request::segment(2)=='booking-report'?'active':'' }}">
+                          <a href="{{ url('/admin/booking-report') }}">
                               <span>Booking Report</span>
                           </a>
                       </li>
                     @endif
                     @if(in_array("v",$accessMenu))
-                      <li class="{{ Request::segment(1)=='manifest-report'?'active':'' }}">
-                        <a href="{{ url('manifest-report') }}">
+                      <li class="{{ Request::segment(2)=='manifest-report'?'active':'' }}">
+                        <a href="{{ url('/admin/manifest-report') }}">
                             <span>Manifest Report</span>
                         </a>
                       </li>
                     @endif
                     @if(in_array("delivered-report",$accessMenu))
-                      <li class="{{ Request::segment(1)=='delivered-report'?'active':'' }}">
-                        <a href="{{ url('delivered-report') }}">
+                      <li class="{{ Request::segment(2)=='delivered-report'?'active':'' }}">
+                        <a href="{{ url('/admin/delivered-report') }}">
                             <span>Delivered Report</span>
                         </a>
                       </li>
@@ -366,29 +366,29 @@
               @endphp
               @if(array_intersect($user_menu, $accessMenu))
                <li class="submenu">
-                 <a href="javascript:void(0);" class="{{ in_array(Request::segment(1), $user_menu)?'subdrop':'' }}">
+                 <a href="javascript:void(0);" class="{{ in_array(Request::segment(2), $user_menu)?'subdrop':'' }}">
                   <i class="fa fa-users"></i>
                    <span> USER MANAGEMENT </span>
                    <span class="menu-arrow"></span>
                  </a>
-                 <ul class="list-unstyled" style="{{ in_array(Request::segment(1), $user_menu)?'':'display: none;' }}">
+                 <ul class="list-unstyled" style="{{ in_array(Request::segment(2), $user_menu)?'':'display: none;' }}">
                     @if(in_array("manage-users",$accessMenu))
-                      <li class="{{ Request::segment(1)=='manage-users'?'active':'' }}">
-                          <a href="{{ url('manage-users') }}">
+                      <li class="{{ Request::segment(2)=='manage-users'?'active':'' }}">
+                          <a href="{{ url('/admin/manage-users') }}">
                               <span>Manage Users</span>
                           </a>
                       </li>
                     @endif
                     @if(in_array("role-manager",$accessMenu))
-                      <li class="{{ Request::segment(1)=='role-manager'?'active':'' }}">
-                        <a href="{{ url('role-manager') }}">
+                      <li class="{{ Request::segment(2)=='role-manager'?'active':'' }}">
+                        <a href="{{ url('/admin/role-manager') }}">
                             <span>Role Manager</span>
                         </a>
                       </li>
                     @endif
                     @if(in_array("change-password",$accessMenu))
-                      <li class="{{ Request::segment(1)=='change-password'?'active':'' }}">
-                        <a href="{{ url('change-password') }}">
+                      <li class="{{ Request::segment(2)=='change-password'?'active':'' }}">
+                        <a href="{{ url('/admin/change-password') }}">
                             <span>Change Password</span>
                         </a>
                       </li>
@@ -402,22 +402,22 @@
               @endphp
               @if(array_intersect($account_menu, $accessMenu))
                <li class="submenu">
-                 <a href="javascript:void(0);" class="{{ in_array(Request::segment(1), $account_menu)?'subdrop':'' }}">
+                 <a href="javascript:void(0);" class="{{ in_array(Request::segment(2), $account_menu)?'subdrop':'' }}">
                   <i class="fa fa-users"></i>
                    <span> Accounts </span>
                    <span class="menu-arrow"></span>
                  </a>
-                 <ul class="list-unstyled" style="{{ in_array(Request::segment(1), $account_menu)?'':'display: none;' }}">
+                 <ul class="list-unstyled" style="{{ in_array(Request::segment(2), $account_menu)?'':'display: none;' }}">
                     @if(in_array("create-invoice",$accessMenu))
-                      <li class="{{ Request::segment(1)=='create-invoice'?'active':'' }}">
-                          <a href="{{ url('create-invoice') }}">
+                      <li class="{{ Request::segment(2)=='create-invoice'?'active':'' }}">
+                          <a href="{{ url('/admin/create-invoice') }}">
                               <span>Create Invoice</span>
                           </a>
                       </li>
                     @endif
                     @if(in_array("invoice",$accessMenu))
-                      <li class="{{ Request::segment(1)=='invoice'?'active':'' }}">
-                        <a href="{{ url('invoice') }}">
+                      <li class="{{ Request::segment(2)=='invoice'?'active':'' }}">
+                        <a href="{{ url('/admin/invoice') }}">
                             <span>Invoice</span>
                         </a>
                       </li>
@@ -431,36 +431,36 @@
               @endphp
               @if(array_intersect($setting_menu, $accessMenu))
                <li class="submenu">
-                 <a href="javascript:void(0);" class="{{ in_array(Request::segment(1), $setting_menu)?'subdrop':'' }}">
+                 <a href="javascript:void(0);" class="{{ in_array(Request::segment(2), $setting_menu)?'subdrop':'' }}">
                   <i class="fa fa-cog"></i>
                    <span> SETTINGS MANAGEMENT </span>
                    <span class="menu-arrow"></span>
                  </a>
-                 <ul class="list-unstyled" style="{{ in_array(Request::segment(1), $setting_menu)?'':'display: none;' }}">
+                 <ul class="list-unstyled" style="{{ in_array(Request::segment(2), $setting_menu)?'':'display: none;' }}">
                     @if(in_array("website-setting",$accessMenu))
-                      <li class="{{ Request::segment(1)=='website-setting'?'active':'' }}">
-                          <a href="{{ url('website-setting') }}">
+                      <li class="{{ Request::segment(2)=='website-setting'?'active':'' }}">
+                          <a href="{{ url('/admin/website-setting') }}">
                               <span>Website Setting </span>
                           </a>
                       </li>
                     @endif
                     @if(in_array("payment-history",$accessMenu))
-                      <li class="{{ Request::segment(1)=='payment-history'?'active':'' }}">
-                        <a href="{{ url('payment-history') }}">
+                      <li class="{{ Request::segment(2)=='payment-history'?'active':'' }}">
+                        <a href="{{ url('/admin/payment-history') }}">
                             <span>Payment History</span>
                         </a>
                       </li>
                     @endif
                     @if(in_array("user-profile",$accessMenu))
-                      <li class="{{ Request::segment(1)=='user-profile'?'active':'' }}">
-                        <a href="{{ url('user-profile') }}">
+                      <li class="{{ Request::segment(2)=='user-profile'?'active':'' }}">
+                        <a href="{{ url('/admin/user-profile') }}">
                             <span>Your Profile</span>
                         </a>
                       </li>
                     @endif
                     @if(in_array("vendor-api-configuration",$accessMenu))
-                      <li class="{{ Request::segment(1)=='vendor-api-configuration'?'active':'' }}">
-                        <a href="{{ url('vendor-api-configuration') }}">
+                      <li class="{{ Request::segment(2)=='vendor-api-configuration'?'active':'' }}">
+                        <a href="{{ url('/admin/vendor-api-configuration') }}">
                             <span>Vendor API Configuratio</span>
                         </a>
                       </li>
@@ -490,19 +490,19 @@
       </div>
     </div>
 
-      <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
-      <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-      <script src="{{ asset('js/jquery.slimscroll.js') }}"></script>
-      <script src="{{ asset('js/select2.min.js') }}"></script>
-      <script src="{{ asset('js/moment.min.js') }}"></script>
-      <script src="{{ asset('js/fullcalendar.min.js') }}"></script>
-      <script src="{{ asset('js/jquery.fullcalendar.js') }}"></script>
-      <script src="{{ asset('plugins/morris/morris.min.js') }}"></script>
-      <script src="{{ asset('plugins/raphael/raphael-min.js') }}"></script>
-      <script src="{{ asset('js/apexcharts.js') }}"></script>
-      <script src="{{ asset('js/chart-data.js') }}"></script>
-      <script src="{{ asset('plugins/datetimepicker/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-      <script src="{{ asset('js/app.js') }}"></script>
+      <script src="{{ asset('admin/js/jquery-3.6.0.min.js') }}"></script>
+      <script src="{{ asset('admin/js/bootstrap.bundle.min.js') }}"></script>
+      <script src="{{ asset('admin/js/jquery.slimscroll.js') }}"></script>
+      <script src="{{ asset('admin/js/select2.min.js') }}"></script>
+      <script src="{{ asset('admin/js/moment.min.js') }}"></script>
+      <script src="{{ asset('admin/js/fullcalendar.min.js') }}"></script>
+      <script src="{{ asset('admin/js/jquery.fullcalendar.js') }}"></script>
+      <script src="{{ asset('admin/plugins/morris/morris.min.js') }}"></script>
+      <script src="{{ asset('admin/plugins/raphael/raphael-min.js') }}"></script>
+      <script src="{{ asset('admin/js/apexcharts.js') }}"></script>
+      <script src="{{ asset('admin/js/chart-data.js') }}"></script>
+      <script src="{{ asset('admin/plugins/datetimepicker/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+      <script src="{{ asset('admin/js/app.js') }}"></script>
       <script>
 
         $('#otherCheckbox').on('click',function() {

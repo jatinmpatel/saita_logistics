@@ -9,8 +9,8 @@
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6 col-12">
              <ul class="breadcrumb float-right p-0 mb-0">
-                <li class="breadcrumb-item"><a href="index.html"><i class="fas fa-home"></i> Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="index.html">CREATE INVOICE</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="#"> Accounts</a></li>
                 <li class="breadcrumb-item"><span> CREATE INVOICE</span></li>
              </ul>
           </div>

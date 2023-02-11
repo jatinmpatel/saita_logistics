@@ -12,35 +12,22 @@ use App\Http\Controllers\WebsiteSettingController;
 use App\Http\Controllers\VendorMainFestController;
 use App\Http\Controllers\RoleMangerController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return \File::get(public_path() . '/index.html');
 });
 
 Auth::routes();
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix' => '', 'middleware' => ['auth']], function(){
-
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
 
     Route::resource('user', userController::class);
     Route::get('user/unlink/{id}/{image}', [userController::class, 'unlink']);
 
-
     Route::get('packet-booking', [PacketBookingController::class, 'packetBooking']);
     Route::post('save-packet-booking', [PacketBookingController::class, 'savePacketBooking']);
     Route::post('search-packet-booking', [PacketBookingController::class, 'searchPacketBooking']);
-
 
     Route::get('import-packet', [PacketBookingController::class, 'importPacket']);
     Route::get('booking-report', [PacketBookingController::class, 'bookingReport']);
@@ -96,12 +83,9 @@ Route::group(['prefix' => '', 'middleware' => ['auth']], function(){
     Route::get('vendor-master-delete/{id}', [VendorMasterController::class, 'vendorMasterDelete'])->name('vendor.master.delete');
     Route::get('vendor-account-detail', [VendorMasterController::class, 'vendorAccountDetail'])->name('vendor.account.detail');
     Route::get('export-vendor-account-detail', [VendorMasterController::class, 'exportVendorAccountDetail'])->name('export.vendor.account.detail');
-
     
     Route::post('vendor-acccount-save',[VendorMasterController::class,'vendorAcccountSave'])->name('vendor.acccount.save');
-
     Route::post('get-vendor-service',[VendorMasterController::class,'getVendorService'])->name('get-vendor-service');
-    
     Route::get('vendor-account-detail-delete/{id}',[VendorMasterController::class,'vendorAcccountDetailDelete'])->name('vendor.account.detail.delete');
 
     Route::resource('vendor-manifest', VendorMainFestController::class);
@@ -114,6 +98,4 @@ Route::group(['prefix' => '', 'middleware' => ['auth']], function(){
 
     Route::get('user-permission/{id}', [userController::class, 'userPermission'])->name('user.user-permission');
     Route::post('user-permission', [userController::class, 'saveUserPermission'])->name('save.user-permission');
-
-   
 });

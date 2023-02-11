@@ -10,7 +10,7 @@
         <div class="col-md-6">
           <ul class="breadcrumb mb-0 p-0 float-right">
             <li class="breadcrumb-item">
-              <a href="index.html">
+              <a href="{{ url('/') }}">
                 <i class="fas fa-home"></i> Home </a>
             </li>
             <li class="breadcrumb-item">
@@ -25,7 +25,7 @@
       <div class="col-md-6 col-sm-6 col-lg-6 col-xl-4">
         <div class="dash-widget dash-widget5" id="box1">
           <span class="float-left">
-            <img src="{{ asset('img/dash/dash-1.png') }}" alt="" width="80">
+            <img src="{{ asset('admin/img/dash/dash-1.png') }}" alt="" width="80">
           </span>
           <div class="dash-widget-info text-right">
             <span>BOOKING</span>
@@ -40,14 +40,14 @@
             <h3>12,000</h3>
           </div>
           <span class="float-right">
-            <img src="{{ asset('img/dash/dash-2.png') }}" width="80" alt="">
+            <img src="{{ asset('admin/img/dash/dash-2.png') }}" width="80" alt="">
           </span>
         </div>
       </div>
       <div class="col-md-6 col-sm-6 col-lg-6 col-xl-4">
         <div class="dash-widget dash-widget5" id="box3">
           <span class="float-left">
-            <img src="{{ asset('img/dash/dash-3.png') }}" alt="" width="80">
+            <img src="{{ asset('admin/img/dash/dash-3.png') }}" alt="" width="80">
           </span>
           <div class="dash-widget-info text-right">
             <span>PENDING</span>

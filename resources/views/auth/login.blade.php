@@ -6,7 +6,7 @@
     <div class="account-box">
        <div class="account-wrapper">
           <div class="account-logo">
-             <a href="index.html"><img src="{{ asset('img/logo.png') }}" alt="SchoolAdmin"></a>
+             <a href="{{ url('/') }}"><img src="{{ asset('admin/img/logo.png') }}" alt="SchoolAdmin"></a>
           </div>
           <form method="POST" action="{{ route('login') }}">
             @csrf

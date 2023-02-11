@@ -10,7 +10,7 @@
           <div class="col-lg-6 col-md-6 col-sm-6 col-12">
              <ul class="breadcrumb float-right p-0 mb-0">
                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="#">Website Setting</a></li>
+                <li class="breadcrumb-item"><a href="#">Setting Management</a></li>
                 <li class="breadcrumb-item"><span>Website Setting</span></li>
              </ul>
           </div>
@@ -77,7 +77,7 @@
                                     $img_url = asset('logistics/website/').'/'.$website['company_logo'];
                                  }else{
                                     $checkReqLogo = 'required';
-                                    $img_url = asset('img/logo.png');
+                                    $img_url = asset('admin/img/logo.png');
                                  }?>
                                 <div class="form-group col-md-5 col-12">
                                    <label>Company Logo*</label>
@@ -133,7 +133,7 @@
                                     $checkReq = '';
                                     $img_url = asset('logistics/website/').'/'.$website['company_dashboard_img'];
                                  }else{
-                                    $img_url = asset('img/logo.png');
+                                    $img_url = asset('admin/img/logo.png');
                                     $checkReq = 'required';
                                  }
                                  ?>

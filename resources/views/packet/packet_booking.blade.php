@@ -9,8 +9,8 @@
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6 col-12">
              <ul class="breadcrumb float-right p-0 mb-0">
-                <li class="breadcrumb-item"><a href="index.html"><i class="fas fa-home"></i> Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="index.html">Packet Booking</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="#"> Operation Management</a></li>
                 <li class="breadcrumb-item"><span> Packet Booking</span></li>
              </ul>
           </div>
@@ -21,7 +21,7 @@
           <div class="col-lg-12 col-md-12 col-sm-12 col-12">
              <div class="card">
                @include('message.error_validation')
-               <form method="POST" action="{{ url('save-packet-booking') }}" enctype="multipart/form-data" >
+               <form method="POST" action="{{ url('admin/save-packet-booking') }}" enctype="multipart/form-data" >
                   @csrf
                    <div class="card-body">
                          <div class="col-lg-12 col-md-12 col-sm-12 col-12">
@@ -350,7 +350,7 @@ $(document).ready(function() {
     $("#awb_no").on("blur",function(){
       var awb_no = $(this).val();
       $.ajax({
-        url: "{{ url('/search-packet-booking') }}",
+        url: "{{ url('admin/search-packet-booking') }}",
         dataType: "json",
         type: "Post",
         async: true,

@@ -9,8 +9,8 @@
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6 col-12">
              <ul class="breadcrumb float-right p-0 mb-0">
-                <li class="breadcrumb-item"><a href="index.html"><i class="fas fa-home"></i> Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="index.html">User Profile</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="#">Setting Management</a></li>
                 <li class="breadcrumb-item"><span> User Profile</span></li>
              </ul>
           </div>
@@ -113,7 +113,7 @@
                                 if($user->profile_pic!=''){
                                     $profile_pic = asset('logistics/user/'.$user->profile_pic);
                                 }else{
-                                    $profile_pic = asset('img/user-06.jpg');
+                                    $profile_pic = asset('admin/img/user-06.jpg');
                                 }?> 
                                 <div class="form-group col-md-5 col-5">
                                      <div class="user-detail">
